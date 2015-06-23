@@ -1,10 +1,10 @@
 <?php 
-	include_once("php_conexion.php");
-	if(!empty($_GET['del'])){
-		$id=$_GET['del'];
-		mysql_query("DELETE FROM carrito WHERE codigo='$id'");
-		header('location:index.php');
-	}
+  include_once("php_conexion.php");
+  if(!empty($_GET['del'])){
+    $id=$_GET['del'];
+    mysql_query("DELETE FROM carrito WHERE codigo='$id'");
+    header('location:index.php');
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -49,10 +49,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Tienda SoftUnicorn</a>
+          <a class="navbar-brand page-scroll" href="principal.php"><img style="width: 20%;" src="img/logo.png"></a>|
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="index.php">Principal</a></li>
+              <li class="active"><a href="index.php">Comprar</a></li>
               <li><a href="mis_pedidos.php">Mis Pedidos</a></li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -64,25 +64,25 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit" align="center">
-        <!--	<img src="img/banner.jpg" class="img-polaroid"> --> <h1>Master PCs</h1> 
+        <!--  <img src="img/banner.jpg" class="img-polaroid"> --> <h1>Master PCs</h1> 
       </div>
 
       <!-- Example row of columns -->
       <div class="row">
-      	
+        
       </div>
       <div align="center">
-      	
+        
         <div class="row-fluid">
-    		<div class="span8">
-			<?php
-                $pa=mysql_query("SELECT * FROM producto where estado='s'");				
+        <div class="span8">
+      <?php
+                $pa=mysql_query("SELECT * FROM producto where estado='s'");       
                 while($row=mysql_fetch_array($pa)){
             ?>                       
-        	<table class="table table-bordered">
-            	<tr><td>
-                	<div class="row-fluid">
-                    	<div class="span4">
+          <table class="table table-bordered">
+              <tr><td>
+                  <div class="row-fluid">
+                      <div class="span4">
                             <center><strong><?php echo $row['nombre']; ?></strong></center><br>
                             <img src="img/producto/<?php echo $row['codigo']; ?>.jpg" class="img-polaroid">
                         </div>
@@ -91,72 +91,72 @@
                             <strong>Valor: </strong>$ <?php echo number_format($row['valor'],2,",","."); ?>
                         </div>
                         <div class="span4"><br><br><br><br><br>
-                        	<form name="form<?php $row['codigo']; ?>" method="post" action="">
-                            	<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
+                          <form name="form<?php $row['codigo']; ?>" method="post" action="">
+                              <input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
                                 <button type="submit" name="boton" class="btn btn-primary">
                                     <i class="icon-shopping-cart"></i> <strong>Agregar al Carrito</strong>
                                 </button>
                             </form>
                         </div>
                     </div>
-            	</td></tr>
-        	</table>
-        	<?php } ?>
-        	</div>
+              </td></tr>
+          </table>
+          <?php } ?>
+          </div>
             <div class="span4">
             <?php
-				if(!empty($_POST['codigo'])){
-					$codigo=$_POST['codigo'];
-					$pa=mysql_query("SELECT * FROM carrito WHERE codigo='$codigo'");				
-					if($row=mysql_fetch_array($pa)){
-						$new_cant=$row['cantidad']+1;
-						mysql_query("UPDATE carrito SET cantidad='$new_cant' WHERE codigo='$codigo'");
-					}else{
-						mysql_query("INSERT INTO carrito (codigo, cantidad) VALUES ('$codigo','1')");
-					}
-				}
-			?>
+        if(!empty($_POST['codigo'])){
+          $codigo=$_POST['codigo'];
+          $pa=mysql_query("SELECT * FROM carrito WHERE codigo='$codigo'");        
+          if($row=mysql_fetch_array($pa)){
+            $new_cant=$row['cantidad']+1;
+            mysql_query("UPDATE carrito SET cantidad='$new_cant' WHERE codigo='$codigo'");
+          }else{
+            mysql_query("INSERT INTO carrito (codigo, cantidad) VALUES ('$codigo','1')");
+          }
+        }
+      ?>
                <div id="sidebar"><br><br><br>
-               		<h2 align="center">Mis Pedidos</h2>
-               		<table class="table table-bordered">
+                  <h2 align="center">Mis Pedidos</h2>
+                  <table class="table table-bordered">
                       <tr>
                         <td>
-                        	<table class="table table-bordered table table-hover">
+                          <table class="table table-bordered table table-hover">
                             <?php 
-								$neto=0;$tneto=0;
-								$pa=mysql_query("SELECT * FROM carrito");				
-								while($row=mysql_fetch_array($pa)){
-									$oProducto=new Consultar_Producto($row['codigo']);
-									$neto=$oProducto->consultar('valor')*$row['cantidad'];
-									$tneto=$tneto+$neto;
-									
-							?>
+                $neto=0;$tneto=0;
+                $pa=mysql_query("SELECT * FROM carrito");       
+                while($row=mysql_fetch_array($pa)){
+                  $oProducto=new Consultar_Producto($row['codigo']);
+                  $neto=$oProducto->consultar('valor')*$row['cantidad'];
+                  $tneto=$tneto+$neto;
+                  
+              ?>
                               <tr style="font-size:9px">
                                 <td><?php echo $oProducto->consultar('nombre'); ?></td>
                                 <td><?php echo $row['cantidad']; ?></td>
                                 <td>$ <?php echo number_format($neto,2,",","."); ?></td>
                                 <td>
-                                	<a href="index.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
-                                		<i class="icon-remove"></i>
+                                  <a href="index.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
+                                    <i class="icon-remove"></i>
                                     </a>
                                 </td>
                               </tr>
                             <?php }
-							?>
-                            	<td colspan="4" style="font-size:9px"><div align="right">$<?php echo number_format($tneto,2,",","."); ?></div></td>
+              ?>
+                              <td colspan="4" style="font-size:9px"><div align="right">$<?php echo number_format($tneto,2,",","."); ?></div></td>
                             <?php 
-								$pa=mysql_query("SELECT * FROM carrito");				
-								if(!$row=mysql_fetch_array($pa)){
-							?>
+                $pa=mysql_query("SELECT * FROM carrito");       
+                if(!$row=mysql_fetch_array($pa)){
+              ?>
                               <tr><div class="alert alert-success" align="center"><strong>No hay Productos Registrados</strong></div></tr>
-							  <?php } ?>
+                <?php } ?>
                             </table>
                         </td>
                       </tr>
                     </table>
                 </div>
             </div>
-    	</div>
+      </div>
         
       </div>
 
@@ -185,7 +185,7 @@
     <script src="js/bootstrap-carousel.js"></script>
     <script src="js/bootstrap-typeahead.js"></script>
     <script>
-		$(function() {
+    $(function() {
             var offset = $("#sidebar").offset();
             var topPadding = 15;
             $(window).scroll(function() {
@@ -200,7 +200,7 @@
                 };
             });
         });
-	</script>
+  </script>
 
   </body>
 </html>

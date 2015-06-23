@@ -1,7 +1,7 @@
 <?php
 	
 	$conexion = mysql_connect("localhost","root","");
-	mysql_select_db("carrito",$conexion); 
+	mysql_select_db("tienda_online",$conexion); 
 	
 	
 class Consultar_Producto{

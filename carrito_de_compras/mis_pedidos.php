@@ -1,10 +1,10 @@
 <?php 
-	include_once("php_conexion.php");
-	if(!empty($_GET['del'])){
-		$id=$_GET['del'];
-		mysql_query("DELETE FROM carrito WHERE codigo='$id'");
-		header('location:mis_pedidos.php');
-	}
+  include_once("php_conexion.php");
+  if(!empty($_GET['del'])){
+    $id=$_GET['del'];
+    mysql_query("DELETE FROM carrito WHERE codigo='$id'");
+    header('location:mis_pedidos.php');
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -49,7 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Tienda SoftUnicorn</a>
+       <<a class="navbar-brand page-scroll" href="principal.php"><img style="width: 20%;" src="img/logo.png"></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="index.php">Principal</a></li>
@@ -64,28 +64,28 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit" align="center">
-        	<!-- <img src="img/banner.jpg" class="img-polaroid"> --> <h1>Master PCs</h1> 
+          <!-- <img src="img/banner.jpg" class="img-polaroid"> --> <h1>Master PCs</h1> 
       </div>
 
       <!-- Example row of columns -->
       <div class="row">
-      	
+        
       </div>
       <div align="center">
-      	<?php 
-			if(!empty($_POST['n_cant'])){
-				$n_cant=$_POST['n_cant'];
-				$n_codigo=$_POST['codigo'];
-				$oProducto=new Consultar_Producto($n_codigo);
-				mysql_query("UPDATE carrito SET cantidad='$n_cant' WHERE codigo='$n_codigo'");
-				
-				echo '<div class="alert alert-success" align="center">
-					  <button type="button" class="close" data-dismiss="alert">×</button>
-					  <strong>Cantidad del Producto "'.$oProducto->consultar('nombre').'" Actualizada con Exito</strong>
-					</div>';
-			}
-		?>
-      	<table class="table table-bordered">
+        <?php 
+      if(!empty($_POST['n_cant'])){
+        $n_cant=$_POST['n_cant'];
+        $n_codigo=$_POST['codigo'];
+        $oProducto=new Consultar_Producto($n_codigo);
+        mysql_query("UPDATE carrito SET cantidad='$n_cant' WHERE codigo='$n_codigo'");
+        
+        echo '<div class="alert alert-success" align="center">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Cantidad del Producto "'.$oProducto->consultar('nombre').'" Actualizada con Exito</strong>
+          </div>';
+      }
+    ?>
+        <table class="table table-bordered">
           <tr class="info">
             <td><strong class="text-info">Articulo</strong></td>
             <td><div align="right"><strong class="text-info">Valor Unitario</strong></div></td>
@@ -94,61 +94,61 @@
             <td></td>
           </tr>
           <?php 
-		  	$total=0;$neto=0;
-		  	$pa=mysql_query("SELECT * FROM carrito");				
+        $total=0;$neto=0;
+        $pa=mysql_query("SELECT * FROM carrito");       
             while($row=mysql_fetch_array($pa)){
-				$oProducto=new Consultar_Producto($row['codigo']);
-				$total=$row['cantidad']*$oProducto->consultar('valor');#cantidad * valor unitario
-				$neto=$neto+$total;#acumulamos el neto
-		  ?>
+        $oProducto=new Consultar_Producto($row['codigo']);
+        $total=$row['cantidad']*$oProducto->consultar('valor');#cantidad * valor unitario
+        $neto=$neto+$total;#acumulamos el neto
+      ?>
           <tr>
             <td>
-            	<div align="center">
+              <div align="center">
                      <strong><?php echo $oProducto->consultar('nombre'); ?></strong><br>
                      <img src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="200" height="200" class="img-polaroid">
                 </div>
             </td>
             <td><br><br><div align="right">$ <?php echo number_format($oProducto->consultar('valor'),2,",","."); ?></div></td>
             <td><br><br>
-            	<center>
-                	<a href="#cant<?php echo $row['codigo']; ?>" role="button" class="btn" data-toggle="modal" title="Editar Cantidad">
-						<span class="badge badge-success"><?php echo $row['cantidad']; ?></span>
+              <center>
+                  <a href="#cant<?php echo $row['codigo']; ?>" role="button" class="btn" data-toggle="modal" title="Editar Cantidad">
+            <span class="badge badge-success"><?php echo $row['cantidad']; ?></span>
                     </a>
                 </center>
             </td>
             <td><br><br><div align="right">$ <?php echo number_format($total,2,",","."); ?></div></td>
             <td><br><br>
-	            <center>
-    	        	<a href="mis_pedidos.php?del=<?php echo $row['codigo']; ?>" class="btn btn-mini" title="Eliminar de la Lista">
-        	        	<i class="icon-remove"></i>
-            	    </a>
+              <center>
+                <a href="mis_pedidos.php?del=<?php echo $row['codigo']; ?>" class="btn btn-mini" title="Eliminar de la Lista">
+                    <i class="icon-remove"></i>
+                  </a>
                 </center>
             </td>
           </tr>
           
         <div id="cant<?php echo $row['codigo']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-       	<form name="form<?php $row['codigo']; ?>" method="post" action="">
-          	<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
+        <form name="form<?php $row['codigo']; ?>" method="post" action="">
+            <input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
             <div class="modal-header">
-	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    	        <h3 id="myModalLabel">Actualizar Existencia</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3 id="myModalLabel">Actualizar Existencia</h3>
             </div>
             <div class="modal-body">
-           	    <div class="row-fluid">
-	                <div class="span6">
-                    	<img src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="200" height="200" class="img-polaroid">
+                <div class="row-fluid">
+                  <div class="span6">
+                      <img src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="200" height="200" class="img-polaroid">
                     </div>
-    	            <div class="span6">
-                    	<strong><?php echo $oProducto->consultar('nombre'); ?></strong><br>
-		                <strong>Cantidad Actual: </strong><?php echo $row['cantidad']; ?><br><br>
+                  <div class="span6">
+                      <strong><?php echo $oProducto->consultar('nombre'); ?></strong><br>
+                    <strong>Cantidad Actual: </strong><?php echo $row['cantidad']; ?><br><br>
                         <strong>Nueva Cantidad</strong><br>
                         <input name="n_cant" value="<?php echo $row['cantidad']; ?>" type="number" autocomplete="off" min="1">
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-        	    <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i> <strong>Cerrar</strong></button>
-            	<button type="submit" class="btn btn-primary"><i class="icon-ok"></i> <strong>Actualizar</strong></button>
+              <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i> <strong>Cerrar</strong></button>
+              <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> <strong>Actualizar</strong></button>
             </div>
             </form>
         </div>
@@ -190,7 +190,7 @@
     <script src="js/bootstrap-carousel.js"></script>
     <script src="js/bootstrap-typeahead.js"></script>
     <script>
-		$(function() {
+    $(function() {
             var offset = $("#sidebar").offset();
             var topPadding = 15;
             $(window).scroll(function() {
@@ -205,7 +205,7 @@
                 };
             });
         });
-	</script>
+  </script>
 
   </body>
 </html>
