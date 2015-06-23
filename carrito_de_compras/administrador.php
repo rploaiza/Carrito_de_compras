@@ -2,7 +2,6 @@
     header('Content-Type: text/html; charset=ISO-8859-1');
     include("static/site_config.php"); 
     include ("static/clase_mysql.php");
-    
     $miconexion = new clase_mysql;
     $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
 ?>
@@ -51,6 +50,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
     <link rel="shortcut icon" href="http://www.azulweb.net/wp-content/uploads/2014/02/icono-2.png" />
+    <script src="js/ajax.js"></script>
   </head>
 
   <body>
@@ -108,6 +108,7 @@
                        <aside id="modulos">       
                         <section class="cd-gallery" width="100%">                            
                                 <?php
+                                    extract($_POST);
                                     extract($_GET);
                                     if (isset($tabla)) {
                                         echo "<h3 class='section-subheading text-muted'>Tabla: ".$tabla."</h3>";
@@ -160,8 +161,10 @@
                                             }
                                         }
                                     }else{
+
+                                         echo "<form method='post'>";
                                         if (isset($_REQUEST['nuevo'])) {                                             
-                                            echo "<form method='post'>";
+                                           
                                                 switch ($tabla) {
                                                     case 'carrito':
                                                         echo "<script language='javascript'> alert('Se ha registrado con exito)</script>";
@@ -182,10 +185,10 @@
                                                         
                                                             echo "Categoria: ";
                                                             $query = "SELECT * FROM categoria_producto WHERE id_categoria";
-                                                            $result = mysql_query($query) or die("error". mysql_error());
-                                                            
+                                                            $result = mysql_query($query) or die("error". mysql_error());                                   
                                                             echo "<div class='form-group'>";                                                                
                                                                 echo "<select class='form-control' name='idcat'>";
+                                                                echo '<option value="" default selected>Seleccione</option>';
                                                                 while ($row = mysql_fetch_array($result)) {
                                                                     echo "<h3 class='section-subheading text-muted'> string   ".$row[0]."</h3>";   
                                                                     echo "string  ".$row[0];
@@ -193,32 +196,31 @@
                                                                 }
                                                                 echo "</select><br>";
                                                              echo "<p class='help-block text-danger'></p>";
-                                                            echo "</div><br>";
+                                                            echo "</div>";
 
+                                                            ?>
 
+                                                            <?php
                                                             echo "Estado del Producto: ";
-                                                            $query = "SELECT * FROM estado WHERE id_estado";
-                                                            $result = mysql_query($query) or die("error". mysql_error());
-                                                            echo "<div class='form-group'>";
-                                                            echo "<select class='form-control' name='idest'>";
-                                                                while ($row = mysql_fetch_array($result)) {
-                                                                    echo "<option value='".$row[0]."'>".$row[1]."</option>"; 
-                                                                }
-                                                                echo "</select><br>";
-                                                                echo "<p class='help-block text-danger'></p>";
-                                                            echo "</div><br>";
+                                                            $res=mysql_query("select * from categoria_estado");
+                                                            ?>
+                                                            <div class='form-group'>   
+                                                            <select id="cont" onchange="load(this.value)" class='form-control' name='idest'>
+                                                            <option value="" default selected>Seleccione</option>
+                                                   
+                                                                <?php
+                                                                while($fila=mysql_fetch_array($res)){
+                                                                ?>
+                                                                 <option value="<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?></option>
+                                                                <?php } 
+                                                                
+                                                                ?>
 
-                                                            echo "Descrpcion del estado: ";
-                                                            $query = "SELECT * FROM categoria_estado WHERE id_categoria_estado";
-                                                            $result = mysql_query($query) or die("error". mysql_error());
-                                                            echo "<div class='form-group'>";
-                                                                echo "<select class='form-control' name='idcatest'>";
-                                                                while ($row = mysql_fetch_array($result)) {
-                                                                        echo "<option class='form-control' value='".$row[0]."'>".$row[1]."</option>"; 
-                                                                }
-                                                                echo "</select>";
-                                                                echo "<p class='help-block text-danger'></p>";
-                                                            echo "</div><br>";
+                                                            </select>
+                                                            <div id="myDiv"></div>
+                                                            </div><br>
+
+                                                            <?php
 
                                                             $query = "SELECT codigo, nombre, nota, valor, estado, cantidad, imagen FROM producto";
                                                             $result = mysql_query($query) or die("error". mysql_error());
@@ -226,7 +228,7 @@
                                                             while ($row = mysql_fetch_array($result)) {
                                                                 for ($i=0; $i < $a ; $i++) { 
                                                                     echo "<div class='form-group'>";
-                                                                       echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text'>";
+                                                                       echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text' placeholder='".mysql_field_name($result, $i)."'>";
                                                                        echo "<p class='help-block text-danger'></p>";
                                                                     echo "</div>";
                                                                     
@@ -251,23 +253,37 @@
                                                         $a=0;                             
                                                     }
                                                 }
-                                               
-                                                echo "<button type='submit' class='btn btn-xl' name='guardar' value='guarda'>Guardar</button>"; 
-                                            echo "</form>";    
-                                                if (isset($_REQUEST['guardar'])) {                                                           
-                                                    $ressql=$miconexion->consulta("$sent");
-                                                    if ($ressql==NULL) {
-                                                        echo "No se guardo";
-                                                        //echo "<script>location.href='.php'</script>";
-                                                        //header('Location:index.php');
-                                                    }else{
-                                                        echo"Sus datos se han guardado con exito";
-                                                        //echo "<script>location.href='admin.php'</script>";
-                                                            //header('Location:index.php');
-                                                    }
-                                                }
+                                               echo "<button type='submit' class='btn btn-xl' name='guardar' value='guardar'>Guardar</button>"; 
+                                        echo "</form>"; 
+                                             
+
                                         }
-                                    }
+                                           
+                                            
+
+                                        if (isset($_REQUEST['guardar'])) {
+                                                
+
+               
+                                            if($tabla=='categoria_estado'){
+                                                mysql_query("insert into categoria_estado values('','$estado')");}else{
+                                                    if($tabla=='categoria_producto'){
+                                                    mysql_query("insert into categoria_producto values('','$categoria')");}else{
+                                                        if($tabla=='estado'){
+                                                        mysql_query("insert into estado values('','$nombre', '$descrpcion', '$descuento', '11111111111111')");}else{
+                                                            if($tabla=='producto'){
+                                                            echo $_POST['idcatest'];
+                                                            mysql_query("insert into producto values ('','$idcat','$idest','$idcatest', '$codigo', '$nombre', '$nota', '$valor', '$estado', '$cantidad', '$imagen')");}else{
+                                                               # $ressql=$miconexion->consulta("insert into usuario values ('id','$user','$pass')");
+                                                                echo "No se ingreso ningun dato";
+                                                    }
+                                                        }
+                                                            }
+                                                                }
+                                        }
+                                     }
+
+
                                 ?>
                            
                             <div class="cd-fail-message">No hay resultados</div>
