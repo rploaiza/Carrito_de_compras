@@ -108,6 +108,40 @@
 	  		} 			
    		}		
  	}
+ 	function consultauser($user,$pass){
+ 		$a=1;
+ 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+
+	 		for ($i=0; $i < $this->numcampos(); $i++){
+	 			echo "xxxxxx ".$row[8]." = ".$user." ".$row[9]." = ".$pass." ".$row[1];
+	 			if ($user==$row[8] AND $pass==$row[9] AND $row[1]==1) {
+	 				echo '<script>location.href = "administrador.php"</script>';
+	 				$_SESSION["usuario"] = $row[3]." ".$row[4];
+	 				exit();
+	 			}else{
+	 				if ($user==$row[8] AND $pass==$row[9] AND $row[1]==2) {
+	 					$_SESSION["usuario"] = $row[3]." ".$row[4];
+	 					echo '<script>location.href = "administrador.php"</script>';
+	 					exit();
+	 				}else{
+	 					if ($user==$row[8] AND $pass==$row[9] AND $row[1]==3) {
+	 						$_SESSION["usuario"] = $row[3]." ".$row[4];
+		 					echo '<script>location.href = "index.php"</script>';
+		 					exit();
+		 				}else{
+		 					if ($a==mysql_num_rows($this->Consulta_ID)) {
+		 						echo "<script language='javascript'> alert('Sus datos son incorrecotos')</script>";
+		 						echo '<script>location.href = "login.php"</script>';
+
+		 						exit();
+		 					}
+		 				}
+	 				}
+	  			}
+	  		}
+	  		$a++;		
+   		}		
+ 	}
  	function verconsulta2($tabla){
  		echo "<table valign='top' cellspacing='0,6' align='center' border=1>";
 	 		echo "<tr>";
