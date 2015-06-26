@@ -98,16 +98,28 @@
  		echo "</table>";
  		echo "</div>";
  	}
+ 	//Ver tablas
  	function verconsultablas(){
+ 		$nonTabla = array("carrito", "categoria_estado", "categoria_producto", "estado", "producto", "Usuario");
+ 		$nonTabla1 = array("Carrito de Compras", "Estados del Producto", "Categorias de Productos", "Descripción de Estados", "Productos", "Usuario");
+ 		
  		echo "<form name='formulario' method='post' action='administrador.php'>";
  		//mostrar los nombres de los campos
+ 		
  		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 	 		for ($i=0; $i < $this->numcampos(); $i++) { 
-	 				echo "<button class='btn btn-xl1' data-filter='.".$row[0]."'><a href='administrador.php?tabla=".$row[0]."' name='tablas' value='".$row[$i]."' data-type='".$row[0]."'>".$row[0]."</a></button>";
- 			echo "</form>";
-	  		} 			
+	 			for ($j=0; $j < 6 ; $j++) { 
+	 				if ($row[0]==$nonTabla[$j]) {
+
+	 					echo "<button class='btn btn-xl1' data-filter='.".$row[0]."'><a href='administrador.php?tabla=".$row[0]."' name='tablas' value='".$row[$i]."' data-type='".$row[0]."'>".$nonTabla1[$j]."</a></button>";
+	 				echo "</form>";
+	 				}
+	 			}
+	 			
+	  		} 
    		}		
  	}
+
  	function consultauser($user,$pass){
  		$a=1;
  		while ($row = mysql_fetch_array($this->Consulta_ID)) {
