@@ -1,11 +1,14 @@
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="intro-text">  
-                <div class="intro-heading">Buy Online</div>              
-                <div class="intro-lead-in">Compre nuestros productos en linea...</div>
-                
-                <a href="login.php" class="page-scroll btn btn-xl">Comprar</a>
-            </div>
+    <link href="2/ninja-slider.css" rel="stylesheet" type="text/css" />
+    <script src="2/ninja-slider.js" type="text/javascript"></script>
+        <!--start-->
+            <br>
+        <div id='ninja-slider'>
+            <ul>
+                <li><div data-image="2/md/1.jpg"></div></li>
+                <li><div data-image="2/md/2.jpg"></div></li>
+                <li><div data-image="2/md/3.jpg"></div></li>
+            </ul>
         </div>
-    </header>
+        <!--end-->
+    <br>
+    <br>
