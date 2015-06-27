@@ -1,204 +1,113 @@
 <?php 
-  include_once("php_conexion.php");
-  if(!empty($_GET['del'])){
-    $id=$_GET['del'];
-    mysql_query("DELETE FROM carrito WHERE codigo='$id'");
-    header('location:index.php');
-  }
+include_once("php_conexion.php");
+if(!empty($_GET['del'])){
+  $id=$_GET['del'];
+  mysql_query("DELETE FROM carrito WHERE codigo='$id'");
+  header('location:index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <title>Carrito de Compras</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+  <meta charset="utf-8">
+  <title>Carrito de Compras</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!-- Le styles -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+  </style>
+  <link href="css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="css/agency.css" rel="stylesheet">
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
+      <![endif]-->
 
 
 
-    <!-- Fav and touch icons -->
-    
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="ico/favicon.png">
+      <!-- Fav and touch icons -->
 
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+      <link rel="shortcut icon" href="ico/favicon.png">
 
-
-    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-    <script src="js/modernizr.js"></script> <!-- Modernizr -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.lightbox.css">
+      <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+      <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
 
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js"></script>
-    <link rel="shortcut icon" href="http://www.azulweb.net/wp-content/uploads/2014/02/icono-2.png" />
-
-     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/agency.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+      <script src="js/modernizr.js"></script> <!-- Modernizr -->
+      <link rel="stylesheet" type="text/css" href="css/jquery.lightbox.css">
 
 
-    
-  </head>
+      <link rel="stylesheet" href="css/style.css">
+      <script src="js/script.js"></script>
+      <link rel="shortcut icon" href="http://www.azulweb.net/wp-content/uploads/2014/02/icono-2.png" />
 
-  <body>
+      <!-- Bootstrap Core CSS -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand page-scroll" href="principal.php"><img style="width: 20%;" src="img/logo.png"></a>|
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="index.php">Comprar</a></li>
-              <li><a href="mis_pedidos.php">Mis Pedidos</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
+      <!-- Custom CSS -->
+      <link href="css/agency.css" rel="stylesheet">
+
+
+
+    </head>
+
+    <body>
+
+      <nav>
+        <?php include("static/nav.php") ?>
+      </nav>
+      <div class="row-fluid">
+
+
+        <div class="span2">
+        
         </div>
+
+        <!-- Inicio de catalogo -->
+
+        <div class="span7">  
+          
+          <?php 
+          include("static/catalogo.php");
+          ?>
+          <!-- Fin catalogo -->
+        </div>
+
+        <div class="span4">  
+          <?php 
+          include("static/pedido.php");
+          ?>  
+        </div>
+
       </div>
     </div>
 
-    <div class="container">
+  </div>
 
-      <!-- Main hero unit for a primary marketing message or call to action -->
-     
+  <hr>
 
-      <!-- Example row of columns -->
-      <div class="row">
-        
-      </div>
-      <div align="center">
-        
-        <div class="row">
-          <!-- Inicio de catalogo -->
-            <section id="catalogo">
-
-              <?php
-              $pa=mysql_query("SELECT * FROM producto where estado='s'");       
-              while($row=mysql_fetch_array($pa)){
-                ?>    
-
-                <div class="col-sm-6 col-md-4">
-                  <div class="thumbnail">
-                    <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-                    document.getElementById('fade').style.display='block'"><img id="imagen" src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="100%"></a>
-                    <div class="caption">
-                      <h5><?php echo $row['nombre'];?></h5>
-                      <p id="catal">$<?php echo number_format($row['valor'],2,",","."); ?></p>
-                      <p id="catal"><?php echo $row['nota'];?></p>
-                      <p id="catal">
-                        <form name="form<?php $row['codigo']; ?>" method="post" action="">
-                          <input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
-                          <button type="submit" style="padding:0.5%;" name="boton" class="btn btn-primary">
-                            <i class="icon-shopping-cart"></i> <strong style="font-size:75%;" >Agregar al Carrito</strong>
-                          </button>
-                        </form> 
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <?php 
-                include("static/detalle_producto.php"); /*Esta en un archivo detalle_producto.php en carpeta static*/
-                ?>
-                <?php } ?>      
-              </section>
-              <!-- Fin catalogo -->
-
-            <div class="span4">
-            <?php
-        if(!empty($_POST['codigo'])){
-          $codigo=$_POST['codigo'];
-          $pa=mysql_query("SELECT * FROM carrito WHERE codigo='$codigo'");        
-          if($row=mysql_fetch_array($pa)){
-            $new_cant=$row['cantidad']+1;
-            mysql_query("UPDATE carrito SET cantidad='$new_cant' WHERE codigo='$codigo'");
-          }else{
-            mysql_query("INSERT INTO carrito (codigo, cantidad) VALUES ('$codigo','1')");
-          }
-        }
-      ?>
-               <div id="sidebar"><br><br><br>
-                  <h2 align="center">Mis Pedidos</h2>
-                  <table class="table table-bordered">
-                      <tr>
-                        <td>
-                          <table class="table table-bordered table table-hover">
-                            <?php 
-                $neto=0;$tneto=0;
-                $pa=mysql_query("SELECT * FROM carrito");       
-                while($row=mysql_fetch_array($pa)){
-                  $oProducto=new Consultar_Producto($row['codigo']);
-                  $neto=$oProducto->consultar('valor')*$row['cantidad'];
-                  $tneto=$tneto+$neto;
-                  
-              ?>
-                              <tr style="font-size:9px">
-                                <td><?php echo $oProducto->consultar('nombre'); ?></td>
-                                <td><?php echo $row['cantidad']; ?></td>
-                                <td>$ <?php echo number_format($neto,2,",","."); ?></td>
-                                <td>
-                                  <a href="index.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
-                                    <i class="icon-remove"></i>
-                                    </a>
-                                </td>
-                              </tr>
-                            <?php }
-              ?>
-                              <td colspan="4" style="font-size:9px"><div align="right">$<?php echo number_format($tneto,2,",","."); ?></div></td>
-                            <?php 
-                $pa=mysql_query("SELECT * FROM carrito");       
-                if(!$row=mysql_fetch_array($pa)){
-              ?>
-                              <tr><div class="alert alert-success" align="center"><strong>No hay Productos Registrados</strong></div></tr>
-                <?php } ?>
-                            </table>
-                        </td>
-                      </tr>
-                    </table>
-                </div>
-            </div>
-      </div>
-        
-      </div>
-
-      <hr>
-
-      <!-- Services Footer -->
-    <footer>
-        <?php include("static/footer.php") ?>
-    </footer>
+  <!-- Services Footer -->
+  <footer>
+    <?php include("static/footer.php") ?>
+  </footer>
 
 
-    </div> <!-- /container -->
+</div> <!-- /container -->
 
     <!-- Le javascript
     ================================================== -->
@@ -217,22 +126,22 @@
     <script src="js/bootstrap-carousel.js"></script>
     <script src="js/bootstrap-typeahead.js"></script>
     <script>
-    $(function() {
-            var offset = $("#sidebar").offset();
-            var topPadding = 15;
-            $(window).scroll(function() {
-                if ($("#sidebar").height() < $(window).height() && $(window).scrollTop() > offset.top) { /* LINEA MODIFICADA POR ALEX PARA NO ANIMAR SI EL SIDEBAR ES MAYOR AL TAMAÑO DE PANTALLA */
-                    $("#sidebar").stop().animate({
-                        marginTop: $(window).scrollTop() - offset.top + topPadding
-                    });
-                } else {
-                    $("#sidebar").stop().animate({
-                        marginTop: 0
-                    });
-                };
+      $(function() {
+        var offset = $("#sidebar").offset();
+        var topPadding = 15;
+        $(window).scroll(function() {
+          if ($("#sidebar").height() < $(window).height() && $(window).scrollTop() > offset.top) { /* LINEA MODIFICADA POR ALEX PARA NO ANIMAR SI EL SIDEBAR ES MAYOR AL TAMAÑO DE PANTALLA */
+            $("#sidebar").stop().animate({
+              marginTop: $(window).scrollTop() - offset.top + topPadding
             });
+          } else {
+            $("#sidebar").stop().animate({
+              marginTop: 0
+            });
+          };
         });
-  </script>
+      });
+    </script>
 
   </body>
-</html>
+  </html>
