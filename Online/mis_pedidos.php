@@ -120,8 +120,8 @@
             <td><br><br>
               <center>
                 <a href="mis_pedidos.php?del=<?php echo $row['codigo']; ?>" class="btn btn-mini" title="Eliminar de la Lista">
-                    <i class="icon-remove"></i>
-                  </a>
+                    <img src="img/borrar1.jpg" >
+                </a>
                 </center>
             </td>
           </tr>
