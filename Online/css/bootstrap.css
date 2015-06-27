@@ -7,16 +7,188 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
- 
- 
- 
+
+#ped{
+  background: #0D47A1;
+}
+
+ /*!  inicio footer*/
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
+}
+
+.icon-chevron-up{
+  background: #fff;
+}
+
+.foot{
+  padding: 3%; 
+}
+
+ul.social-network {
+  list-style: none;
+  display: inline;
+  margin-left:0 !important;
+  padding: 0;
+}
+ul.social-network li {
+  display: inline;
+  margin: 0 5px;
+}
+
+
+/* footer social icons */
+.social-network #fot.icoRss:hover {
+  background-color: #F56505;
+}
+.social-network #fot.icoFacebook:hover {
+  background-color:#3B5998;
+}
+.social-network #fot.icoTwitter:hover {
+  background-color:#33ccff;
+}
+.social-network #fot.icoGoogle:hover {
+  background-color:#BD3518;
+}
+.social-network #fot.icoVimeo:hover {
+  background-color:#0590B8;
+}
+.social-network #fot.icoLinkedin:hover {
+  background-color:#3f729b;
+}
+.social-network #fot.icoRss:hover i, .social-network #fot.icoFacebook:hover i, .social-network #fot.icoTwitter:hover i,
+.social-network #fot.icoGoogle:hover i, .social-network #fot.icoVimeo:hover i, .social-network #fot.icoLinkedin:hover i {
+  color:#fff;
+}
+#fot.socialIcon:hover, .socialHoverClass {
+  color:#44BCDD;
+}
+
+.social-circle li a {
+  display:inline-block;
+  position:relative;
+  margin:0 auto 0 auto;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  border-radius:50%;
+  text-align:center;
+  width: 50px;
+  height: 50px;
+  font-size:20px;
+}
+.social-circle li i {
+  margin:0;
+  line-height:50px;
+  text-align: center;
+}
+
+.social-circle li #fot:hover i, .triggeredHover {
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -ms--transform: rotate(360deg);
+  transform: rotate(360deg);
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.social-circle i {
+  color: #fff;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  -ms-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+#fot{
+ background-color: #333;   
+}
+
+.pull-left{
+  text-align: center;
+  margin-left: 30%;
+  padding: 2%;
+}
+
+/*! fin footer*/
+
+
+
+
+ /* inicio menu vertical*/
+  .button{
+    width: 40%;
+  background:#e5e5e5;
+  display:block;
+  margin:0 6px;
+  padding:7px 7px 7px;
+  color:#333;
+  font:400 14px 'Droid Sans';
+  text-decoration:none;
+  text-shadow: 0 1px 1px #FFF;
+  border:1px solid #ccc;
+
+  /* Bordes redondenados - Border Radius */
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+
+  /* Fondo Degradado - Background Gradient */
+  background:-webkit-linear-gradient(top, #fefefe, #e5e5e5); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #fefefe, #e5e5e5); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #fefefe, #e5e5e5); /* IE10 */
+  background:        linear-gradient(top, #fefefe, #e5e5e5); 
+  
+  /* Aplcamos sombras al boton - Box Shadow */
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  -moz-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+
+  /* Animacion - Transition */
+  -webkit-transition: all ease-in-out .3s;
+  -moz-transition: all ease-in-out .3s;
+  transition: all ease-in-out .3s;
+}
+.button:hover{
+  border-color:#adcce2; /* Modificamos el color del borde */
+
+  /* Cambiamos los colores del fondo degradado */
+  background:-webkit-linear-gradient(top, #0044cc, #2E9AFE); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #0044cc, #2E9AFE); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #0044cc, #2E9AFE); /* IE10 */
+  background:        linear-gradient(top, #0044cc, #2E9AFE);
+  
+  /* Modificamos las propiedades del Box Shadow para un efecto Glow */
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 6px rgba(36, 168, 229, .3);
+  -moz-box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
+  box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
+}
+ /* Fin menu vertical*/
+
+
+
+ .catalogo_estilo{
+  margin-left: 8%;
+ }
+
  /* inicio estilo catalogo*/
 
 #catalogo{
-  width: 60%;
+  width: 90%;
   background: #F0F0F0;
   float: left;
-  margin-left: 2%;
+  margin-left: 2%; 
+}
+
+#catalogo1{
+  width: 80%;
+  background: #F0F0F0;
 }
 
 #producto{
@@ -27,6 +199,18 @@
   font-size: 85%;
 }
  /* Fin estilo catalogo*/
+
+
+ /* inicio estilo catalogo*/
+
+#catalogo1{
+  width: 50%;
+  background: #F0F0F0;
+  float: left;
+  margin-left: 2%; 
+}
+ /* Fin estilo catalogo*/
+
 
 
   /* inicio ventana emergente catalogo*/
@@ -58,6 +242,9 @@
     }
      /* fin ventana emergente catalogo*/
 
+
+
+
 .productos{
   width: 40%;
   float: left; 
@@ -68,7 +255,6 @@
  #productos{
   width: 10%;
  }
-
 
 
 
@@ -377,7 +563,7 @@ a:focus {
 }
 
 .span7 {
-  width: 540px;
+  width: 530px;
 }
 
 .span6 {
@@ -473,8 +659,8 @@ a:focus {
   float: left;
   width: 100%;
   min-height: 30px;
-  margin-left: 2.127659574468085%;
-  *margin-left: 2.074468085106383%;
+  margin-left: 0%;
+  *margin-left: 0%;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -514,8 +700,9 @@ a:focus {
 }
 
 .row-fluid .span7 {
-  width: 57.44680851063829%;
-  *width: 57.39361702127659%;
+  width: 50%;
+  *width: 50%;
+  margin-right: -3.5%;
 }
 
 .row-fluid .span6 {
@@ -529,8 +716,8 @@ a:focus {
 }
 
 .row-fluid .span4 {
-  width: 31.914893617021278%;
-  *width: 31.861702127659576%;
+  width: 27%;
+  *width: 27%;
 }
 
 .row-fluid .span3 {
@@ -539,8 +726,8 @@ a:focus {
 }
 
 .row-fluid .span2 {
-  width: 14.893617021276595%;
-  *width: 14.840425531914894%;
+  width: 14%;
+  *width: 14%;
 }
 
 .row-fluid .span1 {
@@ -5609,21 +5796,25 @@ input[type="submit"].btn.btn-mini {
   margin-left: 20px;
 }
 
-.thumbnail {
-  display: block;
-  padding: 4px;
-  line-height: 20px;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-  -webkit-transition: all 0.2s ease-in-out;
-     -moz-transition: all 0.2s ease-in-out;
-       -o-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
+.thumbnail{
+   display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+
+.thumbnail:hover, .thumbnail:focus, .thumbnail:active {
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1);
+  transform: scale(1.1);
 }
 
 a.thumbnail:hover,
