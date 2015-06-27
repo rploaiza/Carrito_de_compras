@@ -97,7 +97,7 @@ if (isset($_SESSION['usuario'])){
                       <input class="form-control" type="password" name="pass" id="pass" value="" placeholder="*******">
                     </div>
                     
-                    <button  class="btn btn-xl" id="login-button" onclick="Validar(document.getElementById('user').value, document.getElementById('pass').value);">ENTRAR</button>
+               <button  class="btn btn-xl" id="login-button" onclick="Validar(document.getElementById('user').value, document.getElementById('pass').value);"><img src="img/llave1.jpg"> Iniciar sesión</button>
                 </form>
                  <script>
                 function Validar(user, pass)
@@ -121,32 +121,8 @@ if (isset($_SESSION['usuario'])){
     </header>
 
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2014</span>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+   <footer>
+        <?php include("static/footer.php") ?>
     </footer>
 
 
