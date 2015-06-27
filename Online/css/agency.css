@@ -4,6 +4,156 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+
+/*
+Free App template for Bootstrap 3
+Code snippet by maridlcrmn for Bootsnipp.com
+Follow me on Twitter @maridlcrmn
+Image credits: unsplash.com
+Image placeholders: placemi.com
+*/
+
+/* inicio marcas*/
+
+
+#marca{
+ display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+
+#marca:hover, #marca:focus, #marca:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.5);
+}
+
+
+#marca:hover:before, #marca:focus:before, #marca:active:before {
+  -webkit-animation-name: hvr-icon-pop;
+  animation-name: hvr-icon-pop;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+  /* fin marcas*/
+
+
+  /* inicio navbar*/
+  /* fin navbar*/
+
+.menu{
+    width: 10%;
+}
+
+
+  /* inicio tamaño iconos*/
+#carrito{
+  max-width:60%;
+ display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+#home{
+  max-width:60%;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+#login{
+  max-width:56%;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+#carrito:hover, #carrito:focus,#carrito:active, 
+#home:hover, #home:focus,#home:active, 
+#login:hover, #login:focus,#login:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.5);
+}
+
+
+#carrito:hover:before, #carrito:focus:before, #carrito:active:before,
+#home:hover:before, #home:focus:before, #home:active:before,
+#login:hover:before,#login:focus:before, #login:active:before{
+  -webkit-animation-name: hvr-icon-pop;
+  animation-name: hvr-icon-pop;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+/*fin tamaño iconos*/
+
+
+
+ /* inicio de menu*/
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+.active{
+    text-decoration: none;
+    list-style:none;
+    background: #E6E6E6;
+}
+
+.active a{
+    color: #000;
+    text-decoration: none;
+}
+
+.active:hover{
+    background: #337ab7;
+}
+
+ /* Fin de menu*/
+
+
+
 body {
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -69,12 +219,13 @@ h6 {
 }
 
 .btn-primary {
-    border-color: #fed136;
+    border-color: #e5e5e5;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #fff;
-    background-color: #fed136;
+    background-color: #0D47A1;
+    padding:5%;
 }
 
 .btn-primary:hover,
@@ -117,33 +268,58 @@ fieldset[disabled] .btn-primary.active {
     background-color: #fff;
 }
 
-
 .btn-xl1{
-  padding: 20px 40px;
-   border-color: #0C6EEF;
-  border-radius: 1px;
-  text-transform: uppercase;
-  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 1em;
-  font-weight: 300;
-  color: #fff;
-  background-color: #333333;
-  width: 75%;
-  border-radius: 12%;
+    width: 100%;
+  background:#e5e5e5;
+  display:block;
+  margin:0 6px;
+  padding:7px 7px 7px;
+  color:#333;
+  font:400 14px 'Droid Sans';
+  text-decoration:none;
+  text-shadow: 0 1px 1px #FFF;
+  border:1px solid #ccc;
+
+  /* Bordes redondenados - Border Radius */
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+
+  /* Fondo Degradado - Background Gradient */
+  background:-webkit-linear-gradient(top, #fefefe, #e5e5e5); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #fefefe, #e5e5e5); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #fefefe, #e5e5e5); /* IE10 */
+  background:        linear-gradient(top, #fefefe, #e5e5e5); 
+  
+  /* Aplcamos sombras al boton - Box Shadow */
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  -moz-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+
+  /* Animacion - Transition */
+  -webkit-transition: all ease-in-out .3s;
+  -moz-transition: all ease-in-out .3s;
+  transition: all ease-in-out .3s;
 }
 
-.btn-xl {
-    vertical-align: left;
-    margin-top:1em;
-    padding: 5px 20px;
-    border-color: #fed136;
-    border-radius: 3px;
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    background-color: #0955B0;
+.btn-xl1:hover{
+  border-color:#adcce2; /* Modificamos el color del borde */
+  color: #fff;
+
+  /* Cambiamos los colores del fondo degradado */
+  background:-webkit-linear-gradient(top, #0044cc, #2E9AFE); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #0044cc, #2E9AFE); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #0044cc, #2E9AFE); /* IE10 */
+  background:        linear-gradient(top, #0044cc, #2E9AFE);
+  
+  /* Modificamos las propiedades del Box Shadow para un efecto Glow */
+  -webkit-transition: property time easing; /* Safari 3.2+, Chrome */
+    -moz-transition: property time easing;    /* Firefox 4.0+ */  
+    -o-transition: property time easing;      /* Opera 10.5+ */
+    transition: property time easing;
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 6px rgba(36, 168, 229, .3);
+  -moz-box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
+  box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
 }
 
 .btn-xl:hover,
@@ -188,7 +364,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default {
     border-color: transparent;
-    background-color: #222;
+    background-color: #000;
 }
 
 .navbar-default .navbar-brand {
@@ -203,8 +379,12 @@ fieldset[disabled] .btn-xl.active {
     color: #fec503;
 }
 
-.navbar-default .navbar-collapse {
+.navbar-default .navbar-collapse{
     border-color: rgba(255,255,255,.02);
+    background: #000;
+    width: 105%;
+    margin-top: -10%;
+    padding-bottom: -7%;
 }
 
 .navbar-default .navbar-toggle {
@@ -224,7 +404,8 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .nav li a {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 400;
+    font:5%;
+    padding-left: 2%;
     letter-spacing: 1px;
     color: #fff;
 }
@@ -249,9 +430,9 @@ fieldset[disabled] .btn-xl.active {
 
 @media(min-width:768px) {
     .navbar-default {
-        padding: 25px 0;
+        padding: 3px 0;
         border: 0;
-        background-color: transparent;
+        background-color: #000;
         -webkit-transition: padding .3s;
         -moz-transition: padding .3s;
         transition: padding .3s;
@@ -282,7 +463,6 @@ header {
     text-align: center;
     color: #fed136;
     background-attachment: scroll;
-    background-image: url(../img/header-bg.jpg);
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -358,7 +538,7 @@ section h3.section-subheading {
 
 @media(min-width:768px) {
     section {
-        padding: 150px 0;
+        padding: 10px 0;
     }
 }
 
@@ -868,7 +1048,7 @@ ul.social-buttons li a:active {
 
 ::selection {
     text-shadow: none;
-    background: #fed136;
+    background: #0D47A1;
 }
 
 img::selection {
