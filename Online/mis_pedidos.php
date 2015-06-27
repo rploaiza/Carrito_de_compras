@@ -49,7 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-       <<a class="navbar-brand page-scroll" href="principal.php"><img style="width: 20%;" src="img/logo.png"></a>
+       <a class="navbar-brand page-scroll" href="principal.php"></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="index.php">Principal</a></li>
@@ -63,9 +63,6 @@
     <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit" align="center">
-          <!-- <img src="img/banner.jpg" class="img-polaroid"> --> <h1>Buy Online</h1> 
-      </div>
 
       <!-- Example row of columns -->
       <div class="row">
@@ -119,9 +116,11 @@
             <td><br><br><div align="right">$ <?php echo number_format($total,2,",","."); ?></div></td>
             <td><br><br>
               <center>
-                <a href="mis_pedidos.php?del=<?php echo $row['codigo']; ?>" class="btn btn-mini" title="Eliminar de la Lista">
-                    <img src="img/borrar1.jpg" >
-                </a>
+                <a href="mis_pedidos.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
+                    <button type="button" class="close" aria-label="Close">
+      <span  style="color:#0044cc;" aria-hidden="true">&times;</span>
+    </button>
+                  </a>
                 </center>
             </td>
           </tr>
@@ -167,11 +166,9 @@
 
       <hr>
 
-      <!-- Services Footer -->
-    <footer>
-        <?php include("static/footer.php") ?>
-    </footer>
-
+      <footer>
+        <p>&copy; SoftUnicorn 2013</p>
+      </footer>
 
     </div> <!-- /container -->
 
