@@ -167,9 +167,11 @@
 
       <hr>
 
-      <footer>
-        <p>&copy; SoftUnicorn 2013</p>
-      </footer>
+      <!-- Services Footer -->
+    <footer>
+        <?php include("static/footer.php") ?>
+    </footer>
+
 
     </div> <!-- /container -->
 
