@@ -120,7 +120,7 @@ fieldset[disabled] .btn-primary.active {
 
 .btn-xl1{
   padding: 20px 40px;
-  border-color: #FAFAFA;
+   border-color: #0C6EEF;
   border-radius: 1px;
   text-transform: uppercase;
   font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -128,7 +128,8 @@ fieldset[disabled] .btn-primary.active {
   font-weight: 300;
   color: #fff;
   background-color: #333333;
-  width: 70%;
+  width: 75%;
+  border-radius: 12%;
 }
 
 .btn-xl {
