@@ -110,14 +110,20 @@
                                 <?php
                                     extract($_POST);
                                     extract($_GET);
-                                    if (isset($tabla)) {
+                                   if (isset($tabla)) {
                                         echo "<h3 class='section-subheading text-muted'>Tabla: ".$tabla."</h3>";
                                         echo "<form method='post'>";
-                                        $miconexion->consulta("select * from ".$tabla);
-                                        $miconexion->verconsulta2($tabla);    
-                                        //echo "<a href='administrador.php?tabl=$tabla&edi=3'><button type='submit' class='btn btn-xl'>Nuevo</button></a>"; 
+                                        if ($tabla=='producto') {
+                                            $miconexion->consulta("SELECT codigo, nombre, nota, valor, cantidad FROM ".$tabla);
+                                            $miconexion->verconsulta2($tabla);
+                                        }else{
+                                            $miconexion->consulta("select * from ".$tabla);
+                                            $miconexion->verconsulta2($tabla);
+                                        }
+                                            
+                                                //echo "<a href='administrador.php?tabl=$tabla&edi=3'><button type='submit' class='btn btn-xl'>Nuevo</button></a>"; 
                                         echo "<br><button type='submit'  class='btn btn-xl' name='nuevo' value='nuevo'>Nuevos</button><br><br><br>"; 
-
+            
                                     }
                                   
                                     if (isset($id)) {  
