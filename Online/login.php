@@ -153,6 +153,10 @@ if (isset($_SESSION['usuario'])){
     <script src="js/jquery.lightbox.js"></script>
 
   </body>
+  <footer  style="background: #000;" >
+    <?php include("static/footer.php") ?>
+</footer>
+
 
 
 
