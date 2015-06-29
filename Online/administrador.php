@@ -98,7 +98,7 @@ if (isset($_SESSION['usuario'])){
     <!-- Services Section -->
     <section id="services">
         <div class="container">
-            <div class="row text-center">
+            <div class="row1 text-center">
                 <div class="col-md-4">
                     <h4>Tablas</h4>
                     <h3 class="section-subheading text-muted">Compre nuestros productos en linea...</h3>
