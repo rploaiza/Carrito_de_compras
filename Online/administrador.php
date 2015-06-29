@@ -71,19 +71,23 @@ if (isset($_SESSION['usuario'])){
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="http://localhost/carritovirtual/">Line Buy</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#">BIENVENIDO: <?php echo $_SESSION['usuario']; ?></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="logout.php">CERRAR SESION</a>
-                    </li>                    
-                </ul>
-            </div>
+              <header>
+                <?php include("static/nav.php") ?>
+                <div class="bienvenido">
+                    
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a class="page-scroll" href="#">BIENVENIDO: <?php echo $_SESSION['usuario']; ?></a>
+                        </li>                 
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="page-scroll" href="logout.php">CERRAR SESION</a>
+
+                        </li>                 
+                    </ul>
+                </div> 
+            </header>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
@@ -407,6 +411,9 @@ window.onload = function(){/*hace que se cargue la función lo que predetermina 
     muestra_oculta('contenido_a_mostrar');/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
 }
 </script>
+<footer  style="background: #000;" >
+    <?php include("static/footer.php") ?>
+</footer>
 
 
 </body>
