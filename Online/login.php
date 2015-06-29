@@ -121,11 +121,6 @@ if (isset($_SESSION['usuario'])){
     </header>
 
 
-   <footer>
-        <?php include("static/footer.php") ?>
-    </footer>
-
-
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="js/index.js"></script>
 
@@ -156,9 +151,6 @@ if (isset($_SESSION['usuario'])){
   <footer  style="background: #000;" >
     <?php include("static/footer.php") ?>
 </footer>
-
-
-
 
 </html>
 
