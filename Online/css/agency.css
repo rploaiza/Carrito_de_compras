@@ -1110,3 +1110,13 @@ aside#modulos {
   display: none;
   text-align: center;
 }
+.row1  {
+  margin-right: -15px;
+  margin-left: -15px;
+  margin-top: 10em;
+}
+
+
+.bienvenido{
+  margin-left: 0em;
+}
