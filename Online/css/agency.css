@@ -13,9 +13,18 @@ Image credits: unsplash.com
 Image placeholders: placemi.com
 */
 
+.nav$a{
+  text-align: center;  
+}
+
+ .col-md-3,.col-md-4, .col-md-6{
+  position: relative;
+  min-height: 1px;
+  padding-right: 2px;
+  padding-left: 2px;
+}
+
 /* inicio marcas*/
-
-
 #marca{
  display: inline-block;
   vertical-align: middle;
@@ -37,8 +46,38 @@ Image placeholders: placemi.com
   transform: scale(1.5);
 }
 
-
 #marca:hover:before, #marca:focus:before, #marca:active:before {
+  -webkit-animation-name: hvr-icon-pop;
+  animation-name: hvr-icon-pop;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+#utpl{
+ display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+#utpl:hover, #utpl:focus, #utpl:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.5);
+}
+
+#utpl:hover:before, #utpl:focus:before, #utpl:active:before {
   -webkit-animation-name: hvr-icon-pop;
   animation-name: hvr-icon-pop;
   -webkit-animation-duration: 0.3s;
@@ -55,13 +94,13 @@ Image placeholders: placemi.com
   /* fin navbar*/
 
 .menu{
-    width: 10%;
+    width: 15%;
 }
 
 
   /* inicio tamaño iconos*/
 #carrito{
-  max-width:60%;
+  max-width:20%;
  display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
@@ -77,7 +116,7 @@ Image placeholders: placemi.com
 }
 
 #home{
-  max-width:60%;
+  max-width:30%;
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
@@ -93,7 +132,8 @@ Image placeholders: placemi.com
 }
 
 #login{
-  max-width:56%;
+  max-width:20%;
+  margin-top: 3%;
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
@@ -273,7 +313,7 @@ fieldset[disabled] .btn-primary.active {
   background:#e5e5e5;
   display:block;
   margin:0 6px;
-  padding:7px 7px 7px;
+  padding:7px 120px 7px 44px;
   color:#333;
   font:400 14px 'Droid Sans';
   text-decoration:none;
@@ -283,7 +323,7 @@ fieldset[disabled] .btn-primary.active {
   /* Bordes redondenados - Border Radius */
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
-  border-radius:14px;
+  border-radius:4px;
 
   /* Fondo Degradado - Background Gradient */
   background:-webkit-linear-gradient(top, #fefefe, #e5e5e5); /* Chrome 10+ */
@@ -383,7 +423,7 @@ fieldset[disabled] .btn-xl.active {
     border-color: rgba(255,255,255,.02);
     background: #000;
     width: 105%;
-    margin-top: -10%;
+    margin-top: -400%;
     padding-bottom: -7%;
 }
 
@@ -430,7 +470,7 @@ fieldset[disabled] .btn-xl.active {
 
 @media(min-width:768px) {
     .navbar-default {
-        padding: 3px 0;
+        padding: 3px;
         border: 0;
         background-color: #000;
         -webkit-transition: padding .3s;
@@ -446,7 +486,7 @@ fieldset[disabled] .btn-xl.active {
     }
 
     .navbar-default .navbar-nav>.active>a {
-        border-radius: 3px;
+        border-radius: 3px; 
     }
 
     .navbar-default.navbar-shrink {
@@ -1109,14 +1149,4 @@ aside#modulos {
 .cd-gallery .cd-fail-message {
   display: none;
   text-align: center;
-}
-.row1  {
-  margin-right: -15px;
-  margin-left: -15px;
-  margin-top: 10em;
-}
-
-
-.bienvenido{
-  margin-left: 0em;
 }
