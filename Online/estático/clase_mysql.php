@@ -71,7 +71,7 @@
  	//Muestra los resultados de la consulta
  	function verconsulta($bd){
  		echo "<div class='table-responsive'> ";
- 		echo "<table id='table1'>";
+ 		echo "<table id='example'>";
  		echo "<thead>";
  		echo "<tr>";
  		//mostrar los nombres de los campos
@@ -155,7 +155,9 @@
    		}		
  	}
  	function verconsulta2($tabla){
- 		echo "<table valign='top' cellspacing='0,6' align='center' border=1>";
+
+ 		echo "<table id='example' class='display' cellspacing='0' width='100%'>";
+ 		echo "<thead>";
 	 		echo "<tr>";
 		 		//mostrar los nombres de los campos
 		 		for ($i=0; $i < $this->numcampos(); $i++) { 
@@ -164,6 +166,8 @@
 		 			echo "<td> Editar</td>";
 		 			echo "<td> Borrar</td>";		 			
 	 		echo "</tr>";
+	 	echo "</thead>";
+	 	echo "<tbody>";
 	 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 	 			echo "<tr>";
 	 			for ($i=0; $i < $this->numcampos(); $i++) { 
@@ -174,8 +178,10 @@
 	 				echo "<td><a href='administrador.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=2'><img src='img/borrar.png' ></a></td>";
 	 			echo "</tr>";
 	 		}
+	 	echo "</tbody>";	
  		echo "</table>";
  	}
+
 
  	function verconsulta5($bd){
  		
