@@ -18,8 +18,8 @@
                       <p id="catal">
                         <form name="form<?php $row['codigo']; ?>" method="post" action="">
                           <input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
-                          <button type="submit" style="padding:0.5%;" name="boton" class="btn btn-primary">
-                            <!-- <i class="icon-shopping-cart"></i>--> <strong style="font-size:75%;" >Agregar al Carrito</strong>
+                          <button type="submit" name="boton" class="btn-comprar">
+                            <!-- <i class="icon-shopping-cart"></i>--> <strong style="font-size:55%;" >Agregar al Carrito</strong>
                           </button>
                         </form> 
                       </p>
