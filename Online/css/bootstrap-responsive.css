@@ -227,7 +227,7 @@ hr {
     float: left;
     width: 100%;
     min-height: 30px;
-    margin-left: 2.564102564102564%;
+    margin-left: 0%;
     *margin-left: 2.5109110747408616%;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
@@ -272,16 +272,16 @@ hr {
     *width: 40.11774868157847%;
   }
   .row-fluid .span4 {
-    width: 31.623931623931625%;
-    *width: 31.570740134569924%;
+    width: 30%;
+    *width: 30%;
   }
   .row-fluid .span3 {
     width: 23.076923076923077%;
     *width: 23.023731587561375%;
   }
   .row-fluid .span2 {
-    width: 14.52991452991453%;
-    *width: 14.476723040552828%;
+    width: 15%;
+    *width: 15%;
   }
   .row-fluid .span1 {
     width: 5.982905982905983%;
