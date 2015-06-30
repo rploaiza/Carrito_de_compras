@@ -5,12 +5,6 @@ include("static/site_config.php");
 include ("static/clase_mysql.php");
 $miconexion = new clase_mysql;
 $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
-include_once("php_conexion.php");
-if(!empty($_GET['del'])){
-  $id=$_GET['del'];
-  mysql_query("DELETE FROM carrito WHERE codigo='$id'");
-  header('location:index.php');
-}
 ?>
 
 <!DOCTYPE html>
@@ -250,9 +244,11 @@ if(!empty($_GET['del'])){
         <div class="cd-fail-message">No hay resultados</div>
     </section> <!-- cd-gallery -->
 </aside> 
+</div>
 <!-- Inicio de catalogo -->
             <br>
-            <section id="catalogo">
+            <br>
+            <section id="catalogo1">
 
               <?php
               $pa=mysql_query("SELECT * FROM producto where estado='s'");       
@@ -266,7 +262,7 @@ if(!empty($_GET['del'])){
                     <div class="caption">
                       <h5><?php echo $row['nombre'];?></h5>
                       <p id="catal" style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
-                      <p id="catal"><?php echo $row['nota'];?></p>
+                      <p id="catal1"><?php echo $row['nota'];?></p>
                       <p id="catal">
                         <form name="form<?php $row['codigo']; ?>" method="post" action="">
                           <input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
@@ -284,7 +280,6 @@ if(!empty($_GET['del'])){
                 <?php } ?>      
               </section>
               <!-- Fin catalogo -->
-</div>
 </section>
 </div>
 </div>
