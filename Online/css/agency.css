@@ -224,10 +224,6 @@ a.active {
     outline: 0;
 }
 
-a {
-    color: #9A979D;
-}
-
 a:hover,
 a:focus,
 a:active,
