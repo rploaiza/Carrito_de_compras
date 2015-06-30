@@ -17,12 +17,8 @@
 
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/agency.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -41,24 +37,42 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-       <a class="navbar-brand page-scroll" href="principal.php"></a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a href="index.php">Principal</a></li>
-              <li class="active"><a href="mis_pedidos.php">Mis Pedidos</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+    <nav style=" background: #000;" class="navbar navbar-default navbar-fixed-top">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div  class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Menu de Navegación</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="principal.php"></a>
+                <!--<a class="navbar-brand page-scroll" href="#page-top" style="margin-left:45%;";>LINE BUY</a> -->
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul style="margin-top: -4%;" style="float: right;" class="nav navbar-nav navbar-right">
+                
+                <img style="width: 10%; float: left;" src="img/logo.png">
+
+                <li style="float: right;  width: 11%;">
+                        <a style="font-size: 90%;" class="page-scroll" href="principal.php"><img style="width: 150%;" id="home" src="ico/home.png">Inicio</a>
+                    </li>
+
+                <li style="float: right;  width: 10%;">
+                        <a style="font-size: 90%;" class="page-scroll" href="index.php"><img style="width: 150%;" id="carrito" src="ico/carrito.png">Comprar</a>
+                    </li>     
+
+                </ul>
+            </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
 
     <div class="container">
 
@@ -102,7 +116,7 @@
             <td>
               <div align="center">
                      <strong><?php echo $oProducto->consultar('nombre'); ?></strong><br>
-                     <img src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="200" height="200" class="img-polaroid">
+                     <img src="img/producto/<?php echo $row['codigo'];?>.jpg" width="200" height="200" class="img-polaroid">
                 </div>
             </td>
             <td><br><br><div align="right">$ <?php echo number_format($oProducto->consultar('valor'),2,",","."); ?></div></td>
@@ -135,7 +149,7 @@
             <div class="modal-body">
                 <div class="row-fluid">
                   <div class="span6">
-                      <img src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="200" height="200" class="img-polaroid">
+                      <img src="img/producto/<?php echo $row['codigo'];?>.jpg" width="200" height="200" class="img-polaroid">
                     </div>
                   <div class="span6">
                       <strong><?php echo $oProducto->consultar('nombre'); ?></strong><br>
@@ -166,11 +180,11 @@
 
       <hr>
 
-      <footer>
-        <p>&copy; SoftUnicorn 2013</p>
-      </footer>
-
     </div> <!-- /container -->
+
+    <footer>
+    <?php include("static/footer.php") ?>
+  </footer>
 
     <!-- Le javascript
     ================================================== -->
