@@ -45,7 +45,7 @@ if (isset($_SESSION['usuario'])){
                         <a class="page-scroll" href="#">BIENVENIDO: <?php echo $_SESSION['usuario']; ?></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="logout.php">CERRAR SESION</a>
+                        <a class="page-scroll" href="logout.php">CERRAR SESION otaaaaa</a>
                     </li>                    
                 </ul>
             </div>
