@@ -75,7 +75,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                         for ($i=0; $i < $miconexion->numregistros(); $i++) {                 
                             $a=$a+1;
                             $lista=$miconexion->consulta_lista();
-                            echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$lista[1]."'><a href='principal.php?id=".$lista['id_categoria']."' class='nav$a' data-type='".$lista[1]."'>".$lista[1]."</a>
+                            echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$lista[1]."'><a href='principal.php?id=".$lista['id']."' class='nav$a' data-type='".$lista[1]."'>".$lista[1]."</a>
                         </button>";
                         
                     }
@@ -157,7 +157,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                             $precf =$_POST["precpf"];
 
 
-                            $miconexion->consulta("Select producto.codigo, producto.nombre, producto.precio_p, producto.descripcion, producto.marca, categoria_producto.categoria from producto, categoria_producto where producto.id_categoria=categoria_producto.id_categoria and categoria_producto.categoria= '$_POST[categoriap]' and producto.marca ='$_POST[marcap]' and producto.precio_p between '$_POST[precpi]' and '$_POST[precpf]'   or categoria_producto.categoria= '$_POST[categoriap]' and producto.id_categoria=categoria_producto.id_categoria  or producto.marca ='$_POST[marcap]' and producto.id_categoria=categoria_producto.id_categoria  or  producto.id_categoria=categoria_producto.id_categoria and producto.precio_p between '$_POST[precpi]' and '$_POST[precpf]' "  );
+                            $miconexion->consulta("Select producto.codigo, producto.nombre, producto.precio_p, producto.descripcion, producto.marca, categoria_producto.categoria from producto, categoria_producto where=categoria_producto.id and categoria_producto.categoria= '$_POST[categoriap]' and producto.marca ='$_POST[marcap]' and producto.precio_p between '$_POST[precpi]' and '$_POST[precpf]'   or categoria_producto.categoria= '$_POST[categoriap]' and producto.id=categoria_producto.id  or producto.marca ='$_POST[marcap]' and producto.id=categoria_producto.id or  producto.id=categoria_producto.id and producto.precio_p between '$_POST[precpi]' and '$_POST[precpf]' "  );
                                  //$result = mysql_query("Select productos.nombre, productos.precio_p, productos.descripcion, productos.marca, categoria.nombre_cat from productos, categoria where id_catego=id_categoria and categoria.nombre_cat= '$_POST[categoriap]' and productos.marca ='$_POST[marcap]' and productos.precio_p between '$_POST[precpi]' and '$_POST[precpf]'   or categoria.nombre_cat= '$_POST[categoriap]' and id_catego=id_categoria  or productos.marca ='$_POST[marcap]' and id_catego=id_categoria  or  id_catego=id_categoria and productos.precio_p between '$_POST[precpi]' and '$_POST[precpf]' "  );
 
                             for ($i=0; $i < $miconexion->numregistros(); $i++) {                 
@@ -178,7 +178,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                 <?php
                                 echo "string";
                                 error_reporting(0);
-                                $miconexion->consulta("select p.*, c.categoria from categoria_producto c, producto p where c.id_categoria = p.id_categoria ");
+                                $miconexion->consulta("select p.*, c.categoria from categoria_producto c, producto p where c.id = p.id ");
 
                                 for ($i=0; $i < $miconexion->numregistros(); $i++) {                 
                                     $lista=$miconexion->consulta_lista();
@@ -216,7 +216,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                       echo "Selecione una categoria para busqueda";
 
                   }else{
-                   $miconexion->consulta("select p.*, c.categoria from categoria_producto c, producto p where c.id_categoria = p.id_categoria  and p.id_categoria ='$id'" );
+                   $miconexion->consulta("select p.*, c.categoria from categoria_producto c, producto p where c.id_categoria = p.id  and p.id ='$id'" );
              //$miconexion->consulta("select p.*, c.categoria from categoria_producto c, producto p where c.id_categoria = p.id_categoria ");
                    for ($i=0; $i < $miconexion->numregistros(); $i++) {                 
                     $lista=$miconexion->consulta_lista();

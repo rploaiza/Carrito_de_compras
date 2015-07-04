@@ -52,6 +52,25 @@
  		//retorna la consulta ejecutada
  		return $this->Consulta_ID;
  	}
+ 	function consultaUpdate($sql=""){
+ 		echo "<form name='actualizar' method='post' action='administrador.php'>";
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+ 			for ($i=0; $i < $this->numcampos(); $i++) { 
+				echo "<div class='form-group'>";
+				if ($i==0) {
+					$id=$row[$i];
+				}else{
+					echo "<input class='form-control' value='".$row[$i]."' name='".$this->nombrecampo($i)."' type='text'>";
+					echo "<p class='help-block text-danger'></p>";
+					echo "</div>";
+				}
+
+			}
+			echo "<br>";                           
+		}
+		echo "<button type='submit' class='btn btn-xl' name='actualizar' value='actualizar'>Actualizar</button>"; 
+		echo "</form>";
+	}
 
  	//Devulve el numero de campos de la culsulta
  	function numcampos(){
@@ -100,8 +119,8 @@
  	}
  	//Ver tablas
  	function verconsultablas(){
- 		$nonTabla = array("carrito", "categoria_estado", "categoria_producto", "estado", "producto", "Usuario");
- 		$nonTabla1 = array("Carrito de Compras", "Estados del Producto", "Categorias de Productos", "Descripción de Estados", "Productos", "Usuario");
+ 		$nonTabla = array("carrito", "categoria_estado", "categoria_producto", "estado", "producto", "usuario");
+ 		$nonTabla1 = array("Tabla Carrito de Compras", "Tabla Estados del Producto", "Tabla Categorias de Productos", "Tabla Descripción de Estados", "Tabla Productos", "Tabla Usuario");
  		
  		echo "<form name='formulario' method='post' action='administrador.php'>";
  		//mostrar los nombres de los campos
@@ -111,7 +130,7 @@
 	 			for ($j=0; $j < 6 ; $j++) { 
 	 				if ($row[0]==$nonTabla[$j]) {
 
-	 					echo "<button class='btn btn-xl1' data-filter='.".$row[0]."'><a href='administrador.php?tabla=".$row[0]."' name='tablas' value='".$row[$i]."' data-type='".$row[0]."'>".$nonTabla1[$j]."</a></button>";
+	 					echo "<button class='btn btn-xl1' data-filter='.".$row[0]."'><a href='administrador.php?tabla=".$row[0]."' name='tablas' value='".$row[$i]."' data-type='".$row[0]."'>".utf8_decode ($nonTabla1[$j])."</a></button>";
 	 				echo "</form>";
 	 				}
 	 			}
@@ -161,10 +180,10 @@
 	 		echo "<tr>";
 		 		//mostrar los nombres de los campos
 		 		for ($i=0; $i < $this->numcampos(); $i++) { 
-		 			echo "<td>".$this->nombrecampo($i)."</td>";
+		 			echo "<td>".utf8_decode ($this->nombrecampo($i))."</td>";
 		 		}
-		 			echo "<td> Editar</td>";
-		 			echo "<td> Borrar</td>";		 			
+		 			echo "<td width='0.3em'>Editar</td>";
+		 			echo "<td width='0.3em'>Borrar</td>";		 			
 	 		echo "</tr>";
 	 	echo "</thead>";
 	 	echo "<tbody>";
