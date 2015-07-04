@@ -305,11 +305,11 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-xl1{
-    width: 100%;
+  width: 110%;
   background:#e5e5e5;
   display:block;
   margin:0 6px;
-  padding:7px 120px 7px 44px;
+  padding:7px 120px 7px 6px;
   color:#333;
   font:400 14px 'Droid Sans';
   text-decoration:none;
