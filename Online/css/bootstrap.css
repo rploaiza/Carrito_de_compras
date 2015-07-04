@@ -8,6 +8,24 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+/*+++++inicio estilo modal login++++++*/
+
+.modal-body{
+  margin-top: 4%;
+  padding-bottom: 70%;
+}
+.red{
+    color:red;
+    }
+
+.form-area
+{
+  background-color: #FAFAFA;
+  padding: 10px 40px 60px;
+  margin: 2px 0px 6px;
+  border: 1px solid GREY;
+  }
+/*+++++fin estilo modal login++++++*/
 
 .btn-comprar{
   width: 85%;
@@ -29,6 +47,7 @@
   padding: 0;
   font-weight: 300;
 }
+
 .wrapperlogin {
   background: #d83c3c;
   background: -webkit-linear-gradient(top left, #15384C 0%, #15384C 100%);
@@ -49,7 +68,7 @@
 .containerlogin {
   max-width: 600px;
   margin: 0 auto;
-  padding: 80px 0;
+  padding: 150px 0px 300px;
   height: 400px;
   text-align: center;
 }
@@ -62,7 +81,7 @@
   font-weight: 200;
 }
 form {
-  padding: 20px 0;
+  padding: 20px ;
   position: relative;
   z-index: 2;
 }
@@ -94,20 +113,31 @@ form input:focus {
 form button {
   appearance: none;
   outline: 0;
-  background-color: white;
+  background-color: #0D47A1;;
   border: 0;
-  padding: 10px 15px;
+  padding: 10px 10px;
   color: #53e3a6;
   border-radius: 3px;
-  width: 250px;
+  width: 120px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 14px;
+  color: #fff;
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
 }
 form button:hover {
   background-color: #0D47A1;
+  color: #fff;
 }
+
+
+.panel-default {
+opacity: 0.9;
+margin-top:30%;
+width: 150%;
+}
+
+.form-group.last { margin-bottom:0px; }
 /*+++++fin estilo login++++++*/
 
  .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
@@ -1456,7 +1486,6 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 20px;
   padding: 4px 6px;
   margin-bottom: 10px;
   font-size: 14px;
@@ -4950,6 +4979,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar .nav {
+  background: #000;
   position: relative;
   left: 0;
   display: block;

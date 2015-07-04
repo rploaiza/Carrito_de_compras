@@ -18,10 +18,14 @@ if (isset($_SESSION['usuario'])){
     <title>Line Buy - Login</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+
 
     <!-- Custom CSS -->
-    <link href="css/agency.css" rel="stylesheet">
+     <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/agency.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -45,61 +49,27 @@ if (isset($_SESSION['usuario'])){
     <script src="js/script.js"></script>
     <link rel="shortcut icon" href="http://www.azulweb.net/wp-content/uploads/2014/02/icono-2.png" />
   </head>
-<body>
 
-  <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Menu de Navegación</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="principal.php"><img style="width: 20%;" src="img/logo.png"></a>
-                <!--<a class="navbar-brand page-scroll" href="#page-top" style="margin-left:45%;";>LINE BUY</a> -->
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="http://localhost/linebuy/carrito/index.php"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="registro.php">Registrarse</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="principal.php"><img width="20" src="img/casa.png"></a>
-                    </li>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-        <!-- Header -->
+<body style="background-image: url(img/blue.jpg);">
+  <!-- Header -->
     <header>
-        <div class="container">
-            <div class="intro-text">  
-                <div class="intro-heading">Login</div>              
-                <div class="col-md-4"> </div>
 
-                <div class="col-md-4">               
-                 <form id="login" clase="form" method="POST" action="return false" onsubmit="return false">
-                    <div id="resultado"></div>
-                    <div class="form-group">
-                      <input class="form-control" type="text" name="user" id="user" value="" placeholder="USUARIO">
-                    </div>
-                    <div class="form-group">
-                      <input class="form-control" type="password" name="pass" id="pass" value="" placeholder="*******">
-                    </div>
-                    
-               <button  class="btn btn-xl" id="login-button" onclick="Validar(document.getElementById('user').value, document.getElementById('pass').value);"><img src="img/llave1.jpg"> Iniciar sesión</button>
+<a style="float: right;  width: 11%;" href="principal.php"><img style="width: 150%;" id="home" src="ico/home.png"></a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-lock"></span> Login</div>
+                <div class="panel-body">
+
+                <form clase="form" method="POST" action="return false" onsubmit="return false">
+                <div id="resultado"></div>
+                <input type="text" name="user" id="user" value="" placeholder="USUARIO"><br><br>
+                <input type="password" name="pass" id="pass" value="" placeholder="*******"><br><br><br>
+                <button id="login-button" onclick="Validar(document.getElementById('user').value, document.getElementById('pass').value);"><img style=" width: 23%;" src="img/key.png">ENTRAR</button>
                 </form>
-                 <script>
+                <script>
                 function Validar(user, pass)
                 {
                     $.ajax({
@@ -111,15 +81,91 @@ if (isset($_SESSION['usuario'])){
                         }        
                     });
                 }
-          </script>
-
-
+            </script>    
+                </div>
+                <div class="panel-footer">
+                    No esta registrado? <a data-toggle="modal" href="#betaModal">Registrese aquí</a></div>
             </div>
-
-            <div class="col-md-4"> </div>
         </div>
-    </header>
+    </div>
+</div>
+</div>
 
+<div id="betaModal" class="modal hide fade">
+    <div class="modal-header">
+            <button class="close" data-dismiss="modal">×</button>
+    </div>
+    <div class="modal-body">
+
+    <div class="container">
+<div class="col-md-5">
+    <div class="form-area">  
+        <form name="sentMessage" id="contactForm"  method="post" novalidate>
+        <h5 style="margin-bottom: 25px; text-align: center;">Ingrese sus datos</h5>
+        <br style="clear:both">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Cedula" name="cedula" required="" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nombre" name="nombre" required="" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Apellido" name="apellido" required="" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Direccion" name="direccion" required="" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Telefono" name="telefono" required="" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email" name="email" required="" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="User" name="user" required="" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Pass" name="pass" required="" autofocus="">
+                    </div>            
+        <button type='submit' name="guardar" value="guardar">Registrarse</button>
+        </form>
+    </div>
+</div>
+</div>
+                     <?php
+                        include ("static/site_config.php");
+                        include ("static/clase_mysql.php");
+                        extract($_POST);
+                        $miconexion = new clase_mysql;
+                        $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
+                        
+                        if (isset($_REQUEST['guardar'])AND $cedula!= 0 AND $nombre!=NULL AND $apellido!=NULL AND $direccion!=NULL AND $telefono!=0 AND $user!=NULL AND $pass!=NULL) {    
+                                $ressql=$miconexion->consulta("INSERT INTO usuario VALUES ('','3','".$cedula."','".$nombre."','".$apellido."','".$direccion."','".$telefono."','".$email."','".$user."','".$pass."')");            
+                            if ($ressql==NULL) {             
+                                echo "<script language='javascript'> alert('No se ha podido registrar vuelva ha intentar')</script>";
+                                echo "<script>location.href='login.php'</script>"; 
+                            }else{
+                                echo "<script language='javascript'> alert('Se ha registrado con exito)</script>";
+                                echo "<script>location.href='login.php'</script>"; 
+                            }
+                        }else{
+                            echo "<script language='javascript'> alert('Ud. no ha ingresado todos los campos')</script>";
+                        }
+                    ?>
+                <!--FIN REGISTRO-->
+
+                </div>
+            </div>
+        </div>
+    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </header>
 
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="js/index.js"></script>
@@ -148,10 +194,6 @@ if (isset($_SESSION['usuario'])){
     <script src="js/jquery.lightbox.js"></script>
 
   </body>
-  <footer  style="background: #000;" >
-    <?php include("static/footer.php") ?>
-</footer>
-
 </html>
 
 <?php
