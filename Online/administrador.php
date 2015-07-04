@@ -37,22 +37,65 @@ if (isset($_SESSION['usuario'])){
 
         </head>
         <body>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="http://localhost/carritovirtual/">Line Buy</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#">BIENVENIDO: <?php echo $_SESSION['usuario']; ?></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="logout.php">CERRAR SESION</a>
-                    </li>                    
-                </ul>
+             <nav class="navbar navbar-default navbar-fixed-top">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div  class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Menu de Navegación</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="principal.php"></a>
+                <!--<a class="navbar-brand page-scroll" href="#page-top" style="margin-left:45%;";>LINE BUY</a> -->
             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul style="margin-top: -4%;" style="float: right;" class="nav navbar-nav navbar-right">
+                
+                <img style="width: 10%; float: left;" src="img/logo.png">
+
+                <li style="float: right;  width: 10%;">
+                        <a style="font-size: 90%;" class="page-scroll" href="principal.php"><img style="width: 150%;" id="home" src="ico/home.png">Inicio</a>
+                    </li>
+
+                <li style="float: right;  width: 10%;">
+                        <a style="font-size: 90%;" class="page-scroll" href="index.php"><img style="width: 150%;" id="carrito" src="ico/carrito.png">Comprar</a>
+                    </li>     
+
+                <li style="float: right;  width: 10%;">
+                        <a style="font-size: 90%;" class="page-scroll" href="mis_pedidos.php"><img style="width: 500%;" id="carrito" src="ico/pedidos.png">Pedidos</a>
+                    </li>
+                </ul>
+
+            </div>
+
+                     <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a class="page-scroll" href="#">BIENVENIDO: <?php echo $_SESSION['usuario']; ?></a>
+
+                        </li>                 
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="page-scroll" href="logout.php">CERRAR SESION</a>
+
+                        </li>                 
+                    </ul>
+                    
+                </div>
+            <!-- /.navbar-collapse -->
+    </nav>
+
+
+
+        <!-- Services Headder -->
+       
+        
             <section id="services">
                 <div class="container">
-                    <div class="row text-center">
+                    <div class="row1 text-center">
                         <div  class="col-md-4">
                             <h4>Tablas</h4>
                             <h3 class="section-subheading text-muted">Compre nuestros productos en linea...</h3>
@@ -61,10 +104,11 @@ if (isset($_SESSION['usuario'])){
                             $miconexion->verconsultablas();
                             ?>
                         </div>
+
                         <div class="col-md-8" >
                             <h4>Datos de las Tablas</h4><br><br>
                             <aside id="modulos">       
-                                <section class="cd-gallery">                            
+                                <section class="cd-gallery" width="100%">                            
                                     <?php
                                     extract($_POST);
                                     extract($_GET);
@@ -296,13 +340,14 @@ if (isset($_SESSION['usuario'])){
                                 </div>
                             </div>
                         </section>
-            <footer>
-                
-            </footer>
-        </body>
+               </body>
+
+       <footer  >
+   
+</footer>
+
     </html>
 <?php
 }else{
     echo '<script>location.href = "login.php";</script>'; 
 }
-?>
