@@ -77,7 +77,7 @@
                 <div class="col-sm-6 col-md-4">
                   	<div class="thumbnail">        
                     	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-                    	document.getElementById('fade').style.display='block'"><img id="imagen" src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="100%"></a>
+                    	document.getElementById('fade').style.display='block'"><img id="imagen" src="<?php echo $row['imagen'];?>" width="100%"></a>
                     	<div class="caption">
 		                    <h5><?php echo $row['nombre'];?></h5>
 		                    <p id="catal" style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
@@ -102,7 +102,7 @@
                 <div class="col-sm-6 col-md-4">
                   	<div class="thumbnail">        
                     	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-                    	document.getElementById('fade').style.display='block'"><img id="imagen" src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="100%"></a>
+                    	document.getElementById('fade').style.display='block'"><img id="imagen" src="<?php echo $row['imagen'];?>" width="100%"></a>
                     	<div class="caption">
 		                    <h5><?php echo $row['nombre'];?></h5>
 		                    <p id="catal" style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>

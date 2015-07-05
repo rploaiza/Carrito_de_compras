@@ -346,3 +346,4 @@ if (isset($_SESSION['usuario'])){
 }else{
     echo '<script>location.href = "login.php";</script>'; 
 }
+?>
