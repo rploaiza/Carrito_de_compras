@@ -18,7 +18,7 @@
 
   <div class="col-md-4">
       <img style="width: 40%; padding-top: 3%;" src="img/utpl.png">
-      <p style=" padding-top:6%; color:#fff; font-size:90%;">@lcchalan @rploaiza @gagutierrez @sapupiales</p>
+      <p style=" padding-top:6%; color:#fff; font-size:90%;">Scrum Master: @lcchalan <br>Scrum Team: @gagutierrez @rploaiza @vlnarvaez  @sapupiales</p>
   </div>
 
 

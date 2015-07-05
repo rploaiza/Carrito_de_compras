@@ -87,12 +87,7 @@ if (isset($_SESSION['usuario'])){
                 </div>
             <!-- /.navbar-collapse -->
     </nav>
-
-
-
-        <!-- Services Headder -->
-       
-        
+        <!-- Services Headder -->     
             <section id="services">
                 <div class="container">
                     <div class="row1 text-center">

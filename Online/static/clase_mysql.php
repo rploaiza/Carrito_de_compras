@@ -71,7 +71,56 @@
 		echo "<button type='submit' class='btn btn-xl' name='actualizar' value='actualizar'>Actualizar</button>"; 
 		echo "</form>";
 	}
-
+	function consultacatalogo(){
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+			?>    
+                <div class="col-sm-6 col-md-4">
+                  	<div class="thumbnail">        
+                    	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
+                    	document.getElementById('fade').style.display='block'"><img id="imagen" src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="100%"></a>
+                    	<div class="caption">
+		                    <h5><?php echo $row['nombre'];?></h5>
+		                    <p id="catal" style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
+		                    <p id="catal"><?php echo $row['nota'];?></p>
+		                    <p id="catal">
+			                    <form name="form<?php $row['codigo']; ?>" method="post" action="">
+			                        <input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
+			                        <button type="submit" name="boton" class="btn-comprar">
+			                        <!-- <i class="icon-shopping-cart"></i>--> <strong style="font-size:55%;" >Agregar al Carrito</strong>
+			                        </button>
+			                    </form> 
+                      		</p>
+                    	</div>
+                  	</div>
+                </div>
+         <?php
+	    }
+	}
+	function consultacatalogo2(){
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+			?>    
+                <div class="col-sm-6 col-md-4">
+                  	<div class="thumbnail">        
+                    	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
+                    	document.getElementById('fade').style.display='block'"><img id="imagen" src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="100%"></a>
+                    	<div class="caption">
+		                    <h5><?php echo $row['nombre'];?></h5>
+		                    <p id="catal" style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
+		                    <p id="catal"><?php echo $row['nota'];?></p>
+		                    <p id="catal">
+			                    <form name="form<?php $row['codigo']; ?>" method="post" action="">
+			                        <input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
+			                        <button type="submit" name="boton" class="btn-comprar">
+			                        <!-- <i class="icon-shopping-cart"></i>--> <strong style="font-size:55%;" >Agregar al Carrito</strong>
+			                        </button>
+			                    </form> 
+                      		</p>
+                    	</div>
+                  	</div>
+                </div>
+         <?php
+	    }
+	}
  	//Devulve el numero de campos de la culsulta
  	function numcampos(){
  		return mysql_num_fields($this->Consulta_ID);
@@ -243,9 +292,17 @@
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			for ($i=0; $i < $this->numcampos(); $i++) { 
 				$row[$i];
+				
 			}
 			return $row;
 		}
+	}
+	function consulta_lista1(){
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+
+				echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".$row[1]."</a></button>";			
+		}
+		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php' class='nava' data-type='".$row[1]."'>Todos</a></button>";			
 	}
 	function consulta_menu(){
 		echo "<ul>";

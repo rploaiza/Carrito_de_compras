@@ -326,9 +326,15 @@ ul.social-network li {
   margin-left: 2%; 
 }
 
-#catalogo1{
-  width: 80%;
+#catalogo2{
+  width: 100%;
   background: #F0F0F0;
+  float: left;
+  margin-left: 2%; 
+  position: relative;
+  min-height: 1px;
+  padding-right: 2px;
+  padding-left: 2px;
 }
 
 #producto{

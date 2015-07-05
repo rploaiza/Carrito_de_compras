@@ -761,10 +761,10 @@ xcustom form elements
   display: inline-block;
   padding: 6px 12px;
   margin-bottom:;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.42857143;
   text-align: center;
   white-space: nowrap;
-  color: black;
+  color: white;
   }

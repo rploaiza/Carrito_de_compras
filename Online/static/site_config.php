@@ -1,4 +1,5 @@
 <?php
+
 #DATOS DE LA WEBAPP
 $site_name="Universidad Técnica Particular de Loja";
 $project_name="Tienda Virtual";
@@ -13,4 +14,7 @@ $db_password="";
 $db_name="tienda_online";
 $usuario="admin";
 $password1="1234";
+	
+
+	
 ?>
