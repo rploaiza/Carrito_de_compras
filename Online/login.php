@@ -162,6 +162,7 @@ if (isset($_SESSION['usuario'])){
                         <input type="text" class="form-control" placeholder="Pass" name="pass" required="" autofocus="">
                     </div>            
         <button type='submit' name="guardar" value="guardar">Registrarse</button>
+        <button type='submit' name="guardar" value="guardar">Salir</button>
         </form>
     </div>
 </div>
