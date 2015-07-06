@@ -1,5 +1,4 @@
 <?php 
-if (isset($_SESSION['usuario'])){ 
     include_once("php_conexion.php");
     if(!empty($_GET['del'])){
         $id=$_GET['del'];
@@ -16,7 +15,9 @@ if (isset($_SESSION['usuario'])){
         <meta name="description" content="">
         <meta name="author" content="">
         <!-- Le styles -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/agency.css" rel="stylesheet">
         <style type="text/css">
             body {
               padding-top: 60px;
@@ -32,36 +33,50 @@ if (isset($_SESSION['usuario'])){
     </head>
 
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand page-scroll" href="principal.php"></a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li><a href="index.php">Principal</a></li>
-                            <li class="active"><a href="mis_pedidos.php">Mis Pedidos</a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                </div>
-                <div>
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a class="page-scroll" href="#">BIENVENIDO: <?php echo $_SESSION['usuario']; ?></a>
-                        </li>                 
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a class="page-scroll" href="logout.php">CERRAR SESION</a>
-                        </li>                 
-                    </ul>
-                </div>
-            </div>
+
+           <nav style="background: #000;" class="navbar navbar-default navbar-fixed-top">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div  class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Menu de Navegación</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="principal.php"></a>
+            <!--<a class="navbar-brand page-scroll" href="#page-top" style="margin-left:45%;";>LINE BUY</a> -->
         </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul style="margin-top: -4%;" style="float: right;" class="nav navbar-nav navbar-right">
+
+                <img style="width: 10%; float: left;" src="img/logo.png">
+
+                <li style="float: right;  width: 10%;">
+                    <a style="font-size: 90%;" class="page-scroll" href="principal.php"><img style="width: 30%;" id="home" src="ico/home.png">Inicio</a>
+                </li>
+
+                <li style="float: right;  width: 10%;">
+                    <a style="font-size: 90%;" class="page-scroll" href="index.php"><img style="width: 20%;" id="carrito" src="ico/carrito.png">Comprar</a>
+                </li>     
+            </ul>
+
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a class="page-scroll" href="logout.php">CERRAR SESION</a>
+
+            </li>                 
+        </ul>
+
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
+<br>
+<br>
+
         <div class="container">
           <!-- Main hero unit for a primary marketing message or call to action -->
           <!-- Example row of columns -->
@@ -82,7 +97,7 @@ if (isset($_SESSION['usuario'])){
                     <tr class="info">
                         <td><strong class="text-info">Articulo</strong></td>
                         <td><div align="right"><strong class="text-info">Valor Unitario</strong></div></td>
-                        <td><center><strong class="text-info">Cantidad</strong></center></td>
+                        <td><center><strong class="text-info">Seleccione la Cantidad</strong></center></td>
                         <td><div align="right"><strong class="text-info">Total</strong></div></td>
                         <td></td>
                     </tr>
@@ -118,8 +133,8 @@ if (isset($_SESSION['usuario'])){
                             <center>
                                 <a href="mis_pedidos.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
                                     <button type="button" class="close" aria-label="Close">
-                                        <span  style="color:#0044cc;" aria-hidden="true">&times;</span>
-                                    </button>
+                                        <span  style="color:#000;" aria-hidden="true">&times;</span>
+                                    </button>X
                                 </a>
                             </center>
                         </td>
@@ -128,7 +143,7 @@ if (isset($_SESSION['usuario'])){
                         <form name="form<?php $row['codigo']; ?>" method="post" action="">
                             <input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
                                 <h3 id="myModalLabel">Actualizar Existencia</h3>
                             </div>
                             <div class="modal-body">
@@ -164,11 +179,6 @@ if (isset($_SESSION['usuario'])){
     </div>
 
     <hr>
-
-    <footer>
-      <p>&copy; SoftUnicorn 2013</p>
-    </footer>
-
   </div> <!-- /container -->
 
       <!-- Le javascript
@@ -206,9 +216,9 @@ if (isset($_SESSION['usuario'])){
       </script>
 
     </body>
+
+    <footer style="background: #000;">
+        <?php include("static/footer.php") ?>
+    </footer>
+
     </html>
-    <?php
-  }else{
-    echo '<script>location.href = "login.php";</script>'; 
-  }
-  ?>

@@ -34,7 +34,7 @@ if(!empty($_POST['codigo'])){
                 <a href="index.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
                   <button type="button" class="close" aria-label="Close">hbhbhb
                     <span  style="color:red;" aria-hidden="true">&times;</span>
-                  </button>fffff
+                  </button>X
                 </a>
               </td>
             </tr>

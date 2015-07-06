@@ -11,7 +11,7 @@
 /*+++++inicio estilo modal login++++++*/
 
 .modal-body{
-  margin-top: 4%;
+  margin-top: 1%;
   padding-bottom: 70%;
 }
 .red{
@@ -21,7 +21,7 @@
 .form-area
 {
   background-color: #FAFAFA;
-  padding: 10px 40px 60px;
+  padding: 10px 40px 1px;
   margin: 2px 0px 6px;
   border: 1px solid GREY;
   }
@@ -81,7 +81,7 @@
   font-weight: 200;
 }
 form {
-  padding: 20px ;
+  padding: 1px 20px 20px 20px ;
   position: relative;
   z-index: 2;
 }
@@ -5620,7 +5620,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .modal.fade.in {
-  top: 10%;
+  top: 2%;
 }
 
 .modal-header {
@@ -5641,7 +5641,6 @@ input[type="submit"].btn.btn-mini {
   position: relative;
   max-height: 400px;
   padding: 15px;
-  overflow-y: auto;
 }
 
 .modal-form {

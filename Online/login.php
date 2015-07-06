@@ -133,13 +133,10 @@ if (isset($_SESSION['usuario'])){
         form input:focus {
           width: 100%;
         }
-
-        
     </style>
     <div class="form-area">  
         <form name="sentMessage" id="contactForm"  method="post" novalidate>
-        <h5 style="margin-bottom: 25px; text-align: center;">Ingrese sus datos</h5>
-        <br >
+        <h5 style="margin-bottom: 20px; text-align: center;">Ingrese sus datos</h5>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Cedula" name="cedula" required="" autofocus="">
                     </div>
