@@ -11,7 +11,7 @@
 /*+++++inicio estilo modal login++++++*/
 
 .modal-body{
-  margin-top: 1%;
+  margin-top: 4%;
   padding-bottom: 70%;
 }
 .red{
@@ -22,7 +22,7 @@
 {
   background-color: #FAFAFA;
   padding: 10px 40px 60px;
-  margin: -42px 0px 6px;
+  margin: -45px 0px 6px;
   border: 1px solid GREY;
   }
 /*+++++fin estilo modal login++++++*/
@@ -81,7 +81,7 @@
   font-weight: 200;
 }
 form {
-  padding: 1px 20px 20px 20px ;
+  padding: 20px ;
   position: relative;
   z-index: 2;
 }
@@ -5641,6 +5641,7 @@ input[type="submit"].btn.btn-mini {
   position: relative;
   max-height: 400%;
   padding: 15px;
+
 }
 
 .modal-form {
@@ -6559,4 +6560,4 @@ a.badge:focus {
 
 .affix {
   position: fixed;
-}
+  
