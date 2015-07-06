@@ -74,6 +74,7 @@ class clase_mysql{
 	function consultacatalogo(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			?>    
+<<<<<<< HEAD
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">        
 					<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
@@ -95,10 +96,34 @@ class clase_mysql{
 			</div>
 			<?php
 		}
+=======
+                <div class="col-sm-6 col-md-4">
+                  	<div class="thumbnail">        
+                    	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
+                    	document.getElementById('fade').style.display='block'"><img id="imagen" src="<?php echo $row['imagen'];?>" width="100%"></a>
+                    	<div class="caption">
+		                    <h5><?php echo $row['nombre'];?></h5>
+		                    <p id="catal" style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
+		                    <p id="catal"><?php echo $row['nota'];?></p>
+		                    <p id="catal">
+			                    <form name="form<?php $row['codigo']; ?>" method="post" action="">
+			                        <input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
+			                        <button type="submit" name="boton" class="btn-comprar">
+			                        <!-- <i class="icon-shopping-cart"></i>--> <strong style="font-size:55%;" >Agregar al Carrito</strong>
+			                        </button>
+			                    </form> 
+                      		</p>
+                    	</div>
+                  	</div>
+                </div>
+         <?php
+	    }
+>>>>>>> 35802312e3de85d8fbce689e948567da1ddf47ce
 	}
 	function consultacatalogo2(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			?>    
+<<<<<<< HEAD
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">        
 					<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
@@ -120,6 +145,29 @@ class clase_mysql{
 			</div>
 			<?php
 		}
+=======
+                <div class="col-sm-6 col-md-4">
+                  	<div class="thumbnail">        
+                    	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
+                    	document.getElementById('fade').style.display='block'"><img id="imagen" src="<?php echo $row['imagen'];?>" width="100%"></a>
+                    	<div class="caption">
+		                    <h5><?php echo $row['nombre'];?></h5>
+		                    <p id="catal" style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
+		                    <p id="catal"><?php echo $row['nota'];?></p>
+		                    <p id="catal">
+			                    <form name="form<?php $row['codigo']; ?>" method="post" action="">
+			                        <input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
+			                        <button type="submit" name="boton" class="btn-comprar">
+			                        <!-- <i class="icon-shopping-cart"></i>--> <strong style="font-size:55%;" >Agregar al Carrito</strong>
+			                        </button>
+			                    </form> 
+                      		</p>
+                    	</div>
+                  	</div>
+                </div>
+         <?php
+	    }
+>>>>>>> 35802312e3de85d8fbce689e948567da1ddf47ce
 	}
  	//Devulve el numero de campos de la culsulta
 	function numcampos(){

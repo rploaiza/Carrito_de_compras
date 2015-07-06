@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-07-2015 a las 18:58:08
+-- Tiempo de generación: 06-07-2015 a las 00:55:09
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -31,16 +31,15 @@ CREATE TABLE IF NOT EXISTS `carrito` (
   `cedula` int(11) NOT NULL,
   `codigo` int(6) NOT NULL,
   `cantidad` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `carrito`
 --
 
 INSERT INTO `carrito` (`id`, `cedula`, `codigo`, `cantidad`) VALUES
-(32, 0, 102, '2'),
-(33, 0, 101, '1'),
-(34, 0, 100, '1');
+(36, 0, 101, '3'),
+(39, 0, 103, '1');
 
 -- --------------------------------------------------------
 
@@ -157,11 +156,11 @@ CREATE TABLE IF NOT EXISTS `producto` (
 --
 
 INSERT INTO `producto` (`id`, `id_categoria`, `id_estado`, `id_estado_pro`, `codigo`, `nombre`, `marca`, `nota`, `valor`, `estado`, `cantidad`, `imagen`) VALUES
-(1, 5, 1, 1, 100, 'COMPUTADOR DELL', 'Dell', 'Computador de Marca DELL, Disco Duro de 300 GB y memoria DRR2 3GB', '1200000', 's', 3, 'http://goo.gl/MLhTiK'),
-(2, 5, 1, 1, 101, 'COMPUTADOR SAMSUNG', 'Sansung', 'Computador de Marca SANSUNG de 10.4 Pulgadas de Colores Negro, Gris y Personalizados en la tapa', '900000', 's', 5, 'http://goo.gl/MLhTiK'),
-(3, 4, 1, 1, 102, 'COMPUTADOR HP', 'HP', 'Computador de Mesa de marca HP, monitor de 14 Pulgadas, con Teclado, Cursor, Mesa y Silla ', '990000', 's', 0, 'http://goo.gl/MLhTiK'),
-(4, 5, 2, 2, 103, 'COMPUTADOR VAIO', 'VAIO', 'Computador de Marca VAIO, de 13 Pulgada', '1000000', 's', 4, 'http://goo.gl/MLhTiK'),
-(5, 3, 1, 1, 103, 'monitor', '', 'mamskask', '100', 's', 2, 'sds');
+(1, 5, 1, 1, 100, 'COMPUTADOR DELL', 'Dell', 'Computador de Marca DELL, Disco Duro de 300 GB y memoria DRR2 3GB', '1200000', 's', 3, 'img/producto/100.jpg'),
+(2, 5, 1, 1, 101, 'COMPUTADOR SAMSUNG', 'Sansung', 'Computador de Marca SANSUNG de 10.4 Pulgadas de Colores Negro, Gris y Personalizados en la tapa', '900000', 's', 5, 'img/producto/101.jpg'),
+(3, 4, 1, 1, 102, 'COMPUTADOR HP', 'HP', 'Computador de Mesa de marca HP, monitor de 14 Pulgadas, con Teclado, Cursor, Mesa y Silla ', '990000', 's', 0, 'img/producto/102.jpg'),
+(4, 5, 2, 2, 103, 'COMPUTADOR VAIO', 'VAIO', 'Computador de Marca VAIO, de 13 Pulgada', '1000000', 's', 4, 'img/producto/103.jpg'),
+(5, 3, 1, 1, 104, 'monitor', '', 'mamskask', '100', 's', 2, 'img/producto/104.jpg');
 
 -- --------------------------------------------------------
 
@@ -254,7 +253,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT de la tabla `categoria_estado`
 --

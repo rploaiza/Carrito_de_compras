@@ -291,4 +291,8 @@ if (isset($_SESSION['usuario'])){
 else{
     echo '<script>location.href = "login.php";</script>'; 
 }
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 35802312e3de85d8fbce689e948567da1ddf47ce

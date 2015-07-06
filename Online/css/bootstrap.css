@@ -107,7 +107,7 @@ form input:hover {
 }
 form input:focus {
   background-color: white;
-  width: 300px;
+  width:100%;
   color: #0D47A1;
 }
 form button {

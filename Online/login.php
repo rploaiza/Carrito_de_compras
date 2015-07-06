@@ -21,10 +21,10 @@ if (isset($_SESSION['usuario'])){
 
 
     <!-- Custom CSS -->
-     <link href="css/bootstrap.css" rel="stylesheet">
-  <link href="css/agency.css" rel="stylesheet">
-  <link href="css/bootstrap-responsive.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/agency.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
   
 
     <!-- Custom Fonts -->
@@ -57,8 +57,29 @@ if (isset($_SESSION['usuario'])){
 <a style="float: right;  width: 11%;" href="principal.php"><img style="width: 150%;" id="home" src="ico/home.png"></a>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 col-md-offset-3">
-            <div class="panel panel-default">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+                <br>
+                <br>
+                <br>
+                <style>
+
+                    .panel-heading{
+                        background-color: #F9F9F9; 
+                        border-bottom: 1px solid rgb(221, 221, 221);                  
+                    }
+
+                    .panel-body{
+                        background-color: #F9F9F9;
+                        
+                    }
+
+                    .panel-footer{
+                        background-color: #F9F9F9;                   
+                    }
+                    
+                </style>
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-lock"></span> Login</div>
                 <div class="panel-body">
@@ -84,8 +105,13 @@ if (isset($_SESSION['usuario'])){
             </script>    
                 </div>
                 <div class="panel-footer">
-                    No esta registrado? <a data-toggle="modal" href="#betaModal">Registrese aquí</a></div>
-            </div>
+                    No esta registrado? 
+                    <a data-toggle="modal" href="#betaModal">
+                        Registrese aquí
+                    </a>
+                </div>
+        </div>
+        <div class="col-md-4">
         </div>
     </div>
 </div>
@@ -99,10 +125,21 @@ if (isset($_SESSION['usuario'])){
 
     <div class="container">
 <div class="col-md-5">
+    <style>
+        .form-group{
+            width: 100%;
+        }
+
+        form input:focus {
+          width: 100%;
+        }
+
+        
+    </style>
     <div class="form-area">  
         <form name="sentMessage" id="contactForm"  method="post" novalidate>
         <h5 style="margin-bottom: 25px; text-align: center;">Ingrese sus datos</h5>
-        <br style="clear:both">
+        <br >
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Cedula" name="cedula" required="" autofocus="">
                     </div>
