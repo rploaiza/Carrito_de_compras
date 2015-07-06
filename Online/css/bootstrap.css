@@ -20,7 +20,7 @@
 
 .form-area
 {
-  background-color: #FAFAFA;
+  background-color: #92B3D3;
   padding: 10px 40px 60px;
   margin: -45px 0px 6px;
   border: 1px solid GREY;
@@ -2020,7 +2020,7 @@ select:focus:invalid {
 input:focus:invalid:focus,
 textarea:focus:invalid:focus,
 select:focus:invalid:focus {
-  border-color: #e9322d;
+  border-color: #DBCA18;
   -webkit-box-shadow: 0 0 6px #f8b9b7;
      -moz-box-shadow: 0 0 6px #f8b9b7;
           box-shadow: 0 0 6px #f8b9b7;
