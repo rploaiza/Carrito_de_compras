@@ -277,21 +277,7 @@ if (isset($_SESSION['usuario'])){
                     </html>
                     <?php
                 }
-<<<<<<< HEAD
                 else{
                     echo '<script>location.href = "login.php";</script>'; 
                 }
                 ?>
-=======
-            }); 
-});
-</script>
-</body>
-</html>
-<?php
-}
-else{
-    echo '<script>location.href = "login.php";</script>'; 
-}
-
->>>>>>> f0ec192e5ef0435c27d2de0f71a1c8710731dad0
