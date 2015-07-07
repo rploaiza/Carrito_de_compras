@@ -22,25 +22,3 @@ xmlhttp.open("POST","proc.php",true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 xmlhttp.send("q="+str);
 }
-$(function(){
-  $('#search').focus();
-  
-
-  $('#search').keyup(function(){
-    var envio = $('#search').val();
-
-    
-    $('#re').html('<h2><img src="img/loading.gif" width="20" alt="" /> Cargando</h2>');
-
-    $.ajax({
-      type: 'POST',
-      url: 'static/buscador.php',
-      data: ('search='+envio),
-      success: function(resp){
-        if(resp!=""){
-          $('#re').html(resp);
-        }
-      }
-    })
-  })
-})

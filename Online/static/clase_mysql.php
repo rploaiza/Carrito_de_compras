@@ -62,7 +62,7 @@ class clase_mysql{
 				if ($i==0) {
 					$id=$row[$i];
 				}else{
-					echo "<input class='form-control' value='".$row[$i]."' name='".$this->nombrecampo($i)."' type='text'>";
+					echo mysql_field_name($this->Consulta_ID, $i).":<input class='form-control' value='".$row[$i]."' name='".$this->nombrecampo($i)."' type='text'>";
 					echo "<p class='help-block text-danger'></p>";
 					echo "</div>";
 				}
@@ -86,6 +86,19 @@ class clase_mysql{
 						<h5><?php echo $row['nombre'];?></h5>
 						<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
 						<p style="font-size: 1em;"><?php echo $row['nota'];?></p>
+						<?php
+							
+							if ($row['estados']=='normal') {
+								echo "1";
+								echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
+							}elseif ($row['estados']=='oferta') {
+								echo "2";
+								echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
+							}else{
+								echo "3";
+								echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
+							}
+						?>
 						<p>
 							<form name="form<?php $row['codigo']; ?>" method="post" action="">
 								<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
@@ -110,6 +123,20 @@ class clase_mysql{
 						<h5><?php echo $row['nombre'];?></h5>
 						<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
 						<p><?php echo $row['nota'];?></p>
+						<?php
+							
+							if ($row['estados']=='normal') {
+								echo "1";
+								echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
+							}elseif ($row['estados']=='oferta') {
+								echo "2";
+								echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
+							}else{
+								echo "3";
+								echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
+							}
+						?>
+						
 						<p>
 							<form name="form<?php $row['codigo']; ?>" method="post" action="">
 								<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
@@ -189,32 +216,6 @@ class clase_mysql{
 			} 
 		}		
 	}
-	function verconsultablas2(){
-		$nonTabla = array("carrito", "categoria_estado", "categoria_producto", "estado", "producto", "usuario");
-		$nonTabla1 = array("Tabla Carrito de Compras", "Tabla Estados del Producto", "Tabla Categorias de Productos", "Tabla Descripción de Estados", "Tabla Productos", "Tabla Usuario");
-
-		echo "<form name='formulario' method='post' action='administrador2.php'>";
- 		//mostrar los nombres de los campos
-
-		while ($row = mysql_fetch_array($this->Consulta_ID)) {
-			for ($i=0; $i < $this->numcampos(); $i++) { 
-				for ($j=0; $j < 6 ; $j++) { 
-					if ($row[0]==$nonTabla[$j] AND $row[0]=='producto') {
-
-						echo "<button class='btn btn-xl1' data-filter='.".$row[0]."'><a href='administrador2.php?tabla=".$row[0]."' name='tablas' value='".$row[$i]."' data-type='".$row[0]."'>".utf8_decode ($nonTabla1[$j])."</a></button>";
-						echo "</form>";
-					}else{
-						if ($row[0]==$nonTabla[$j]){
-							echo "<button class='btn btn-xl1' data-filter='.".$row[0]."'><a href='administrador2.php?tabla='no' name='tablas'>".utf8_decode ($nonTabla1[$j])."</a></button>";
-							echo "</form>";
-						}
-						
-					}
-				}
-
-			} 
-		}		
-	}
 	function nombreuser(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			echo $row[3]." ".$row[4];
@@ -233,7 +234,7 @@ class clase_mysql{
 				}else{
 					if ($user==$row[8] AND $pass==$row[9] AND $row[1]==2) {
 						$_SESSION["usuario"] = $row[8];
-						echo '<script>location.href = "administrador2.php"</script>';
+						echo '<script>location.href = "administrador.php"</script>';
 						exit();
 					}else{
 						if ($user==$row[8] AND $pass==$row[9] AND $row[1]==3) {
@@ -281,33 +282,6 @@ class clase_mysql{
 
 			echo "<td><a href='administrador.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=1'><img src='img/editar.png' ></a></td>";
 			echo "<td><a href='administrador.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=2'><img src='img/borrar.png' ></a></td>";
-			echo "</tr>";
-		}
-		echo "</tbody>";	
-		echo "</table>";
-	}
-	function verconsulta3($tabla){
-
-		echo "<table id='example' class='display' cellspacing='0' width='100%'>";
-		echo "<thead>";
-		echo "<tr>";
-		 		//mostrar los nombres de los campos
-		for ($i=0; $i < $this->numcampos(); $i++) { 
-			echo "<td>".utf8_decode ($this->nombrecampo($i))."</td>";
-		}
-		echo "<td width='0.3em'>Editar</td>";
-		echo "<td width='0.3em'>Borrar</td>";		 			
-		echo "</tr>";
-		echo "</thead>";
-		echo "<tbody>";
-		while ($row = mysql_fetch_array($this->Consulta_ID)) {
-			echo "<tr>";
-			for ($i=0; $i < $this->numcampos(); $i++) { 
-				echo "<td>".$row[$i]."</td>";
-			}
-
-			echo "<td><a href='administrador2.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=1'><img src='img/editar.png' ></a></td>";
-			echo "<td><a href='administrador2.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=2'><img src='img/borrar.png' ></a></td>";
 			echo "</tr>";
 		}
 		echo "</tbody>";	
@@ -365,8 +339,10 @@ class clase_mysql{
 
 			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".utf8_encode($row[1])."</a></button>";			
 		}
-		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php' class='nava' data-type='".$row[1]."'>Todos</a></button>";			
+		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=todos' class='nava' data-type='".$row[1]."'>Todos</a></button>";
+		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=oferta' class='nava' data-type='".$row[1]."'>Oferta y más...</a></button>";			
 	}
+
 	function consulta_menu(){
 		echo "<ul>";
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
@@ -566,6 +542,45 @@ function procategoria(){
 		echo "string  ".$row[0];
 		echo "<option value='".$row[0]."'>".$row[1]."</option>"; 
 	}
+<<<<<<< HEAD
+		function procategoria2(){
+			echo "Categoria: ";
+			$query = "SELECT * FROM categoria_producto WHERE id";
+			$result = mysql_query($query) or die("error". mysql_error());                                   
+			echo "<div class='form-group'>";                                                                
+			echo "<select class='form-control' name='idcat'>";
+			echo '<option value="" default selected>- Select -</option>';
+			while ($row = mysql_fetch_array($result)) {
+				echo "<h3 class='section-subheading text-muted'> string   ".$row[0]."</h3>";   
+				echo "string  ".$row[0];
+				echo "<option value='".$row[0]."'>".$row[1]."</option>"; 
+			}
+			echo "</select><br>";
+			echo "<p class='help-block text-danger'></p>";
+			echo "</div>";
+		                                                    //------- extraccion de los estados ------
+			include ("static/estado.php");
+            $_POST['idcatest'];
+			echo "Estado del producto: ";
+			echo "<select class='form-control' name='estado'>";
+			echo '<option value=""> - Select - </option>';
+			echo '<option value="s">Disnonible</option>';
+			echo '<option value="n">Fuera de stock</option>';
+			echo "</select><br>";
+		}
+	function catprod(){
+		$query = "SELECT categoria FROM categoria_producto";
+		$result = mysql_query($query) or die("error". mysql_error());
+		$a = mysql_num_fields($result);
+		while ($row = mysql_fetch_array($result)) {
+			for ($i=0; $i < $a ; $i++) { 
+				echo "<div class='form-group'>";
+				echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text'>";
+				echo "<p class='help-block text-danger'></p>";
+				echo "</div>";
+			}
+			$a=0;                             
+=======
 	echo "</select><br>";
 	echo "<p class='help-block text-danger'></p>";
 	echo "</div>";
@@ -581,6 +596,7 @@ function procategoria(){
 			echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text' placeholder='".mysql_field_name($result, $i)."'>";
 			echo "<p class='help-block text-danger'></p>";
 			echo "</div>";
+>>>>>>> b3a87ebe6dbec744595ea3a66554f4d9a1419036
 		}
 
 		$a=0;                             

@@ -11,16 +11,15 @@ $q=$_POST['q'];
 $res=mysql_query("select * from estado WHERE id_categoria_estado=".$q."");
 ?>
 <br>
-<br>
 Descrpcion del estado: 
 <div class='form-group'> 
-<select class='form-control' name='idcatest'>
-<option value=""> - Select - </option>
-<?php while($fila=mysql_fetch_array($res)){ ?>
- <option value="<?php echo $fila[4]; ?>"><?php echo utf8_encode($fila[1]); ?></option>
-<?php } ?>
-
-</select>
+<form method="post" >
+	<select class='form-control' name='idcatest'>
+	<option value=""> - Select - </option>
+	<?php while($fila=mysql_fetch_array($res)){ ?>
+	 <option value="<?php echo $fila[4]; ?>"><?php echo utf8_encode($fila[1]); ?></option>
+	<?php } ?>
+	</select>
+</form>
 </div>
-
 

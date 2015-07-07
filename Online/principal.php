@@ -254,7 +254,7 @@ header ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
 <br>
 <!-- Inicio catalogo -->
     <?php
-    $miconexion->consulta("SELECT * FROM producto where estado='s'");
+    $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
     $miconexion->consultacatalogo2();
     ?>
     <div id="light" class="white_content">

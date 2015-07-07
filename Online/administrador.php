@@ -116,29 +116,42 @@ if (isset($_SESSION['usuario'])){
                         extract($_GET);
                         echo "<div style='width:auto%; height:100%; overflow:auto;'>";
                         if (isset($tabla)) {
-                            echo "<h1 class='section-subheading text-muted'>".$tabla."</h1>";
+                            echo "<h1 class='section-subheading text-muted'>Detalle de las Tablas</h1>";
                             echo "<form method='post' enctype='multipart/form-data'>";
-                            switch ($tabla) {
-                                case 'carrito':
-                                $miconexion->consulta("SELECT cedula AS 'Cedula del Cliente', codigo AS 'Codigo del Producto', cantidad AS '# Productos' FROM ".$tabla);
-                                break;
-                                case 'categoria_estado':
-                                $miconexion->consulta("SELECT id, estado AS 'Estado del Producto' FROM ".$tabla);
-                                break;
-                                case 'categoria_producto':
-                                $miconexion->consulta("SELECT id, categoria AS 'Categoria de Producto' FROM ".$tabla);
-                                break;
-                                case 'estado':
-                                $miconexion->consulta("SELECT id, nombre AS 'Nomina de Estado del Producto', descrpcion AS 'Detalle de la Nomina del Producto', descuento AS 'Descuento del Producto' FROM ".$tabla);
-                                break;
-                                case 'usuario':
-                                $miconexion->consulta("SELECT id, cedula AS 'Cedula', nombre AS 'Nombre', apellido AS 'Apellido', direccion AS 'Dirección', telefono AS 'Teléfono', email AS 'Email', user AS 'Usuario', pass AS 'Contraseña' FROM ".$tabla);
-                                break;
-                                case 'producto':
-                                $miconexion->consulta("SELECT p.id, e.estado AS 'Estado del Producto', p.codigo AS 'Codigo del Producto', p.nombre AS 'Nombre del Producto', p.nota AS 'Caracteristicas del Producto', p.valor AS 'Precio del Producto', p.cantidad AS 'Productos en Stock', p.imagen FROM producto p, categoria_estado e WHERE p.id_estado = e.id");
-                                break;
+                            if (strtolower ($_SESSION['usuario'])=='lcchalan') {
+                                switch ($tabla) {
+                                    case 'carrito':
+                                    $miconexion->consulta("SELECT cedula AS 'Cedula del Cliente', codigo AS 'Codigo del Producto', cantidad AS '# Productos' FROM ".$tabla);
+                                    break;
+                                    case 'categoria_estado':
+                                    $miconexion->consulta("SELECT id, estado AS 'Estado del Producto' FROM ".$tabla);
+                                    break;
+                                    case 'categoria_producto':
+                                    $miconexion->consulta("SELECT id, categoria AS 'Categoria de Producto' FROM ".$tabla);
+                                    break;
+                                    case 'estado':
+                                    $miconexion->consulta("SELECT id, nombre AS 'Nomina de Estado del Producto', descrpcion AS 'Detalle de la Nomina del Producto', descuento AS 'Descuento del Producto' FROM ".$tabla);
+                                    break;
+                                    case 'usuario':
+                                    $miconexion->consulta("SELECT id, cedula AS 'Cedula', nombre AS 'Nombre', apellido AS 'Apellido', direccion AS 'Dirección', telefono AS 'Teléfono', email AS 'Email', user AS 'Usuario', pass AS 'Contraseña' FROM ".$tabla);
+                                    break;
+                                    case 'producto':
+                                    $miconexion->consulta("SELECT p.id, e.estado AS 'Estado del Producto', p.codigo AS 'Codigo del Producto', p.nombre AS 'Nombre del Producto', p.nota AS 'Caracteristicas del Producto', p.valor AS 'Precio del Producto', p.cantidad AS 'Productos en Stock', p.imagen FROM producto p, categoria_estado e WHERE p.id_estado = e.id");
+                                    break;
+                                }
+                                $miconexion->verconsulta2($tabla);
+                           
+                            }else{
+                                if ($tabla=='producto') {
+                                    $miconexion->consulta("SELECT p.id, e.estado AS 'Estado del Producto', p.codigo AS 'Codigo del Producto', p.nombre AS 'Nombre del Producto', p.nota AS 'Caracteristicas del Producto', p.valor AS 'Precio del Producto', p.cantidad AS 'Productos en Stock', p.imagen FROM producto p, categoria_estado e WHERE p.id_estado = e.id");
+                                    $miconexion->verconsulta2($tabla);
+                                }else{
+                                     echo "<script language='javascript'> alert('Ud. No tiene permisos para acceder a las otras tablas ')</script>";
+                                }
+                                
                             }
-                            $miconexion->verconsulta2($tabla);
+
+                            
 
                             echo "<div  class='col-md-2' style='text-align: center;'><button type='submit'  class='btn btn-xl1' name='nuevo' value='nuevo'>Nuevos</button></div><br><br><br>"; 
                             echo "</div>";
@@ -155,9 +168,21 @@ if (isset($_SESSION['usuario'])){
                             }else{
                                             //--- INICIO ACTUALIZAR FILA TABLAS ----
                                 if ($edi==1) { 
-                                    if (isset($act)) {
-                                        $miconexion->consulta("SELECT * FROM ".$tabla." WHERE ".$act."=".$id);
-                                        $miconexion->consultaUpdate();
+
+                                    //if (isset($act)) {
+                                        if($tabla=='producto'){
+                                            $miconexion->consulta("SELECT id_estado, codigo, nombre, marca, nota, valor, cantidad FROM ".$tabla." WHERE ".$act."=".$id);
+                                            $miconexion->procategoria2();
+                                            ?>
+                                            <p>Seleccione la Imagen:
+                                            <input type="file" name="imagen"/>
+                                            </p>
+                                            <?php 
+                                            $miconexion->consultaUpdate();
+                                        }else{
+                                            $miconexion->consulta("SELECT * FROM ".$tabla." WHERE ".$act."=".$id);
+                                            $miconexion->consultaUpdate();
+                                        }
                                         if (isset($_REQUEST['actualizar'])) {  
                                            // echo "UPDATE ".$tabla." SET cedula='".$cedula."', nombre='".$nombre."', apellido='".$apellido."', direccion='".$direccion."', telefono='".$telefono."', email='".$email."', user='".$user."', pass='".$pass."'WHERE id=".$id;
                                             switch ($tabla) {
@@ -180,11 +205,19 @@ if (isset($_SESSION['usuario'])){
                                                                 $miconexion->consulta("UPDATE ".$tabla." SET cedula='".$cedula."', nombre='".$nombre."', apellido='".$apellido."', direccion='".$direccion."', telefono='".$telefono."', email='".$email."', user='".$user."', pass='".$pass."'WHERE id=".$id);
                                                                 break;
                                                                 case 'producto':
-                                                                $miconexion->consulta("UPDATE ".$tabla." SET codigo='".$codigo."', nombre='".$nombre."', marca='".$marca."', nota='".$nota."', valor='".$valor."', cantidad='".$cantidad."'WHERE id=".$id);
+                                                                
+                                                                $destino='img/producto';
+                                                                $origen=$_FILES['imagen']['tmp_name'];
+                                                                $nombreImagen=$_FILES['imagen']['name'];
+                                                                $rutaDestino=$destino.'/'.$nombreImagen;
+                                                                $moveResult = move_uploaded_file($origen, $destino.'/'.$nombreImagen);
+                                                                //echo $_POST['idcatest'];
+                                                                $miconexion->consulta("UPDATE ".$tabla." SET id_categoria='".$idcat."', id_estado='".$idest."', id_estado_pro='".$idcatest."', codigo='".$codigo."', nombre='".$nombre."', marca='".$marca."', 
+                                                                                                             nota='".$nota."', valor='".$valor."', estado='".$estado."', cantidad='".$cantidad."', imagen='".$rutaDestino."' WHERE id=".$id);
                                                                 break;
                                                             } 
                                                         }                               
-                                                    }
+                                                    //}
                                                     echo'<meta http-equiv="refresh" content="administrador.php>';   
                                                 }
                                             //---- FIN ACTUALIZAR FILA TABLAS ----
@@ -223,11 +256,11 @@ if (isset($_SESSION['usuario'])){
                                                                     <?php 
                                                                     $miconexion->consulta("SELECT COUNT(id_estado) FROM producto WHERE id_estado=3");
                                                                     $var=$miconexion->consulta_lista();
-                                                                    if ($var[0] == 6) {
+                                                                    if ($var[0] == 5) {
                                                                         ?>    
                                                                         alert("El limite de ofertas esta copado.");
                                                                         location.href='administrador.php?tabla=producto'
-                                                                        <?php    
+                                                                        <?php   
                                                                     }
                                                                     ?>
                                                                 }

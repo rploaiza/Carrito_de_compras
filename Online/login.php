@@ -1,16 +1,12 @@
 <?php
 session_start();
 if (isset($_SESSION['usuario'])){
-    echo $_SESSION['usuario']." ==  lcchalan";
-    if ($_SESSION['usuario'] == 'lcchalan') {
+    if (($_SESSION['usuario'] == 'lcchalan')OR ($_SESSION['usuario'] == 'jromero')) {
         echo '<script>location.href = "administrador.php";</script>';     
-    }else{
-        if ($_SESSION['usuario']=='jromero') {
-            echo '<script>location.href = "administrador2.php";</script>'; 
-        }else{
-            echo '<script>location.href = "index.php";</script>';   
-        }
+    }else{        
+        echo '<script>location.href = "index.php";</script>';   
     }
+
 }else{
     ?>
 
@@ -25,10 +21,7 @@ if (isset($_SESSION['usuario'])){
     <meta name="author" content="">
 
     <title>Line Buy - Login</title>
-
     <!-- Bootstrap Core CSS -->
-
-
     <!-- Custom CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/agency.css" rel="stylesheet">
