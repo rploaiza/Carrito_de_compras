@@ -20,9 +20,9 @@
 
 .form-area
 {
-  background-color: #FAFAFA;
+  background-color: #92B3D3;
   padding: 10px 40px 60px;
-  margin: 2px 0px 6px;
+  margin: -45px 0px 6px;
   border: 1px solid GREY;
   }
 /*+++++fin estilo modal login++++++*/
@@ -2020,7 +2020,7 @@ select:focus:invalid {
 input:focus:invalid:focus,
 textarea:focus:invalid:focus,
 select:focus:invalid:focus {
-  border-color: #e9322d;
+  border-color: #DBCA18;
   -webkit-box-shadow: 0 0 6px #f8b9b7;
      -moz-box-shadow: 0 0 6px #f8b9b7;
           box-shadow: 0 0 6px #f8b9b7;
@@ -5620,7 +5620,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .modal.fade.in {
-  top: 10%;
+  top: 2.5%;
 }
 
 .modal-header {
@@ -5639,9 +5639,9 @@ input[type="submit"].btn.btn-mini {
 
 .modal-body {
   position: relative;
-  max-height: 400px;
+  max-height: 400%;
   padding: 15px;
-  overflow-y: auto;
+
 }
 
 .modal-form {
@@ -6560,4 +6560,4 @@ a.badge:focus {
 
 .affix {
   position: fixed;
-}
+  
