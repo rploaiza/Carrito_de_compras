@@ -89,6 +89,12 @@ header ("Refresh: 40; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
                     <aside id="modulos">         
                         <div class="cd-filter-conten"> 
                          <div class="cd-filter-content">
+                         <div class="row">
+                                    <div class="form center">
+                                        <form action="" method="post" name="search_form" id="search_form">
+                                            <input type="text" class="" name="search" id="search"  placeholder="Search">                                        </form>
+                                    </div>
+                            </div>
 
                             <div id="re"></div>
                             <div class="footer center">
@@ -97,13 +103,9 @@ header ("Refresh: 40; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
                         </div>
             </div>
 
-                                    <div class="form center">
-                                        <form action="" method="post" name="search_form" id="">
-                                            <input type="text" class="" name="search" id=""  placeholder="Search">                                        </form>
-                                    </div>
-
-
-            <h4>Busqueda Avanzada</h4>
+            <div id="boton">
+                Busqueda Avanzada
+            </div>
 
             <div id="caja" >
                 <form method="post" id ="selec_con">
