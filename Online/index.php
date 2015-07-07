@@ -132,10 +132,10 @@ if (isset($_SESSION['usuario'])){
         <?php
         if (isset($id)) {
           $miconexion->consulta("SELECT * FROM producto where id_categoria=".$id);
-          $miconexion->consultacatalogo3();
+          $miconexion->consultacatalogo();
         }else{
           $miconexion->consulta("SELECT * FROM producto where estado='s'");
-          $miconexion->consultacatalogo3();
+          $miconexion->consultacatalogo();
         }
         ?>
         <div id="light" class="white_content">
