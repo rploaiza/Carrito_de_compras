@@ -90,10 +90,6 @@ class clase_mysql{
 			</div>
 			<?php
 		}
-<<<<<<< HEAD
-=======
-
->>>>>>> f0ec192e5ef0435c27d2de0f71a1c8710731dad0
 	}
 	function consultacatalogo2(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
