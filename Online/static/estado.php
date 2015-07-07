@@ -10,10 +10,7 @@ $res=mysql_query("select * from categoria_estado");
 		while($fila=mysql_fetch_array($res)){
 			?>
 			<option value="<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?></option>
-			<?php } 
-
-			?>
-
+			<?php } ?>
 		</select>
 		<div id="myDiv"></div>
 	</div><br>
