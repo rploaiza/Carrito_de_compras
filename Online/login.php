@@ -189,8 +189,6 @@ if (isset($_SESSION['usuario'])){
                                 echo "<script language='javascript'> alert('Se ha registrado con exito)</script>";
                                 echo "<script>location.href='login.php'</script>"; 
                             }
-                        }else{
-                            echo "<script language='javascript'> alert('Ud. no ha ingresado todos los campos')</script>";
                         }
                     ?>
                 <!--FIN REGISTRO-->
