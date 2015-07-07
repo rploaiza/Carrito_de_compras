@@ -102,7 +102,7 @@ if (isset($_SESSION['usuario'])){
                 <h3 class="section-subheading text-muted">Compre nuestros productos en linea...</h3>
                 <?php
                 $miconexion->consulta("show tables");
-                $miconexion->verconsultablas();
+                $miconexion->verconsultablas2();
                 ?>
             </div>
 
@@ -119,106 +119,66 @@ if (isset($_SESSION['usuario'])){
                             echo "<form method='post' enctype='multipart/form-data'>";
                             if ($tabla=='producto') {
                                 $miconexion->consulta("SELECT id, codigo AS 'Codigo del Producto', nombre AS 'Nombre del Producto', nota AS 'Caracteristicas del Producto', valor AS 'Precio del Producto', cantidad AS 'Productos en Stock' FROM ".$tabla);
-                                    $miconexion->verconsulta2($tabla);
+                                    $miconexion->verconsulta3($tabla);
+                                    echo "<br><button type='submit'  class='btn btn-xl' name='nuevo' value='nuevo'>Nuevos</button><br><br><br>"; 
+                            echo "</div>";
                             }else{
                                 echo "<script language='javascript'> alert('Ud. No tiene permisos para acceder a las otras tablas ')</script>";
                             }
-                           
                             
-                           
-
-                            echo "<br><button type='submit'  class='btn btn-xl' name='nuevo' value='nuevo'>Nuevos</button><br><br><br>"; 
-                            echo "</div>";
                         }
 
                                     //---   INICIO CRDUD ---
                         if (isset($id)) {  
                                         //--- BORRA FILA DE TABLAS ----
                             if ($edi==2) { 
-                                $miconexion->consulta("DELETE FROM ".$tabla." WHERE ".$act."=".$id);
+                                $miconexion->consulta("DELETE FROM producto WHERE ".$act."=".$id);
                                 $miconexion->consulta();
                                         //--- FIN BORRA FILA DE TABLAS ----
                             }else{
                                             //--- INICIO ACTUALIZAR FILA TABLAS ----
                                 if ($edi==1) { 
                                     if (isset($act)) {
-
-                                        $miconexion->consulta("SELECT * FROM ".$tabla." WHERE ".$act."=".$id);
+                                        $miconexion->consulta("SELECT * FROM producto WHERE ".$act."=".$id);
                                         $miconexion->consultaUpdate();
                                         if (isset($_REQUEST['actualizar'])) {  
-                                            echo "UPDATE ".$tabla." SET cedula='".$cedula."', nombre='".$nombre."', apellido='".$apellido."', direccion='".$direccion."', telefono='".$telefono."', email='".$email."', user='".$user."', pass='".$pass."'WHERE id=".$id;
-                                            switch ($tabla) {
-                                                            /*case 'carrito':
-                                                                $miconexion->consulta("SELECT cedula AS 'Cedula del Cliente', codigo AS 'Codigo del Producto', cantidad AS '# Productos' FROM ".$tabla);
-                                                                break;*/
-                                                                case 'categoria_estado':
-                                                                $miconexion->consulta("UPDATE ".$tabla." SET estado='".$estado."' WHERE id=".$id);
-                                                                break;
-                                                                case 'categoria_producto':
-                                                                $miconexion->consulta("UPDATE ".$tabla." SET categoria='".$categoria."' WHERE id=".$id);                                                                
-                                                                break;
-                                                                case 'estado':
-                                                                $miconexion->consulta("UPDATE ".$tabla." SET nombre='".$nombre."', descrpcion='".$descrpcion."', descuento='".$descuento."'WHERE id=".$id);
-                                                                break;
-                                                                case 'usuario':
-                                                                $miconexion->consulta("UPDATE ".$tabla." SET cedula='".$cedula."', nombre='".$nombre."', apellido='".$apellido."', direccion='".$direccion."', telefono='".$telefono."', email='".$email."', user='".$user."', pass='".$pass."'WHERE id=".$id);
-                                                                break;
-                                                                case 'producto':
-                                                                $miconexion->consulta("UPDATE ".$tabla." SET codigo='".$codigo."', nombre='".$nombre."', nota='".$nota."', valor='".$valor."', cantidad='".$cantidad."'WHERE id=".$id);
-                                                                break;
-                                                            } 
-                                                        }                               
-                                                    }
+                                            $miconexion->consulta("UPDATE ".$tabla." SET codigo='".$codigo."', nombre='".$nombre."', nota='".$nota."', valor='".$valor."', cantidad='".$cantidad."'WHERE id=".$id);
+                                                          
+                                        }                               
+                                    }
                                                     echo'<meta http-equiv="refresh" content="administrador.php>';   
-                                                }
+                                }
                                             //---- FIN ACTUALIZAR FILA TABLAS ----
 
-                                            }
-                                        }else{
+                            }
+                        }else{
 
-                                            echo "<form method='post' enctype='multipart/form-data'>";
-                                            if (isset($_REQUEST['nuevo'])) {                                             
-
-                                                switch ($tabla) {                           
-
-                                                    case 'categoria_estado':
-                                                    $miconexion->categoria_estado();
-                                                    break;
-                                                    case 'categoria_producto':
-                                                    $miconexion->catprod();
-                                                    break;
-                                                    case 'categoria_usuario':
-                                                    $query = "SELECT tipo, descripcion FROM ".$tabla;
-                                                    break;
-                                                    case 'estado':
-                                                    $miconexion->estadoproducto();
-                                                    break;
-                                                    case 'producto':
-                                                    $miconexion->procategoria();
-                                                    break;
-                                                }
-                                                echo "<button type='submit' class='btn btn-xl' name='guardar' value='guardar'>Guardar</button>";
-                                                echo "</form>"; 
-                                            }
-                                            if (isset($_REQUEST['guardar'])) {
+                            echo "<form method='post' enctype='multipart/form-data'>";
+                            if (isset($_REQUEST['nuevo'])) {                                                                            
+                                $miconexion->procategoria();
+                            
+                                echo "<button type='submit' class='btn btn-xl' name='guardar' value='guardar'>Guardar</button>";
+                                echo "</form>"; 
+                            }
+                            if (isset($_REQUEST['guardar'])) {
 
 
 
-                                                if($tabla=='categoria_estado'){
-                                                    mysql_query("insert into categoria_estado values('','$estado')");}else{
-                                                        if($tabla=='categoria_producto'){
-                                                            mysql_query("insert into categoria_producto values('','$categoria')");}else{
-                                                                if($tabla=='estado'){
-                                                                 mysql_query("insert into estado values('','$nombre', '$descrpcion', '$descuento', '$idcatestado')");}else{
-    
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-
-
+                                if($tabla=='categoria_estado'){
+                                    mysql_query("insert into categoria_estado values('','$estado')");}else{
+                                        if($tabla=='categoria_producto'){
+                                            mysql_query("insert into categoria_producto values('','$categoria')");}else{
+                                                if($tabla=='estado'){
+                                                 mysql_query("insert into estado values('','$nombre', '$descrpcion', '$descuento', '$idcatestado')");}else{
 
                                                 }
+                                            }
+                                        }
+                                    }
+
+
+
+                                }
 
 
                                                 ?>
@@ -279,8 +239,3 @@ if (isset($_SESSION['usuario'])){
 else{
     echo '<script>location.href = "login.php";</script>'; 
 }
-<<<<<<< HEAD
-?>
-=======
-?>
->>>>>>> 35802312e3de85d8fbce689e948567da1ddf47ce

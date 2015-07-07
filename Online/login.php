@@ -1,7 +1,16 @@
 <?php
 session_start();
 if (isset($_SESSION['usuario'])){
-    echo '<script>location.href = "administrador.php";</script>'; 
+    echo $_SESSION['usuario']." ==  lcchalan";
+    if ($_SESSION['usuario'] == 'lcchalan') {
+        echo '<script>location.href = "administrador.php";</script>';     
+    }else{
+        if ($_SESSION['usuario']=='jromero') {
+            echo '<script>location.href = "administrador2.php";</script>'; 
+        }else{
+            echo '<script>location.href = "index.php";</script>';   
+        }
+    }
 }else{
     ?>
 
@@ -16,10 +25,7 @@ if (isset($_SESSION['usuario'])){
     <meta name="author" content="">
 
     <title>Line Buy - Login</title>
-
     <!-- Bootstrap Core CSS -->
-
-
     <!-- Custom CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/agency.css" rel="stylesheet">
@@ -183,8 +189,6 @@ if (isset($_SESSION['usuario'])){
                                 echo "<script language='javascript'> alert('Se ha registrado con exito)</script>";
                                 echo "<script>location.href='login.php'</script>"; 
                             }
-                        }else{
-                            echo "<script language='javascript'> alert('Ud. no ha ingresado todos los campos')</script>";
                         }
                     ?>
                 <!--FIN REGISTRO-->
