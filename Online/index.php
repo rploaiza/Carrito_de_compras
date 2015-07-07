@@ -131,11 +131,16 @@ if (isset($_SESSION['usuario'])){
       <section id="catalogo">
         <?php
         if (isset($id)) {
-          $miconexion->consulta("SELECT * FROM producto where id_categoria=".$id);
-          $miconexion->consultacatalogo();
-        }else{
-          $miconexion->consulta("SELECT * FROM producto where estado='s'");
-          $miconexion->consultacatalogo();
+          if ($id=='todos') {
+            $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s'");
+            $miconexion->consultacatalogo();
+          }elseif ($id=='oferta') {
+            $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s' and e.estado <>'Normal'");
+            $miconexion->consultacatalogo();
+          }else{
+            $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.id_categoria=".$id);
+            $miconexion->consultacatalogo();
+          }
         }
         ?>
         <div id="light" class="white_content">

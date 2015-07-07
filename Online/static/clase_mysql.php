@@ -86,6 +86,19 @@ class clase_mysql{
 						<h5><?php echo $row['nombre'];?></h5>
 						<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
 						<p style="font-size: 1em;"><?php echo $row['nota'];?></p>
+						<?php
+							
+							if ($row['estados']=='normal') {
+								echo "1";
+								echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
+							}elseif ($row['estados']=='oferta') {
+								echo "2";
+								echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
+							}else{
+								echo "3";
+								echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
+							}
+						?>
 						<p>
 							<form name="form<?php $row['codigo']; ?>" method="post" action="">
 								<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
@@ -110,6 +123,20 @@ class clase_mysql{
 						<h5><?php echo $row['nombre'];?></h5>
 						<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
 						<p><?php echo $row['nota'];?></p>
+						<?php
+							
+							if ($row['estados']=='normal') {
+								echo "1";
+								echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
+							}elseif ($row['estados']=='oferta') {
+								echo "2";
+								echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
+							}else{
+								echo "3";
+								echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
+							}
+						?>
+						
 						<p>
 							<form name="form<?php $row['codigo']; ?>" method="post" action="">
 								<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
@@ -189,32 +216,6 @@ class clase_mysql{
 			} 
 		}		
 	}
-	function verconsultablas2(){
-		$nonTabla = array("carrito", "categoria_estado", "categoria_producto", "estado", "producto", "usuario");
-		$nonTabla1 = array("Tabla Carrito de Compras", "Tabla Estados del Producto", "Tabla Categorias de Productos", "Tabla Descripción de Estados", "Tabla Productos", "Tabla Usuario");
-
-		echo "<form name='formulario' method='post' action='administrador2.php'>";
- 		//mostrar los nombres de los campos
-
-		while ($row = mysql_fetch_array($this->Consulta_ID)) {
-			for ($i=0; $i < $this->numcampos(); $i++) { 
-				for ($j=0; $j < 6 ; $j++) { 
-					if ($row[0]==$nonTabla[$j] AND $row[0]=='producto') {
-
-						echo "<button class='btn btn-xl1' data-filter='.".$row[0]."'><a href='administrador2.php?tabla=".$row[0]."' name='tablas' value='".$row[$i]."' data-type='".$row[0]."'>".utf8_decode ($nonTabla1[$j])."</a></button>";
-						echo "</form>";
-					}else{
-						if ($row[0]==$nonTabla[$j]){
-							echo "<button class='btn btn-xl1' data-filter='.".$row[0]."'><a href='administrador2.php?tabla='no' name='tablas'>".utf8_decode ($nonTabla1[$j])."</a></button>";
-							echo "</form>";
-						}
-						
-					}
-				}
-
-			} 
-		}		
-	}
 	function nombreuser(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			echo $row[3]." ".$row[4];
@@ -233,7 +234,7 @@ class clase_mysql{
 				}else{
 					if ($user==$row[8] AND $pass==$row[9] AND $row[1]==2) {
 						$_SESSION["usuario"] = $row[8];
-						echo '<script>location.href = "administrador2.php"</script>';
+						echo '<script>location.href = "administrador.php"</script>';
 						exit();
 					}else{
 						if ($user==$row[8] AND $pass==$row[9] AND $row[1]==3) {
@@ -281,33 +282,6 @@ class clase_mysql{
 
 			echo "<td><a href='administrador.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=1'><img src='img/editar.png' ></a></td>";
 			echo "<td><a href='administrador.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=2'><img src='img/borrar.png' ></a></td>";
-			echo "</tr>";
-		}
-		echo "</tbody>";	
-		echo "</table>";
-	}
-	function verconsulta3($tabla){
-
-		echo "<table id='example' class='display' cellspacing='0' width='100%'>";
-		echo "<thead>";
-		echo "<tr>";
-		 		//mostrar los nombres de los campos
-		for ($i=0; $i < $this->numcampos(); $i++) { 
-			echo "<td>".utf8_decode ($this->nombrecampo($i))."</td>";
-		}
-		echo "<td width='0.3em'>Editar</td>";
-		echo "<td width='0.3em'>Borrar</td>";		 			
-		echo "</tr>";
-		echo "</thead>";
-		echo "<tbody>";
-		while ($row = mysql_fetch_array($this->Consulta_ID)) {
-			echo "<tr>";
-			for ($i=0; $i < $this->numcampos(); $i++) { 
-				echo "<td>".$row[$i]."</td>";
-			}
-
-			echo "<td><a href='administrador2.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=1'><img src='img/editar.png' ></a></td>";
-			echo "<td><a href='administrador2.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=2'><img src='img/borrar.png' ></a></td>";
 			echo "</tr>";
 		}
 		echo "</tbody>";	
@@ -365,8 +339,10 @@ class clase_mysql{
 
 			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".utf8_encode($row[1])."</a></button>";			
 		}
-		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php' class='nava' data-type='".$row[1]."'>Todos</a></button>";			
+		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=todos' class='nava' data-type='".$row[1]."'>Todos</a></button>";
+		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=oferta' class='nava' data-type='".$row[1]."'>Oferta y más...</a></button>";			
 	}
+
 	function consulta_menu(){
 		echo "<ul>";
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {

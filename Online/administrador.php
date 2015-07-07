@@ -124,29 +124,42 @@ if (isset($_SESSION['usuario'])){
                         extract($_GET);
                         echo "<div style='width:auto%; height:100%; overflow:auto;'>";
                         if (isset($tabla)) {
-                            echo "<h1 class='section-subheading text-muted'>".$tabla."</h1>";
+                            echo "<h1 class='section-subheading text-muted'>Detalle de las Tablas</h1>";
                             echo "<form method='post' enctype='multipart/form-data'>";
-                            switch ($tabla) {
-                                case 'carrito':
-                                $miconexion->consulta("SELECT cedula AS 'Cedula del Cliente', codigo AS 'Codigo del Producto', cantidad AS '# Productos' FROM ".$tabla);
-                                break;
-                                case 'categoria_estado':
-                                $miconexion->consulta("SELECT id, estado AS 'Estado del Producto' FROM ".$tabla);
-                                break;
-                                case 'categoria_producto':
-                                $miconexion->consulta("SELECT id, categoria AS 'Categoria de Producto' FROM ".$tabla);
-                                break;
-                                case 'estado':
-                                $miconexion->consulta("SELECT id, nombre AS 'Nomina de Estado del Producto', descrpcion AS 'Detalle de la Nomina del Producto', descuento AS 'Descuento del Producto' FROM ".$tabla);
-                                break;
-                                case 'usuario':
-                                $miconexion->consulta("SELECT id, cedula AS 'Cedula', nombre AS 'Nombre', apellido AS 'Apellido', direccion AS 'Dirección', telefono AS 'Teléfono', email AS 'Email', user AS 'Usuario', pass AS 'Contraseña' FROM ".$tabla);
-                                break;
-                                case 'producto':
-                                $miconexion->consulta("SELECT p.id, e.estado AS 'Estado del Producto', p.codigo AS 'Codigo del Producto', p.nombre AS 'Nombre del Producto', p.nota AS 'Caracteristicas del Producto', p.valor AS 'Precio del Producto', p.cantidad AS 'Productos en Stock', p.imagen FROM producto p, categoria_estado e WHERE p.id_estado = e.id");
-                                break;
+                            if (strtolower ($_SESSION['usuario'])=='lcchalan') {
+                                switch ($tabla) {
+                                    case 'carrito':
+                                    $miconexion->consulta("SELECT cedula AS 'Cedula del Cliente', codigo AS 'Codigo del Producto', cantidad AS '# Productos' FROM ".$tabla);
+                                    break;
+                                    case 'categoria_estado':
+                                    $miconexion->consulta("SELECT id, estado AS 'Estado del Producto' FROM ".$tabla);
+                                    break;
+                                    case 'categoria_producto':
+                                    $miconexion->consulta("SELECT id, categoria AS 'Categoria de Producto' FROM ".$tabla);
+                                    break;
+                                    case 'estado':
+                                    $miconexion->consulta("SELECT id, nombre AS 'Nomina de Estado del Producto', descrpcion AS 'Detalle de la Nomina del Producto', descuento AS 'Descuento del Producto' FROM ".$tabla);
+                                    break;
+                                    case 'usuario':
+                                    $miconexion->consulta("SELECT id, cedula AS 'Cedula', nombre AS 'Nombre', apellido AS 'Apellido', direccion AS 'Dirección', telefono AS 'Teléfono', email AS 'Email', user AS 'Usuario', pass AS 'Contraseña' FROM ".$tabla);
+                                    break;
+                                    case 'producto':
+                                    $miconexion->consulta("SELECT p.id, e.estado AS 'Estado del Producto', p.codigo AS 'Codigo del Producto', p.nombre AS 'Nombre del Producto', p.nota AS 'Caracteristicas del Producto', p.valor AS 'Precio del Producto', p.cantidad AS 'Productos en Stock', p.imagen FROM producto p, categoria_estado e WHERE p.id_estado = e.id");
+                                    break;
+                                }
+                                $miconexion->verconsulta2($tabla);
+                           
+                            }else{
+                                if ($tabla=='producto') {
+                                    $miconexion->consulta("SELECT p.id, e.estado AS 'Estado del Producto', p.codigo AS 'Codigo del Producto', p.nombre AS 'Nombre del Producto', p.nota AS 'Caracteristicas del Producto', p.valor AS 'Precio del Producto', p.cantidad AS 'Productos en Stock', p.imagen FROM producto p, categoria_estado e WHERE p.id_estado = e.id");
+                                    $miconexion->verconsulta2($tabla);
+                                }else{
+                                     echo "<script language='javascript'> alert('Ud. No tiene permisos para acceder a las otras tablas ')</script>";
+                                }
+                                
                             }
-                            $miconexion->verconsulta2($tabla);
+
+                            
 
                             echo "<br><button type='submit'  class='btn btn-xl' name='nuevo' value='nuevo'>Nuevos</button><br><br><br>"; 
                             echo "</div>";
