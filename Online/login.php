@@ -25,10 +25,7 @@ if (isset($_SESSION['usuario'])){
     <meta name="author" content="">
 
     <title>Line Buy - Login</title>
-
     <!-- Bootstrap Core CSS -->
-
-
     <!-- Custom CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/agency.css" rel="stylesheet">
