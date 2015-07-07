@@ -21,6 +21,7 @@ if (isset($_SESSION['usuario'])){
         <!-- jQuery -->
         <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
+
         <!-- DataTables -->
         <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
         <script src="js/ajax.js"></script>
@@ -207,6 +208,30 @@ if (isset($_SESSION['usuario'])){
                                                     break;
                                                     case 'producto':
                                                     $miconexion->procategoria();
+                                                    ?>
+                                                    <p>Seleccione la Imagen:
+                                                        <input type="file" name="imagen"/>
+                                                    </p>
+                                                    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.js"></script>
+                                                    <script type="text/javascript">
+                                                        $(document).ready(function() {
+                                                            $("#cont").change(function() {
+                                                                if ($("#cont option[value='3']").attr('selected')) {
+                                                                    <?php 
+                                                                    $miconexion->consulta("SELECT COUNT(id_estado) FROM producto WHERE id_estado=1");
+                                                                    $var=$miconexion->consulta_lista();
+                                                                    if ($var[0] == 6) {
+                                                                        ?>    
+                                                                        alert("El limite de ofertas esta copado.");
+                                                                        location.href='administrador.php?tabla=producto'
+                                                                        <?php    
+                                                                    }
+                                                                    ?>
+                                                                }
+                                                            }); 
+                                                    });
+                                                    </script>
+                                            <?php
                                                     break;
                                                 }
                                                 echo "<button type='submit' class='btn btn-xl' name='guardar' value='guardar'>Guardar</button>";
@@ -214,85 +239,45 @@ if (isset($_SESSION['usuario'])){
                                             }
                                             if (isset($_REQUEST['guardar'])) {
 
-
-
                                                 if($tabla=='categoria_estado'){
                                                     mysql_query("insert into categoria_estado values('','$estado')");}else{
                                                         if($tabla=='categoria_producto'){
                                                             mysql_query("insert into categoria_producto values('','$categoria')");}else{
                                                                 if($tabla=='estado'){
                                                                  mysql_query("insert into estado values('','$nombre', '$descrpcion', '$descuento', '$idcatestado')");}else{
-    
+                                                                    if($tabla=='producto'){
+                                                                        //echo $_POST['idcatest'];
+                                                                        $destino='img/producto';
+                                                                        $origen=$_FILES['imagen']['tmp_name'];
+                                                                        $nombreImagen=$_FILES['imagen']['name'];
+                                                                        $rutaDestino=$destino.'/'.$nombreImagen;
+                                                                        $moveResult = move_uploaded_file($origen, $destino.'/'.$nombreImagen);
+                                                                        $query = "INSERT INTO producto(id, id_categoria, id_estado, id_estado_pro, codigo, nombre, marca, nota, valor, estado, cantidad, imagen) values ('','$idcat','$idest','$idcatest', '$codigo', '$nombre', '$marca', '$nota', '$valor', '$estado', '$cantidad', '$rutaDestino')";
+                                                                        $res = mysql_query($query) or die("error". mysql_error());
+                                                                        echo "<script>location.href='administrador.php?tabla=producto'</script>";    
+
+                                                                    }
                                                                 }
                                                             }
                                                         }
+
                                                     }
-
-
-
                                                 }
-
-
                                                 ?>
-
-
-                                          <div class="cd-fail-message">No hay resultados</div>
-                                    </section> <!-- cd-gallery -->
-                                </aside> 
+                                                <div class="cd-fail-message">No hay resultados</div>
+                                            </section> <!-- cd-gallery -->
+                                        </aside> 
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </section>
-                <footer>
-
-                </footer>
-                <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.js"></script>
-
-                <script type="text/javascript">
-                    $(document).ready(function() {
-                        $("#cont").change(function() {
-                            if ($("#cont option[value='3']").attr('selected')) {
-                    <?php 
-                    $miconexion->consulta("SELECT COUNT(id_estado) FROM producto WHERE id_estado=3");
-                    $var=$miconexion->consulta_lista();
-                    if ($var[0] == 2) {
-                        ?>    
-                        alert("El limite de ofertas esta copado.");
-                        location.href='administrador.php?tabla=producto'
-                        <?php    
-                    }else{
-
-                        if (isset($_REQUEST['guardar'])) {
-                            $miconexion->imagen();
-                            //echo $_POST['idcatest'];
-                            
-                            //mysql_query("INSERT INTO producto(id, id_categoria, id_estado, id_estado_pro, codigo, nombre, marca, nota, valor, estado, cantidad, imagen) values ('','$idcat','$idest','$idcatest', '$codigo', '$nombre', '$marca', '$nota', '$valor', '$estado', '$cantidad', '$rutaDestino')")or die("error". mysql_error());
-                            
-                            $miconexion->close();
-                        }
-                    }
-                    ?>
-                }else{
+                        </section>
+                        <footer>
+                        </footer>
+                    </body>
+                    </html>
                     <?php
-                    if (isset($_REQUEST['guardar'])) {
-                        echo $_POST['idcatest'];
-                        mysql_query("insert into producto values ('','$idcat','$idest','$idcatest', '$codigo', '$nombre', '$marca', '$nota', '$valor', '$estado', '$cantidad', '$rutaDestino')");
-                    //  $miconexion->close();
-                    }
-                    ?>
                 }
-            }); 
-});
-</script>
-</body>
-</html>
-<?php
-}
-else{
-    echo '<script>location.href = "login.php";</script>'; 
-}
-<<<<<<< HEAD
-?>
-=======
-?>
->>>>>>> 35802312e3de85d8fbce689e948567da1ddf47ce
+                else{
+                    echo '<script>location.href = "login.php";</script>'; 
+                }
+                ?>
