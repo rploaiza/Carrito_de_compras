@@ -1,7 +1,16 @@
 <?php
 session_start();
 if (isset($_SESSION['usuario'])){
-    echo '<script>location.href = "administrador.php";</script>'; 
+    echo $_SESSION['usuario']." ==  lcchalan";
+    if ($_SESSION['usuario'] == 'lcchalan') {
+        echo '<script>location.href = "administrador.php";</script>';     
+    }else{
+        if ($_SESSION['usuario']=='jromero') {
+            echo '<script>location.href = "administrador2.php";</script>'; 
+        }else{
+            echo '<script>location.href = "index.php";</script>';   
+        }
+    }
 }else{
     ?>
 

@@ -1,4 +1,4 @@
-/*!
+h/*!
  * Start Bootstrap - Agency Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
@@ -116,8 +116,12 @@ Image placeholders: placemi.com
 }
 
 #home{
+<<<<<<< HEAD
   max-width:25%;
   margin-left: 1%;
+=======
+  max-width: 20%;
+>>>>>>> 5b9455a01c95042e3eea5bfc9b839a834b970261
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
