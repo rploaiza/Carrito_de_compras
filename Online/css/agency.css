@@ -1,4 +1,4 @@
-h/*!
+/*!
  * Start Bootstrap - Agency Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
@@ -307,7 +307,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-xl1{
-  width: 110%;
+  width: 115%;
   background:#e5e5e5;
   display:block;
   margin:0 6px;
@@ -1109,11 +1109,11 @@ aside#modulos {
 }
 
 .cd-gallery {
-  color: #D2D3CB;
+  color: #0D47A1;
   padding: 50px 2%;
   float: right;
   width: 100%;
-  vertical-align: center;
+  vertical-align: left;
   -webkit-transition: width 0.3s;
   -moz-transition: width 0.3s;
   transition: width 0.3s;
