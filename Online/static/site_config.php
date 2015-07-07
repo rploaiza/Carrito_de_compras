@@ -12,8 +12,8 @@ $db_host="127.0.0.1";
 $db_user="root";
 $db_password="";
 $db_name="tienda_online";
-$usuario="admin";
-$password1="1234";
+$connect = new mysqli($db_host,$db_user,$db_password,$db_name) or die("error" . mysqli_errno($connect));
+
 	
 
 	
