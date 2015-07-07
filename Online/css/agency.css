@@ -117,7 +117,7 @@ Image placeholders: placemi.com
 
 #home{
   max-width:25%;
-  margin-left: -3em;
+  margin-left: 1%;
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);

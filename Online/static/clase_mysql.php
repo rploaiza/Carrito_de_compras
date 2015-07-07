@@ -52,6 +52,8 @@ class clase_mysql{
  		//retorna la consulta ejecutada
 		return $this->Consulta_ID;
 	}
+
+	
 	function consultaUpdate($sql=""){
 		echo "<form name='actualizar' method='post' action='administrador.php'>";
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
@@ -71,6 +73,8 @@ class clase_mysql{
 		echo "<button type='submit' class='btn btn-xl' name='actualizar' value='actualizar'>Actualizar</button>"; 
 		echo "</form>";
 	}
+
+
 
 	function consultacatalogo(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
@@ -110,7 +114,7 @@ class clase_mysql{
 							<form name="form<?php $row['codigo']; ?>" method="post" action="">
 								<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
 								<button type="submit" name="boton" class="btn-comprar">
-									<!-- <i class="icon-shopping-cart"></i>--> <strong style="font-size:55%;" >Agregar al Carrito</strong>
+									<strong style="font-size:55%;"><a style="color:#fff;" href="login.php">Agregar al Carrito</a></strong>
 								</button>
 							</form> 
 						</p>
@@ -328,6 +332,8 @@ function sql_actualizar($nom, $val, $col){
 	$sql = $sql."' where ".$col[0]." = ".$val[0];
 	return $sql;
 }	
+
+
 function consulta_tabla($bd){
 	echo '<div class="row">';
 	echo '<div class="col-md-6 col-md-offset-3">';
