@@ -41,6 +41,38 @@ if (isset($_SESSION['usuario'])){
         <title>Line Buy - Registro</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/agency.css" rel="stylesheet">
+ 
+
+         <style>
+            @media screen and (max-width: 745px) {
+    header img{
+       width: 71%;
+        margin-left: 20%;
+    }
+    section#col-md-2{
+        width: 71%;
+        margin-right: 7em;
+        
+    }
+    section#contenido{
+        background: #ccc;
+        width: 86%;
+    }
+    aside#modulos{
+        background: #ccc;       
+          width: 106%;
+          margin-right: 7em;
+
+    }
+    
+  }
+   h4   {
+        margin-top: 1em;
+        font-size: 2em;
+
+   }
+   </style>
+        
 
     </head>
     <body>
@@ -115,7 +147,7 @@ if (isset($_SESSION['usuario'])){
                         extract($_GET);
                         echo "<div style='width:auto%; height:100%; overflow:auto;'>";
                         if (isset($tabla)) {
-                            echo "<h1 class='section-subheading text-muted'>Detalle de las Tablas</h1>";
+                            echo "<h1 style='color:#000;'class='section-subheading text-muted'>Detalle de las Tablas</h1>";
                             echo "<form method='post' enctype='multipart/form-data'>";
                             if (strtolower ($_SESSION['usuario'])=='lcchalan') {
                                 switch ($tabla) {
