@@ -123,13 +123,10 @@ class clase_mysql{
 						<?php
 							
 							if ($row['estados']=='normal') {
-								echo "1";
 								echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
 							}elseif ($row['estados']=='oferta') {
-								echo "2";
 								echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
 							}else{
-								echo "3";
 								echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
 							}
 						?>
