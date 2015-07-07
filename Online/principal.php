@@ -8,7 +8,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
 ?>
 
 <?php
-header ("Refresh: 40; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Online/principal.php");
+header ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Online/principal.php");
 ?> 
 
 <!DOCTYPE html>
@@ -81,14 +81,9 @@ header ("Refresh: 40; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
             </div>
 
             <div class="container1">
-                <div class="center" id="logo">
-
-                </div>
-
                 <div class="col-md-10"> 
                     <aside id="modulos">         
                         <div class="cd-filter-conten"> 
-                         <div class="cd-filter-content">
                          <div class="row">
                                     <div class="form center">
                                         <form action="" method="post" name="search_form" id="search_form">
@@ -98,8 +93,6 @@ header ("Refresh: 40; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
 
                             <div id="re"></div>
                             <div class="footer center">
-
-                            </div>
                         </div>
             </div>
 
@@ -218,7 +211,6 @@ header ("Refresh: 40; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
                                     if (@ !$id) {
                                     }
                                     if ($id==0) {
-                                      echo "Selecione una categoria para busqueda";
 
                                   }else{
                                    $miconexion->consulta("select p.*, c.categoria, e.nombre from categoria_producto c, producto p, estado e where c.id = p.id_categoria and p.id_estado =e.id and p.id_categoria ='$id'" );

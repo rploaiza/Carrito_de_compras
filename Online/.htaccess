@@ -1,2 +1,3 @@
 Options -Indexes
 DirectoryIndex principal.php
+ErrorDocument 404 http://127.0.0.1/carrito_final/Carrito_de_compras/Online/404/404.html
