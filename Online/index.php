@@ -127,7 +127,7 @@ if (isset($_SESSION['usuario'])){
       </div>       
     </div><br><br>
     <!-- Inicio de catalogo -->
-    <div class="span6">          
+    <div class="span7">          
       <section id="catalogo">
         <?php
         if (isset($id)) {
