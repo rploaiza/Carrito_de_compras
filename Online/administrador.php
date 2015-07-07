@@ -59,7 +59,7 @@ if (isset($_SESSION['usuario'])){
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul style="float: right;" class="nav navbar-nav navbar-right">
+            <ul style="float: right; margin-top: -4%;" class="nav navbar-nav navbar-right">
 
                 <img style="width: 10%; float: left;" src="img/logo.png">
 
@@ -99,7 +99,7 @@ if (isset($_SESSION['usuario'])){
         <div class="row1 text-center">
             <div  class="col-md-2">
                 <h4>Tablas</h4>
-                <h3 class="section-subheading text-muted">Compre nuestros productos en linea...</h3>
+                <h3 class="section-subheading text-muted">Administracion de tablas</h3>
                 <?php
                 $miconexion->consulta("show tables");
                 $miconexion->verconsultablas();
@@ -108,7 +108,6 @@ if (isset($_SESSION['usuario'])){
             </div>
 
             <div class="col-md-10" >
-                <h4>Datos de las Tablas</h4><br><br>
                 <aside id="modulos">       
                     <section class="cd-gallery" width="100%">                            
                         <?php
