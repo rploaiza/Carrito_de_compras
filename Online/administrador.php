@@ -79,16 +79,23 @@ if (isset($_SESSION['usuario'])){
         </div>
 
         <ul class="nav navbar-nav navbar-left">
+            
             <li>
-                <a class="page-scroll" href="#">BIENVENIDO: <?php echo $_SESSION['usuario']; ?></a>
-
-            </li>                 
+                <a class="page-scroll" href="#">BIENVENIDO:
+                    <?php
+                        $miconexion->consulta("SELECT * FROM usuario WHERE user='".strtolower ($_SESSION['usuario'])."'");
+                        $miconexion->nombreuser();
+                    ?>
+                </a>
+            </li>                             
         </ul>
         <ul class="nav navbar-nav navbar-right">
+
             <li>
                 <a class="page-scroll" href="logout.php">CERRAR SESION</a>
 
-            </li>                 
+            </li>  
+                 
         </ul>
 
     </div>
@@ -104,6 +111,7 @@ if (isset($_SESSION['usuario'])){
                 <?php
                 $miconexion->consulta("show tables");
                 $miconexion->verconsultablas();
+               
                 ?>
             </div>
 
@@ -135,7 +143,7 @@ if (isset($_SESSION['usuario'])){
                                 $miconexion->consulta("SELECT id, cedula AS 'Cedula', nombre AS 'Nombre', apellido AS 'Apellido', direccion AS 'Dirección', telefono AS 'Teléfono', email AS 'Email', user AS 'Usuario', pass AS 'Contraseña' FROM ".$tabla);
                                 break;
                                 case 'producto':
-                                $miconexion->consulta("SELECT p.id, e.estado AS 'Estado del Producto', p.codigo AS 'Codigo del Producto', p.nombre AS 'Nombre del Producto', p.nota AS 'Caracteristicas del Producto', p.valor AS 'Precio del Producto', p.cantidad AS 'Productos en Stock' FROM producto p, categoria_estado e WHERE p.id_estado = e.id");
+                                $miconexion->consulta("SELECT p.id, e.estado AS 'Estado del Producto', p.codigo AS 'Codigo del Producto', p.nombre AS 'Nombre del Producto', p.nota AS 'Caracteristicas del Producto', p.valor AS 'Precio del Producto', p.cantidad AS 'Productos en Stock', p.imagen FROM producto p, categoria_estado e WHERE p.id_estado = e.id");
                                 break;
                             }
                             $miconexion->verconsulta2($tabla);
@@ -221,7 +229,7 @@ if (isset($_SESSION['usuario'])){
                                                             $("#cont").change(function() {
                                                                 if ($("#cont option[value='3']").attr('selected')) {
                                                                     <?php 
-                                                                    $miconexion->consulta("SELECT COUNT(id_estado) FROM producto WHERE id_estado=1");
+                                                                    $miconexion->consulta("SELECT COUNT(id_estado) FROM producto WHERE id_estado=3");
                                                                     $var=$miconexion->consulta_lista();
                                                                     if ($var[0] == 6) {
                                                                         ?>    

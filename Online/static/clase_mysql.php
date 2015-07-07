@@ -211,7 +211,11 @@ class clase_mysql{
 			} 
 		}		
 	}
-
+	function nombreuser(){
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+			echo $row[3]." ".$row[4];
+		}		
+	}
 
 	function consultauser($user,$pass){
 		$a=1;
@@ -263,7 +267,12 @@ class clase_mysql{
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			echo "<tr>";
 			for ($i=0; $i < $this->numcampos(); $i++) { 
-				echo "<td>".$row[$i]."</td>";
+				if ($this->nombrecampo($i)=='imagen') {
+					echo "<td><img src='".$row[$i]."'></td>";
+				}else{
+					echo "<td>".$row[$i]."</td>";
+				}
+				
 			}
 
 			echo "<td><a href='administrador.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=1'><img src='img/editar.png' ></a></td>";
@@ -350,7 +359,7 @@ class clase_mysql{
 	function consulta_lista1(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 
-			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".$row[1]."</a></button>";			
+			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".utf8_encode($row[1])."</a></button>";			
 		}
 		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php' class='nava' data-type='".$row[1]."'>Todos</a></button>";			
 	}
