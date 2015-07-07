@@ -176,9 +176,21 @@ if (isset($_SESSION['usuario'])){
                             }else{
                                             //--- INICIO ACTUALIZAR FILA TABLAS ----
                                 if ($edi==1) { 
-                                    if (isset($act)) {
-                                        $miconexion->consulta("SELECT * FROM ".$tabla." WHERE ".$act."=".$id);
-                                        $miconexion->consultaUpdate();
+
+                                    //if (isset($act)) {
+                                        if($tabla=='producto'){
+                                            $miconexion->consulta("SELECT id_estado, codigo, nombre, marca, nota, valor, cantidad FROM ".$tabla." WHERE ".$act."=".$id);
+                                            $miconexion->procategoria2();
+                                            ?>
+                                            <p>Seleccione la Imagen:
+                                            <input type="file" name="imagen"/>
+                                            </p>
+                                            <?php 
+                                            $miconexion->consultaUpdate();
+                                        }else{
+                                            $miconexion->consulta("SELECT * FROM ".$tabla." WHERE ".$act."=".$id);
+                                            $miconexion->consultaUpdate();
+                                        }
                                         if (isset($_REQUEST['actualizar'])) {  
                                            // echo "UPDATE ".$tabla." SET cedula='".$cedula."', nombre='".$nombre."', apellido='".$apellido."', direccion='".$direccion."', telefono='".$telefono."', email='".$email."', user='".$user."', pass='".$pass."'WHERE id=".$id;
                                             switch ($tabla) {
@@ -201,11 +213,19 @@ if (isset($_SESSION['usuario'])){
                                                                 $miconexion->consulta("UPDATE ".$tabla." SET cedula='".$cedula."', nombre='".$nombre."', apellido='".$apellido."', direccion='".$direccion."', telefono='".$telefono."', email='".$email."', user='".$user."', pass='".$pass."'WHERE id=".$id);
                                                                 break;
                                                                 case 'producto':
-                                                                $miconexion->consulta("UPDATE ".$tabla." SET codigo='".$codigo."', nombre='".$nombre."', marca='".$marca."', nota='".$nota."', valor='".$valor."', cantidad='".$cantidad."'WHERE id=".$id);
+                                                                
+                                                                $destino='img/producto';
+                                                                $origen=$_FILES['imagen']['tmp_name'];
+                                                                $nombreImagen=$_FILES['imagen']['name'];
+                                                                $rutaDestino=$destino.'/'.$nombreImagen;
+                                                                $moveResult = move_uploaded_file($origen, $destino.'/'.$nombreImagen);
+                                                                //echo $_POST['idcatest'];
+                                                                $miconexion->consulta("UPDATE ".$tabla." SET id_categoria='".$idcat."', id_estado='".$idest."', id_estado_pro='".$idcatest."', codigo='".$codigo."', nombre='".$nombre."', marca='".$marca."', 
+                                                                                                             nota='".$nota."', valor='".$valor."', estado='".$estado."', cantidad='".$cantidad."', imagen='".$rutaDestino."' WHERE id=".$id);
                                                                 break;
                                                             } 
                                                         }                               
-                                                    }
+                                                    //}
                                                     echo'<meta http-equiv="refresh" content="administrador.php>';   
                                                 }
                                             //---- FIN ACTUALIZAR FILA TABLAS ----
@@ -244,11 +264,11 @@ if (isset($_SESSION['usuario'])){
                                                                     <?php 
                                                                     $miconexion->consulta("SELECT COUNT(id_estado) FROM producto WHERE id_estado=3");
                                                                     $var=$miconexion->consulta_lista();
-                                                                    if ($var[0] == 6) {
+                                                                    if ($var[0] == 5) {
                                                                         ?>    
                                                                         alert("El limite de ofertas esta copado.");
                                                                         location.href='administrador.php?tabla=producto'
-                                                                        <?php    
+                                                                        <?php   
                                                                     }
                                                                     ?>
                                                                 }

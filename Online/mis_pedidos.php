@@ -103,33 +103,35 @@
                     </tr>
                     <?php 
                         $total=0;$neto=0;
-                        $pa=mysql_query("SELECT * FROM carrito");       
-                        while($row=mysql_fetch_array($pa)){
-                            $oProducto=new Consultar_Producto($row['codigo']);
-                            $total=$row['cantidad']*$oProducto->consultar('valor');#cantidad * valor unitario
-                            $neto=$neto+$total;#acumulamos el neto
-                    ?>
-                    <tr>
-                        <td>
-                            <div align="center">
-                                <strong><?php echo $oProducto->consultar('nombre'); ?></strong><br>
-                                <img src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="200" height="200" class="img-polaroid">
-                            </div>
-                        </td>
-                        <td>
-                            <br><br><div align="right">$ <?php echo number_format($oProducto->consultar('valor'),2,",","."); ?></div>
-                        </td>
-                        <td><br><br>
-                            <center>
-                                <a href="#cant<?php echo $row['codigo']; ?>" role="button" class="btn" data-toggle="modal" title="Editar Cantidad">
-                                    <span class="badge badge-success"><?php echo $row['cantidad']; ?></span>
-                                </a>  
-                            </center>
-                        </td>
-                        <td>
-                            <br><br><div align="right">$ <?php echo number_format($total,2,",","."); ?></div>
-                        </td>
-                        <td><br><br>
+                       $pa=mysql_query("SELECT distinct c.*, e.descuento from carrito c, estado e, producto p where p.id_estado = e.id and p.codigo = c.codigo ");       
+            while($row=mysql_fetch_array($pa)){
+        $oProducto=new Consultar_Producto($row['codigo']);
+        $total=$row['cantidad']*$oProducto->consultar('valor');#cantidad * valor unitario
+       // $desc= $oProducto->consultar('valor') * $desP;
+        $descu= $row['descuento'];
+        
+        $desc= $total*$descu;
+        $neto=$neto+$total;#acumulamos el neto
+      ?>
+          <tr>
+            <td>
+              <div align="center">
+                     <strong><?php echo $oProducto->consultar('nombre'); ?></strong><br>
+                     <img src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="200" height="200" class="img-polaroid">
+                </div>
+            </td>
+            <td><br><br><div align="right">$ <?php echo number_format($oProducto->consultar('valor'),2,",","."); ?></div></td>
+            <td><br><br>
+              <center>
+                  <a href="#cant<?php echo $row['codigo']; ?>" role="button" class="btn" data-toggle="modal" title="Editar Cantidad">
+            <span class="badge badge-success"><?php echo $row['cantidad']; ?></span>
+                    </a>
+                </center>
+            </td>
+            
+            <td><br><br><div align="right">$bb b b b  <?php echo number_format($total,2,",","."); ?></div></td>
+             <td><br><br><div align="right">$bb b b b  <?php echo number_format($desc,2,",","."); ?></div></td>
+            <td><br><br>
                             <center>
                                 <a href="mis_pedidos.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
                                     <button type="button" class="close" aria-label="Close">

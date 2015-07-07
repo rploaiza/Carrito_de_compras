@@ -62,7 +62,7 @@ class clase_mysql{
 				if ($i==0) {
 					$id=$row[$i];
 				}else{
-					echo "<input class='form-control' value='".$row[$i]."' name='".$this->nombrecampo($i)."' type='text'>";
+					echo mysql_field_name($this->Consulta_ID, $i).":<input class='form-control' value='".$row[$i]."' name='".$this->nombrecampo($i)."' type='text'>";
 					echo "<p class='help-block text-danger'></p>";
 					echo "</div>";
 				}
@@ -542,6 +542,45 @@ function procategoria(){
 		echo "string  ".$row[0];
 		echo "<option value='".$row[0]."'>".$row[1]."</option>"; 
 	}
+<<<<<<< HEAD
+		function procategoria2(){
+			echo "Categoria: ";
+			$query = "SELECT * FROM categoria_producto WHERE id";
+			$result = mysql_query($query) or die("error". mysql_error());                                   
+			echo "<div class='form-group'>";                                                                
+			echo "<select class='form-control' name='idcat'>";
+			echo '<option value="" default selected>- Select -</option>';
+			while ($row = mysql_fetch_array($result)) {
+				echo "<h3 class='section-subheading text-muted'> string   ".$row[0]."</h3>";   
+				echo "string  ".$row[0];
+				echo "<option value='".$row[0]."'>".$row[1]."</option>"; 
+			}
+			echo "</select><br>";
+			echo "<p class='help-block text-danger'></p>";
+			echo "</div>";
+		                                                    //------- extraccion de los estados ------
+			include ("static/estado.php");
+            $_POST['idcatest'];
+			echo "Estado del producto: ";
+			echo "<select class='form-control' name='estado'>";
+			echo '<option value=""> - Select - </option>';
+			echo '<option value="s">Disnonible</option>';
+			echo '<option value="n">Fuera de stock</option>';
+			echo "</select><br>";
+		}
+	function catprod(){
+		$query = "SELECT categoria FROM categoria_producto";
+		$result = mysql_query($query) or die("error". mysql_error());
+		$a = mysql_num_fields($result);
+		while ($row = mysql_fetch_array($result)) {
+			for ($i=0; $i < $a ; $i++) { 
+				echo "<div class='form-group'>";
+				echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text'>";
+				echo "<p class='help-block text-danger'></p>";
+				echo "</div>";
+			}
+			$a=0;                             
+=======
 	echo "</select><br>";
 	echo "<p class='help-block text-danger'></p>";
 	echo "</div>";
@@ -557,6 +596,7 @@ function procategoria(){
 			echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text' placeholder='".mysql_field_name($result, $i)."'>";
 			echo "<p class='help-block text-danger'></p>";
 			echo "</div>";
+>>>>>>> b3a87ebe6dbec744595ea3a66554f4d9a1419036
 		}
 
 		$a=0;                             
