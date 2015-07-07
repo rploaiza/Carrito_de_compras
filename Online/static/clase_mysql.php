@@ -351,24 +351,6 @@ class clase_mysql{
 		echo "</ul>";
 	}
 
-	function sql_ingresar($nom, $val){
-		$sql="insert into ".$nom." values('".$val[1]."'";
-			for ($i=2; $i < count($val)+1; $i++) { 
-				$sql =$sql.",'".$val[$i]."'";
-			}
-			$sql = $sql.")";
-echo $sql;
-return $sql;
-}	
-
-function sql_actualizar($nom, $val, $col){
-	$sql="update ".$nom." set ".$col[1]."= '".$val[1];
-	for ($i=2; $i < count($val); $i++) { 
-		$sql =$sql."', ".$col[$i]."= '".$val[$i];
-	}		
-	$sql = $sql."' where ".$col[0]." = ".$val[0];
-	return $sql;
-}	
 
 
 function consulta_tabla($bd){
@@ -506,29 +488,7 @@ function hora(){
 	return $array;
 }
 
-function generar_reporte(){
-	echo "<div class='table-responsive'> ";
-	echo "<table class='table table-bordered table-hover'>";
-	echo "<thead>";
-	echo "<tr>";
- 		//mostrar los nombres de los campos
-	for ($i=0; $i < $this->numcampos(); $i++) { 
-		echo "<th>".$this->nombrecampo($i)."</th>";
-	}
-	echo "</tr>";
-	echo "</thead>";
-	echo "<tbody>";		
-	while ($row = mysql_fetch_array($this->Consulta_ID)) {
-		echo "<tr>";
-		for ($i=0; $i < $this->numcampos(); $i++) { 
-			echo "<td>".$row[$i]."</td>";
-		}
-		echo "</tr>";
-	}
-	echo "</tbody>";	
-	echo "</table>";
-	echo "</div>";
-}
+
 
 function procategoria(){
 	echo "Categoria: ";
@@ -579,12 +539,14 @@ function procategoria(){
 				echo "</div>";
 			}
 			$a=0;                             
+	include ("static/estado.php");
+    $_POST['idcatest'];
+	echo "Estado del producto: ";
+	echo "<select class='form-control' name='estado'>";
+	echo '<option value=""> - Select - </option>';
+	echo '<option value="s">Disnonible</option>';
+	echo '<option value="n">Fuera de stock</option>';
 	echo "</select><br>";
-	echo "<p class='help-block text-danger'></p>";
-	echo "</div>";
-                                                    //------- extraccion de los estados ------
-	include ("static/estado.php");    
-                                                    //-------- exit -------
 	$query = "SELECT codigo, nombre, marca, nota, valor, estado, cantidad FROM producto";
 	$result = mysql_query($query) or die("error". mysql_error());
 	$a = mysql_num_fields($result);
@@ -595,11 +557,35 @@ function procategoria(){
 			echo "<p class='help-block text-danger'></p>";
 			echo "</div>";
 		}
-
-		$a=0;                             
-	} 
+		$a=0;                              
+	}
 }
 
+function procategoria2(){
+	echo "Categoria: ";
+	$query = "SELECT * FROM categoria_producto WHERE id";
+	$result = mysql_query($query) or die("error". mysql_error());                                   
+	echo "<div class='form-group'>";                                                                
+	echo "<select class='form-control' name='idcat'>";
+	echo '<option value="" default selected>- Select -</option>';
+	while ($row = mysql_fetch_array($result)) {
+		echo "<h3 class='section-subheading text-muted'> string   ".$row[0]."</h3>";   
+		echo "string  ".$row[0];
+		echo "<option value='".$row[0]."'>".$row[1]."</option>"; 
+	}
+	echo "</select><br>";
+	echo "<p class='help-block text-danger'></p>";
+	echo "</div>";
+                                                    //------- extraccion de los estados ------
+	include ("static/estado.php");
+    $_POST['idcatest'];
+	echo "Estado del producto: ";
+	echo "<select class='form-control' name='estado'>";
+	echo '<option value=""> - Select - </option>';
+	echo '<option value="s">Disnonible</option>';
+	echo '<option value="n">Fuera de stock</option>';
+	echo "</select><br>";
+}
 
 function catprod(){
 	$query = "SELECT categoria FROM categoria_producto";
