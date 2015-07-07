@@ -218,7 +218,7 @@ class clase_mysql{
 	}
 	function nombreuser(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
-			echo $row[3]." ".$row[4];
+			echo utf8_encode($row[3]." ".$row[4]);
 		}		
 	}
 
@@ -487,7 +487,6 @@ function hora(){
 
 	return $array;
 }
-
 
 
 function procategoria(){

@@ -107,11 +107,16 @@
             while($row=mysql_fetch_array($pa)){
         $oProducto=new Consultar_Producto($row['codigo']);
         $total=$row['cantidad']*$oProducto->consultar('valor');#cantidad * valor unitario
-       // $desc= $oProducto->consultar('valor') * $desP;
+      
         $descu= $row['descuento'];
         
+        $a=1-$descu;
+        
+        $subtotal= $total*($a);
+        
         $desc= $total*$descu;
-        $neto=$neto+$total;#acumulamos el neto
+        $neto=$neto+$subtotal;#acumulamos el neto
+       
       ?>
           <tr>
             <td>
@@ -128,9 +133,10 @@
                     </a>
                 </center>
             </td>
+            <td><br><br><div align="right">Decuento del  <?php echo number_format($descu,2,",","."); ?>% por producto</div></td>
+            <td><br><br><div align="right"> Total a pagar: $<?php echo number_format($subtotal,2,",",".");  ?> </div></td>
             
-            <td><br><br><div align="right">$bb b b b  <?php echo number_format($total,2,",","."); ?></div></td>
-             <td><br><br><div align="right">$bb b b b  <?php echo number_format($desc,2,",","."); ?></div></td>
+             
             <td><br><br>
                             <center>
                                 <a href="mis_pedidos.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
@@ -172,10 +178,11 @@
                     <tr class="info">
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
-                      <td><div align="right"><strong>NETO A PAGAR</strong></div></td>
-                      <td><div align="right"><strong>$ <?php echo number_format($neto,2,",","."); ?></strong></div></td>
                       <td>&nbsp;</td>
+                      <td><div align="right"><strong>NETO A PAGAR</strong></div></td>
+                      <td><div align="right"><strong>$ <?php echo number_format($neto,2,",","."); ?></strong></div></td>                      <td>&nbsp;</td>
                     </tr>
+                    <td>&nbsp;</td>
                 </table>
 
     </div>

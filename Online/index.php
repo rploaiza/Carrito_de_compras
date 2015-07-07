@@ -98,7 +98,12 @@ if (isset($_SESSION['usuario'])){
     <div>
       <ul class="nav navbar-nav navbar-left">
         <li>
-          <a class="page-scroll" href="#">BIENVENIDO: <?php echo $_SESSION['usuario']; ?></a>
+           <a class="page-scroll" href="#">BIENVENIDO:
+              <?php
+                  $miconexion->consulta("SELECT * FROM usuario WHERE user='".strtolower ($_SESSION['usuario'])."'");
+                  $miconexion->nombreuser();
+              ?>
+          </a>
         </li>                 
       </ul>
       <ul class="nav navbar-nav navbar-right">
