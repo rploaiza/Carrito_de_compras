@@ -79,24 +79,25 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
         <div class="center" id="logo">
             
         </div>
-        
-        
+        <div class="form center">
+            <form action="" method="post" name="search_form" id="search_form">
+                <input type="text" name="search" id="search">    
+                <input type="reset" value="Borrar">           
+            </form>
+        </div>
+        <div id="re"></div>
+        <div class="footer center">
            
         </div>
     </div>
                         <div class="col-md-10"> 
                             <aside id="modulos">         
-                                
+                                <div class="cd-filter-conten"> 
                          <div id="contenedor">
-                            <div class="form center">
-            <form action="" method="post" name="search_form" id="search_form">
-                <h4>Filtrar: <input type="text" name="search" id="search"placeholder="Buscar..."> </h4> 
-                         
-            </form>
-            <div id="re"></div>
-        
-        </div>
-                         
+                         <div class="cd-filter-content">
+                        <h4>Filtrar: <input type="search" placeholder="Buscar..."> </h4>
+                    </div>
+
                             <div id="boton"  >
                                     Busqueda Avanzada
 
@@ -160,11 +161,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                 <option>1600</option>
                             </select>
 
-<<<<<<< HEAD
                             <center> <input class="form-btn" name="submit" type="submit" value="Aceptar"/></center>
-=======
-                            <center> <input class="form-btn" name="submit" type="submit" value="Aceptar" /></center>
->>>>>>> c0218090b72a03b45cf9fa77694244b5b8690b0a
                             
                             <center>  <input type=button onClick="location.href='principal.php'" value="cancelar" name="cancelar"id="cancelar">
                                
@@ -199,10 +196,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                 </p>
 
                             </li>";
-                }if ($i==0) {
-                            echo "No hay elementos";
-                        }
-
+                }
                                     ?>
                         </form>
 
@@ -210,7 +204,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
 
                             </div>   
                      </div>  
-         
+            </div>
             <div id="btn_con" >
                     <section class="cd-gallery2">
                         <ul class='gallery2'>
@@ -250,7 +244,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                     }
                     ?>
                 </ul>
-               
+                <div class="cd-fail-message">No hay resultados</div>
             </section> <!-- cd-gallery -->
             </div>
         </aside> 
