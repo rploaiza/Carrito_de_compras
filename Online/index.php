@@ -127,15 +127,15 @@ if (isset($_SESSION['usuario'])){
       </div>       
     </div><br><br>
     <!-- Inicio de catalogo -->
-    <div class="span7">          
+    <div class="span6">          
       <section id="catalogo">
         <?php
         if (isset($id)) {
           $miconexion->consulta("SELECT * FROM producto where id_categoria=".$id);
-          $miconexion->consultacatalogo();
+          $miconexion->consultacatalogo3();
         }else{
           $miconexion->consulta("SELECT * FROM producto where estado='s'");
-          $miconexion->consultacatalogo();
+          $miconexion->consultacatalogo3();
         }
         ?>
         <div id="light" class="white_content">

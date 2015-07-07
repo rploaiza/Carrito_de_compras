@@ -8,6 +8,79 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+
+.producto2{
+  background: #fff;
+  max-width: 29%;
+  display: inline-block;
+  float: left;
+  vertical-align: top;
+  margin-left: 2%;
+  margin-top: 1%;
+  color: #000;
+  font-weight: bolder;
+  font-size: 1rem;
+  padding: 1%;
+  border-color: #000;
+  -webkit-box-shadow: 0px 0px 10px rgba(240, 240, 240, 0.75);
+  -moz-box-shadow:    0px 0px 10px rgba(240, 240, 240, 0.75);
+  box-shadow:         0px 0px 10px rgba(240, 240, 240, 0.75);
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+}
+
+.producto2 img{
+  width: 300px;
+  height: 200px;
+  margin:0 auto;
+  -webkit-box-shadow: 0px 0px 10px rgba(74, 74, 74, 0.75);
+  -moz-box-shadow:    0px 0px 10px rgba(74, 74, 74, 0.75);
+  box-shadow:         0px 0px 10px rgba(74, 74, 74, 0.75);
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+}
+
+
+.producto{
+  background: #fff;
+  max-height: 20%;
+  max-width: 27%;
+  height: auto;
+  display: inline-block;
+  float: left;
+  vertical-align: top;
+  margin-left: 1%;
+  margin-top: 1%;
+  color: #000;
+  font-weight: bolder;
+  font-size: 1rem;
+  padding: 1%;
+  -webkit-box-shadow: 0px 0px 10px rgba(240, 240, 240, 0.75);
+  -moz-box-shadow:    0px 0px 10px rgba(240, 240, 240, 0.75);
+  box-shadow:         0px 0px 10px rgba(240, 240, 240, 0.75);
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+}
+
+
+.producto img{
+  width: 200px;
+  height: 200px;
+  margin:0 auto;
+  -webkit-box-shadow: 0px 0px 10px rgba(74, 74, 74, 0.75);
+  -moz-box-shadow:    0px 0px 10px rgba(74, 74, 74, 0.75);
+  box-shadow:         0px 0px 10px rgba(74, 74, 74, 0.75);
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+}
+
+.producto:hover{
+
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+}
+
+
 /*+++++inicio estilo modal login++++++*/
 
 .modal-body{

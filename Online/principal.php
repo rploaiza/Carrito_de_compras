@@ -161,7 +161,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                 <option>1600</option>
                             </select>
 
-                            <center> <input class="form-btn" name="submit" type="submit" value="Aceptar" onclick="mostrar('btn_con'); return false"/></center>
+                            <center> <input class="form-btn" name="submit" type="submit" value="Aceptar"/></center>
                             
                             <center>  <input type=button onClick="location.href='principal.php'" value="cancelar" name="cancelar"id="cancelar">
                                

@@ -14,17 +14,20 @@ class clase_mysql{
 	function clase_mysql(){
  		//cosntructor
 	}
+
 	function conectar($db, $host, $user, $pass){
 		if($db!="") $this->BaseDatos = $db;
 		if($host!="") $this->Servidor = $host;
 		if($user!="") $this->Usuario = $user;
 		if($pass!="") $this->Clave = $pass;
+
  		//conectamos al servidor de db
 		$this->Conexion_ID=mysql_connect($this->Servidor,$this->Usuario, $this->Clave);
 		if(!$this->Conexion_ID){
 			$this->Error="La conexion con el servidor fallida";
 			return 0;
 		}
+
 		//Seleccionamos la base de datos
 		if(!mysql_select_db($this->BaseDatos, $this->Conexion_ID)){
 			$this->Error="Imposible abrir ".$this->BaseDatos;
@@ -33,6 +36,7 @@ class clase_mysql{
 		/*Si todo tiene exito, retorno el identificador de la conexion*/
 		return $this->Conexion_ID;
 	}	
+
  	//Ejecuta cualquier consulta
 	function consulta($sql=""){
 		if($sql==""){
@@ -60,6 +64,7 @@ class clase_mysql{
 					echo "<p class='help-block text-danger'></p>";
 					echo "</div>";
 				}
+
 			}
 			echo "<br>";                           
 		}
@@ -69,13 +74,14 @@ class clase_mysql{
 	function consultacatalogo(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			?>    
-			<div class="col-sm-6 col-md-4">
+
+			<div class="col-sm-4">
 				<div class="thumbnail">        
 					<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
 					document.getElementById('fade').style.display='block'"><img id="imagen" src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="100%"></a>
 					<div class="caption">
 						<h5><?php echo $row['nombre'];?></h5>
-						<p id="catal" style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
+						<p id="catal"style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
 						<p id="catal"><?php echo $row['nota'];?></p>
 						<p id="catal">
 							<form name="form<?php $row['codigo']; ?>" method="post" action="">
@@ -91,18 +97,18 @@ class clase_mysql{
 			<?php
 		}
 	}
-	function consultacatalogo2(){
+
+	function consultacatalogo3(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
-			?>    
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">        
+			?>  
+			<div class="producto2">       
 					<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-					document.getElementById('fade').style.display='block'"><img id="imagen" src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="100%"></a>
-					<div class="caption">
+					document.getElementById('fade').style.display='block'"><img src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="100%"></a>
+					<div class="caption" >
 						<h5><?php echo $row['nombre'];?></h5>
-						<p id="catal" style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
-						<p id="catal"><?php echo $row['nota'];?></p>
-						<p id="catal">
+						<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
+						<p style="font-size: 1em;"><?php echo $row['nota'];?></p>
+						<p>
 							<form name="form<?php $row['codigo']; ?>" method="post" action="">
 								<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
 								<button type="submit" name="boton" class="btn-comprar">
@@ -111,7 +117,30 @@ class clase_mysql{
 							</form> 
 						</p>
 					</div>
-				</div>
+		</div>
+			<?php
+		}
+	}
+
+	function consultacatalogo2(){
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+			?>  
+				<div class="producto">        
+					<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
+					document.getElementById('fade').style.display='block'"><img src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="100%"></a>
+					<div class="caption" >
+						<h5><?php echo $row['nombre'];?></h5>
+						<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
+						<p><?php echo $row['nota'];?></p>
+						<p>
+							<form name="form<?php $row['codigo']; ?>" method="post" action="">
+								<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
+								<button type="submit" name="boton" class="btn-comprar">
+									<!-- <i class="icon-shopping-cart"></i>--> <strong style="font-size:55%;" >Agregar al Carrito</strong>
+								</button>
+							</form> 
+						</p>
+					</div>
 			</div>
 			<?php
 		}
@@ -120,14 +149,17 @@ class clase_mysql{
 	function numcampos(){
 		return mysql_num_fields($this->Consulta_ID);
 	}
+
  	//Devuleve el numero de registros de la culsulta
 	function numregistros(){
 		return mysql_num_rows($this->Consulta_ID);
 	}
+
  	//Devuelve el nombre de un campo de la consulta
 	function nombrecampo($numcampo){
 		return mysql_field_name($this->Consulta_ID, $numcampo);
 	}
+
  	//Muestra los resultados de la consulta
 	function verconsulta($bd){
 		echo "<div class='table-responsive'> ";
@@ -162,24 +194,30 @@ class clase_mysql{
 	function verconsultablas(){
 		$nonTabla = array("carrito", "categoria_estado", "categoria_producto", "estado", "producto", "usuario");
 		$nonTabla1 = array("Tabla Carrito de Compras", "Tabla Estados del Producto", "Tabla Categorias de Productos", "Tabla Descripción de Estados", "Tabla Productos", "Tabla Usuario");
+
 		echo "<form name='formulario' method='post' action='administrador.php'>";
  		//mostrar los nombres de los campos
+
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			for ($i=0; $i < $this->numcampos(); $i++) { 
 				for ($j=0; $j < 6 ; $j++) { 
 					if ($row[0]==$nonTabla[$j]) {
+
 						echo "<button class='btn btn-xl1' data-filter='.".$row[0]."'><a href='administrador.php?tabla=".$row[0]."' name='tablas' value='".$row[$i]."' data-type='".$row[0]."'>".utf8_decode ($nonTabla1[$j])."</a></button>";
 						echo "</form>";
 					}
 				}
+
 			} 
 		}		
 	}
+
 	function consultauser($user,$pass){
 		$a=1;
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+
 			for ($i=0; $i < $this->numcampos(); $i++){
-				//echo "xxxxxx ".$row[8]." = ".$user." ".$row[9]." = ".$pass." ".$row[1];
+				echo "xxxxxx ".$row[8]." = ".$user." ".$row[9]." = ".$pass." ".$row[1];
 				if ($user==$row[8] AND $pass==$row[9] AND $row[1]==1) {
 					echo '<script>location.href = "administrador.php"</script>';
 					$_SESSION["usuario"] = $row[3]." ".$row[4];
@@ -198,6 +236,7 @@ class clase_mysql{
 							if ($a==mysql_num_rows($this->Consulta_ID)) {
 								echo "<script language='javascript'> alert('Sus datos son incorrecotos')</script>";
 								echo '<script>location.href = "login.php"</script>';
+
 								exit();
 							}
 						}
@@ -208,6 +247,7 @@ class clase_mysql{
 		}		
 	}
 	function verconsulta2($tabla){
+
 		echo "<table id='example' class='display' cellspacing='0' width='100%'>";
 		echo "<thead>";
 		echo "<tr>";
@@ -225,6 +265,7 @@ class clase_mysql{
 			for ($i=0; $i < $this->numcampos(); $i++) { 
 				echo "<td>".$row[$i]."</td>";
 			}
+
 			echo "<td><a href='administrador.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=1'><img src='img/editar.png' ></a></td>";
 			echo "<td><a href='administrador.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=2'><img src='img/borrar.png' ></a></td>";
 			echo "</tr>";
@@ -232,14 +273,24 @@ class clase_mysql{
 		echo "</tbody>";	
 		echo "</table>";
 	}
+
+
 	function verconsulta5($bd){
+
 		echo "<table id='example' class='display' cellspacing='0' width='100%'>";
+
 		echo "<thead>";
+
+
 		echo "<tr>";
+
  		//mostrar los nombres de los campos
 		for ($i=0; $i < $this->numcampos(); $i++) { 
 			echo "<th>".$this->nombrecampo($i)."</th>";
+
 		}
+
+
 		echo "<th>Borrar</th>";
 		echo "<th>Editar</th>";
 		echo "</tr>";
@@ -258,6 +309,8 @@ class clase_mysql{
 		}
 		echo "</tbody>";	
 		echo "</table>";
+
+
 	}
 	function consulta_lista(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
@@ -270,6 +323,7 @@ class clase_mysql{
 	}
 	function consulta_lista1(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+
 			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".$row[1]."</a></button>";			
 		}
 		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php' class='nava' data-type='".$row[1]."'>Todos</a></button>";			
@@ -281,6 +335,7 @@ class clase_mysql{
 		}
 		echo "</ul>";
 	}
+
 	function sql_ingresar($nom, $val){
 		$sql="insert into ".$nom." values('".$val[1]."'";
 			for ($i=2; $i < count($val)+1; $i++) { 
@@ -290,6 +345,7 @@ class clase_mysql{
 echo $sql;
 return $sql;
 }	
+
 function sql_actualizar($nom, $val, $col){
 	$sql="update ".$nom." set ".$col[1]."= '".$val[1];
 	for ($i=2; $i < count($val); $i++) { 
@@ -351,6 +407,7 @@ function consulta_tabla($bd){
 	echo '</div>';
 	echo '</div>';
 }
+
 function consulta_tabla2($bd, $list){
 	echo '<div class="row">';
 	echo '<div class="col-md-6 col-md-offset-3">';
@@ -405,7 +462,9 @@ function consulta_tabla2($bd, $list){
 	echo '</form>';        
 	echo '</div>';
 	echo '</div>';
+
 }
+
 function opciones($num){
 	if($num==1){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
@@ -420,6 +479,14 @@ function opciones($num){
 			echo "<option value='".$row[0]."'>".utf8_encode($row[0])."</option>";
 		}
 	}
+}
+function hora(){
+	while ($row = mysql_fetch_array($this->Consulta_ID)) {
+		$array[0]=$row[0];
+		$array[1]=$row[1];
+	}
+
+	return $array;
 }
 
 function generar_reporte(){
@@ -445,6 +512,7 @@ function generar_reporte(){
 	echo "</table>";
 	echo "</div>";
 }
+
 function procategoria(){
 	echo "Categoria: ";
 	$query = "SELECT * FROM categoria_producto WHERE id";
@@ -473,8 +541,40 @@ function procategoria(){
 			echo "<p class='help-block text-danger'></p>";
 			echo "</div>";
 		}
+
 		$a=0;                             
 	} 
+	?>
+
+	<p>Seleccione la Imagen:
+		<input type="file" name="imagen"/>
+	</p>
+
+	<?php
+
+
+}
+
+
+function imagen(){
+		echo $_POST['idcatest'];
+		$destino='img/producto';
+		$origen=$_FILES['imagen']['tmp_name'];
+		$nombreImagen=$_FILES['imagen']['name'];
+		$rutaDestino=$destino.'/'.$nombreImagen;
+		$moveResult = move_uploaded_file($origen, $destino.'/'.$nombreImagen);
+		if ($moveResult == true) {
+		    echo "File has been moved from " . $origen . " to" . $pathAndName;
+		} else {
+		     echo "ERROR: File not moved correctly";
+		}
+		$query = "INSERT INTO producto(id, id_categoria, id_estado, id_estado_pro, codigo, nombre, marca, nota, valor, estado, cantidad, imagen) values ('','$idcat','$idest','$idcatest', '$codigo', '$nombre', '$marca', '$nota', '$valor', '$estado', '$cantidad', '$rutaDestino')";
+		$res = mysql_query($query) or die("error". mysql_error());
+		if ($res){
+			echo 'inserción con exito';
+		}else{
+		    echo 'no se puedo insertar';
+		} 
 }
 function catprod(){
 	$query = "SELECT categoria FROM categoria_producto";
@@ -489,6 +589,7 @@ function catprod(){
 		}
 		$a=0;                             
 	}
+
 }
 function categoria_estado(){
 	$query = "SELECT estado FROM categoria_estado";
@@ -500,6 +601,7 @@ function categoria_estado(){
 			echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text'>";
 			echo "<p class='help-block text-danger'></p>";
 			echo "</div>";
+
 		}
 		$a=0;                             
 	}
@@ -528,6 +630,7 @@ function estadoproducto(){
 		echo "<br>";
 		$cont=0;                             
 	}   
+
 }
 }
 ?>
