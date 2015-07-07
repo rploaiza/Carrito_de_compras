@@ -33,7 +33,7 @@
 #ninja-slider-pager
 {
     padding-top:12px; /* set the distance away from the slider */
-    margin:0 auto; /* center align */
+    margin:-38px auto; /* center align */
     text-align:center;
     display:table;
     font-size:0;
