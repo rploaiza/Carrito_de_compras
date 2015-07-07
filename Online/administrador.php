@@ -135,7 +135,7 @@ if (isset($_SESSION['usuario'])){
                                 $miconexion->consulta("SELECT id, cedula AS 'Cedula', nombre AS 'Nombre', apellido AS 'Apellido', direccion AS 'Dirección', telefono AS 'Teléfono', email AS 'Email', user AS 'Usuario', pass AS 'Contraseña' FROM ".$tabla);
                                 break;
                                 case 'producto':
-                                $miconexion->consulta("SELECT id, codigo AS 'Codigo del Producto', nombre AS 'Nombre del Producto', nota AS 'Caracteristicas del Producto', valor AS 'Precio del Producto', cantidad AS 'Productos en Stock' FROM ".$tabla);
+                                $miconexion->consulta("SELECT p.id, e.estado AS 'Estado del Producto', p.codigo AS 'Codigo del Producto', p.nombre AS 'Nombre del Producto', p.nota AS 'Caracteristicas del Producto', p.valor AS 'Precio del Producto', p.cantidad AS 'Productos en Stock' FROM producto p, categoria_estado e WHERE p.id_estado = e.id");
                                 break;
                             }
                             $miconexion->verconsulta2($tabla);

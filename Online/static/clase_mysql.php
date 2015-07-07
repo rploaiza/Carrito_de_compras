@@ -77,7 +77,7 @@ class clase_mysql{
 			?>  
 			<div class="producto2">       
 					<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-					document.getElementById('fade').style.display='block'"><img src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="100%"></a>
+					document.getElementById('fade').style.display='block'"><img src="<?php echo $row['imagen']; ?>" width="100%"></a>
 					<div class="caption" >
 						<h5><?php echo $row['nombre'];?></h5>
 						<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
@@ -101,7 +101,7 @@ class clase_mysql{
 			?>  
 				<div class="producto">        
 					<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-					document.getElementById('fade').style.display='block'"><img src="img/producto/<?php echo $row['codigo']; ?>.jpg" width="100%"></a>
+					document.getElementById('fade').style.display='block'"><img src="<?php echo $row['imagen']; ?>" width="100%"></a>
 					<div class="caption" >
 						<h5><?php echo $row['nombre'];?></h5>
 						<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
@@ -185,25 +185,51 @@ class clase_mysql{
 			} 
 		}		
 	}
+	function verconsultablas2(){
+		$nonTabla = array("carrito", "categoria_estado", "categoria_producto", "estado", "producto", "usuario");
+		$nonTabla1 = array("Tabla Carrito de Compras", "Tabla Estados del Producto", "Tabla Categorias de Productos", "Tabla Descripción de Estados", "Tabla Productos", "Tabla Usuario");
+
+		echo "<form name='formulario' method='post' action='administrador2.php'>";
+ 		//mostrar los nombres de los campos
+
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+			for ($i=0; $i < $this->numcampos(); $i++) { 
+				for ($j=0; $j < 6 ; $j++) { 
+					if ($row[0]==$nonTabla[$j] AND $row[0]=='producto') {
+
+						echo "<button class='btn btn-xl1' data-filter='.".$row[0]."'><a href='administrador2.php?tabla=".$row[0]."' name='tablas' value='".$row[$i]."' data-type='".$row[0]."'>".utf8_decode ($nonTabla1[$j])."</a></button>";
+						echo "</form>";
+					}else{
+						if ($row[0]==$nonTabla[$j]){
+							echo "<button class='btn btn-xl1' data-filter='.".$row[0]."'><a href='administrador2.php?tabla='no' name='tablas'>".utf8_decode ($nonTabla1[$j])."</a></button>";
+							echo "</form>";
+						}
+						
+					}
+				}
+
+			} 
+		}		
+	}
+
 
 	function consultauser($user,$pass){
 		$a=1;
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 
 			for ($i=0; $i < $this->numcampos(); $i++){
-				echo "xxxxxx ".$row[8]." = ".$user." ".$row[9]." = ".$pass." ".$row[1];
 				if ($user==$row[8] AND $pass==$row[9] AND $row[1]==1) {
+					$_SESSION["usuario"] = $row[8];
 					echo '<script>location.href = "administrador.php"</script>';
-					$_SESSION["usuario"] = $row[3]." ".$row[4];
 					exit();
 				}else{
 					if ($user==$row[8] AND $pass==$row[9] AND $row[1]==2) {
-						$_SESSION["usuario"] = $row[3]." ".$row[4];
-						echo '<script>location.href = "administrador.php"</script>';
+						$_SESSION["usuario"] = $row[8];
+						echo '<script>location.href = "administrador2.php"</script>';
 						exit();
 					}else{
 						if ($user==$row[8] AND $pass==$row[9] AND $row[1]==3) {
-							$_SESSION["usuario"] = $row[3]." ".$row[4];
+							$_SESSION["usuario"] = $row[8];
 							echo '<script>location.href = "index.php"</script>';
 							exit();
 						}else{
@@ -247,7 +273,33 @@ class clase_mysql{
 		echo "</tbody>";	
 		echo "</table>";
 	}
+	function verconsulta3($tabla){
 
+		echo "<table id='example' class='display' cellspacing='0' width='100%'>";
+		echo "<thead>";
+		echo "<tr>";
+		 		//mostrar los nombres de los campos
+		for ($i=0; $i < $this->numcampos(); $i++) { 
+			echo "<td>".utf8_decode ($this->nombrecampo($i))."</td>";
+		}
+		echo "<td width='0.3em'>Editar</td>";
+		echo "<td width='0.3em'>Borrar</td>";		 			
+		echo "</tr>";
+		echo "</thead>";
+		echo "<tbody>";
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+			echo "<tr>";
+			for ($i=0; $i < $this->numcampos(); $i++) { 
+				echo "<td>".$row[$i]."</td>";
+			}
+
+			echo "<td><a href='administrador2.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=1'><img src='img/editar.png' ></a></td>";
+			echo "<td><a href='administrador2.php? id=$row[0]&act=".$this->nombrecampo(0)."&tabla=$tabla&edi=2'><img src='img/borrar.png' ></a></td>";
+			echo "</tr>";
+		}
+		echo "</tbody>";	
+		echo "</table>";
+	}
 
 	function verconsulta5($bd){
 
@@ -518,38 +570,9 @@ function procategoria(){
 
 		$a=0;                             
 	} 
-	?>
-
-	<p>Seleccione la Imagen:
-		<input type="file" name="imagen"/>
-	</p>
-
-	<?php
-
-
 }
 
 
-function imagen(){
-		echo $_POST['idcatest'];
-		$destino='img/producto';
-		$origen=$_FILES['imagen']['tmp_name'];
-		$nombreImagen=$_FILES['imagen']['name'];
-		$rutaDestino=$destino.'/'.$nombreImagen;
-		$moveResult = move_uploaded_file($origen, $destino.'/'.$nombreImagen);
-		if ($moveResult == true) {
-		    echo "File has been moved from " . $origen . " to" . $pathAndName;
-		} else {
-		     echo "ERROR: File not moved correctly";
-		}
-		$query = "INSERT INTO producto(id, id_categoria, id_estado, id_estado_pro, codigo, nombre, marca, nota, valor, estado, cantidad, imagen) values ('','$idcat','$idest','$idcatest', '$codigo', '$nombre', '$marca', '$nota', '$valor', '$estado', '$cantidad', '$rutaDestino')";
-		$res = mysql_query($query) or die("error". mysql_error());
-		if ($res){
-			echo 'inserción con exito';
-		}else{
-		    echo 'no se puedo insertar';
-		} 
-}
 function catprod(){
 	$query = "SELECT categoria FROM categoria_producto";
 	$result = mysql_query($query) or die("error". mysql_error());
