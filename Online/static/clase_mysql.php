@@ -542,7 +542,6 @@ function procategoria(){
 		echo "string  ".$row[0];
 		echo "<option value='".$row[0]."'>".$row[1]."</option>"; 
 	}
-<<<<<<< HEAD
 		function procategoria2(){
 			echo "Categoria: ";
 			$query = "SELECT * FROM categoria_producto WHERE id";
@@ -580,7 +579,6 @@ function procategoria(){
 				echo "</div>";
 			}
 			$a=0;                             
-=======
 	echo "</select><br>";
 	echo "<p class='help-block text-danger'></p>";
 	echo "</div>";
@@ -596,7 +594,6 @@ function procategoria(){
 			echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text' placeholder='".mysql_field_name($result, $i)."'>";
 			echo "<p class='help-block text-danger'></p>";
 			echo "</div>";
->>>>>>> b3a87ebe6dbec744595ea3a66554f4d9a1419036
 		}
 
 		$a=0;                             
