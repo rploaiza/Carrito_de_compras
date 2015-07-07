@@ -50,6 +50,43 @@ header ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
     <link rel="stylesheet" href="css/estilos.css">
+     <style>
+
+        @media (min-width: 768px) {
+            .container {
+              width: 80%;
+            }
+
+            .btn{
+            display: block;
+            width: 100%;
+           }
+
+        }
+
+        @media (min-width: 400px){
+             .container
+           {
+                width: 80%;
+           }
+
+           .btn
+           {
+            display: block;
+            width: 100%;
+            margin-left: 4.6em;
+           }
+
+
+    
+
+        }
+
+
+
+    </style>
+
+    
 
 
 </head>
