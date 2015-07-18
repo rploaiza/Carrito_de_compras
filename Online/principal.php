@@ -8,7 +8,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
 ?>
 
 <?php
-header ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Online/principal.php");
+//nheader ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Online/principal.php");
 ?> 
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ header ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
     <link rel="stylesheet" href="css/estilos.css">
-     <style>
+    <style>
 
         @media (min-width: 768px) {
             .container {
@@ -59,7 +59,7 @@ header ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
 
             .btn{
             display: block;
-            width: 100%;
+            width: 17%;
            }
 
         }
@@ -73,20 +73,39 @@ header ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
            .btn
            {
             display: block;
-            width: 100%;
-            margin-left: 4.6em;
+            width: 123%;
+            margin-left: 2.1em;
            }
 
 
     
 
         }
+        input.buscador
+            {
+                width: auto;
+                background: url("img/lupa.png") no-repeat scroll 0 0 transparent;
+                background-position: 11em 0.1em;
+                background-color: #205FA7;
+                color: #FFFFFF;
+                cursor: pointer;
+            margin-left: -65%;
+            padding: 1%;
+            
+
+            }
+
+
+        .row {
+          margin-right: -1px;
+          margin-left: -67px;
+        }
 
 
 
     </style>
 
-    
+
 
 
 </head>
@@ -104,6 +123,8 @@ header ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-2">
+
+
                     <?php
                     $a=0;
                     $miconexion->consulta("select * from categoria_producto");
@@ -111,11 +132,32 @@ header ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
                         $a=$a+1;
                         $lista=$miconexion->consulta_lista();
                         echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$lista[1]."'><a href='principal.php?id=".$lista['id']."' class='nav$a' data-type='".$lista[1]."'>".$lista[1]."</a>
+
                     </button>";
 
                 }
                 ?>
+                <br>    
+                <br>
+
+                <section class="Adornos">    
+            <img class="imagenes" src="img/impresora1.jpg" width='300' height='300'  margin-left: 1%;>
+
+
+            <br>
+            <br>
+            <br>
+              <img class="imagenes" src="img/celular1.jpg" width='300' height='300'>
+              <br>
+               <br>
+               <br>
+              <img class="imagenes" src="img/bank.png" width='300' height='300'>
+        </section>
             </div>
+
+
+
+
 
             <div class="container1">
                 <div class="col-md-10"> 
@@ -123,8 +165,9 @@ header ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
                         <div class="cd-filter-conten"> 
                          <div class="row">
                                     <div class="form center">
-                                        <form action="" method="post" name="search_form" id="search_form">
-                                            <input type="text" class="" name="search" id="search"  placeholder="Search">                                        </form>
+                                        <br>
+                                     
+                                            <input type="text" class="buscador" name="search" id="search"  placeholder="Buscar producto">                                        </form>                                        </form>
                                     </div>
                             </div>
 
@@ -133,167 +176,21 @@ header ("Refresh: 60; URL=http://127.0.0.1/carrito_final/Carrito_de_compras/Onli
                         </div>
             </div>
 
-            <div id="boton">
-                Busqueda Avanzada
-            </div>
 
-            <div id="caja" >
-                <form method="post" id ="selec_con">
-                   <select name="categoriap" >
-                    <option selected disabled>-- Selecciona una categoria --</option> 
-                    <?php
-                    error_reporting(0);
-                    $a=0;
-                    $miconexion->consulta("select categoria from categoria_producto");
-                    for ($i=0; $i < $miconexion->numregistros(); $i++) {                 
-                        $a=$a+1;
-                        $lista=$miconexion->consulta_lista();
-                        echo $lista[0];
-                        $x =  $lista[0];
-                        ?>
-                        <option value="<?=$x?>"><?=$x?></option>
-                        <?php
-                    }
-                    ?>
-                </select>
-                <select name="marcap">
-                    <option selected disabled>-- Selecciona una marca --</option> 
-                    <?php
-                    error_reporting(0);
-                    $a=0;
-                    $miconexion->consulta("select distinct  marca from producto");
-                    for ($i=0; $i < $miconexion->numregistros(); $i++) {                 
-                        $a=$a+1;
-                        $lista=$miconexion->consulta_lista();
-                        echo $lista[0];
-                        $y =  $lista[0];
-                        ?>
-                        <option value="<?=$y?>"><?=$y?></option>
-                        <?php
-                    }
-                    ?>
-                </select><br>
-                <select  name="precpi">
-                  <option selected disabled>-- Precio minimo--</option> 
-                  <option>10</option>
-                  <option>50</option>
-                  <option>100</option>
-                  <option>300</option>
-                  <option>500</option>
-                  <option>800</option>
-                  <option>1000</option>
-              </select>
-              <select  name="precpf">
-                <option selected disabled>-- Precio maximo--</option> 
-                <option>50</option>
-                <option>100</option>           
-                <option>300</option>
-                <option>500</option>
-                <option>800</option>
-                <option>1000</option>
-                <option>1600</option>
-            </select>
-            
-            <br>
-            <br>
-            <button class="form-btn" name="submit" type="submit" value="Aceptar"/>Aceptar</button> <button type=button onClick="location.href='principal.php'" value="cancelar" name="cancelar"id="cancelar">Cancelar</button>
-            <br>
-            <br>
+           
 
 
-                <?php
-                $marca =  $_POST["marcap"];
-                $categoria = $_POST["categoriap"];
-                $preci =$_POST["precpi"];
-                $precf =$_POST["precpf"];
-
-
-                         //miconexion->consulta("Select producto.codigo, producto.nombre, producto.valor, producto.nota, producto.marca, categoria_producto.categoria from producto, categoria_producto where categoria_producto.id and categoria_producto.categoria= '$_POST[categoriap]' and producto.marca ='$_POST[marcap]' and producto.valor between '$_POST[precpi]' and '$_POST[precpf]' or categoria_producto.categoria= '$_POST[categoriap]' and producto.id=categoria_producto.id or producto.marca ='$_POST[marcap]' and producto.id=categoria_producto.id or producto.id=categoria_producto.id and producto.valor between '$_POST[precpi]' and '$_POST[precpf]' "  );
-                                 //$result = mysql_query("Select productos.nombre, productos.precio_p, productos.descripcion, productos.marca, categoria.nombre_cat from productos, categoria where id_catego=id_categoria and categoria.nombre_cat= '$_POST[categoriap]' and productos.marca ='$_POST[marcap]' and productos.precio_p between '$_POST[precpi]' and '$_POST[precpf]'   or categoria.nombre_cat= '$_POST[categoriap]' and id_catego=id_categoria  or productos.marca ='$_POST[marcap]' and id_catego=id_categoria  or  id_catego=id_categoria and productos.precio_p between '$_POST[precpi]' and '$_POST[precpf]' "  );
-                $miconexion->consulta("select p.*, c.categoria, e.nombre  from categoria_producto c, producto p, estado e where p.id_categoria=c.id and p.id_estado=e.id  and c.categoria= '$_POST[categoriap]' and p.marca ='$_POST[marcap]' and p.valor between '$_POST[precpi]' and '$_POST[precpf]' or c.categoria= '$_POST[categoriap]' and p.id_categoria=c.id and p.id_estado=e.id  or p.marca ='$_POST[marcap]' and p.id_categoria=c.id and p.id_estado=e.id  or p.id_categoria=c.id and p.valor between '$_POST[precpi]' and '$_POST[precpf]' ");
-
-                for ($i=0; $i < $miconexion->numregistros(); $i++) {                 
-                    $lista=$miconexion->consulta_lista();
-                    echo "<li class='mix ".$lista[6]."  ".$lista[8]." ".$lista[5]."".$lista[12]."'>
-                    <div class='titulo'>
-
-                        <img class='p-imag' width='200' height='150' src='".$lista[11]."' alt='".$lista[1]."'>
-                        <div>".$lista[6]."</div>
-                    </div>
-                    <p style='text-align:center;'><strong>".$lista[5]."</strong><p>
-                        <p>
-                            <strong>Marca: </strong>".$lista[6]."<br>
-                            <strong>Descripcion: </strong>".$lista[7]."<br>
-
-                            <strong>Valor: </strong>$".$lista[8]."<br>  
-                            <strong>Estado: </strong>".$lista[13]."
-                        </p>
-
-                    </li>";
-                }
-                ?>
-            </form>
-
-
-
-        </div>   
-
-
-        <div id="btn_con" >
-                            <section class="cd-gallery2">
-                                <ul class='gallery2'>
-                                    <?php
-                                    extract($_GET);
-                                    error_reporting(0);
-                                    if (@ !$id) {
-                                    }
-                                    if ($id==0) {
-
-                                  }else{
-                                   $miconexion->consulta("select p.*, c.categoria, e.nombre from categoria_producto c, producto p, estado e where c.id = p.id_categoria and p.id_estado =e.id and p.id_categoria ='$id'" );
-                     //$miconexion->consulta("select p.*, c.categoria from categoria_producto c, producto p where c.id_categoria = p.id_categoria ");
-                                   for ($i=0; $i < $miconexion->numregistros(); $i++) {                 
-                                    $lista=$miconexion->consulta_lista();
-                                    echo "<li class='mix ".$lista[6]."  ".$lista[8]." ".$lista[5]."".$lista[12]."'>
-                                    <div class='titulo'>
-
-                                        <img class='p-imag' width='200' height='150' src='".$lista[11]."' alt='".$lista[1]."'>
-                                        <div>".$lista[6]."</div>
-                                    </div>
-                                    <p style='text-align:center;'><strong>".$lista[5]."</strong><p>
-                                        <p>
-                                            <strong>Marca: </strong>".$lista[6]."<br>
-                                            <strong>Descripcion: </strong>".$lista[7]."<br>
-
-                                            <strong>Valor: </strong>$".$lista[8]."<br>  
-                                            <strong>Estado: </strong>".$lista[13]."
-                                        </p>
-
-                                    </li>";
-                                }
-                                if ($i==0) {
-                                    echo "No hay elementos";
-                                }
-                            }
-                            ?>
-                        </ul>
-                        <div class="cd-fail-message">No hay resultados</div>
-                    </section> <!-- cd-gallery -->
-                </div>
-
-
-    </div>  
-</div>
-</aside> 
-</div>
+      
 <!-- Inicio de catalogo -->
-<br>
-<br>
+
 <!-- Inicio catalogo -->
     <?php
     $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
     $miconexion->consultacatalogo2();
+    
     ?>
+
+    
     <div id="light" class="white_content">
         <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
             <button type="button" class="close" aria-label="Close">
