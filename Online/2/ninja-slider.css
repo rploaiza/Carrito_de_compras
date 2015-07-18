@@ -125,7 +125,8 @@
     overflow: hidden;
     position: relative;
     list-style:none;
-    margin:0;
+      margin-left: -1%;
+   /* margin-left: -3%;*/
 }
 
 #ninja-slider > ul > li

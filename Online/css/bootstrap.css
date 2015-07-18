@@ -40,6 +40,9 @@
 #s:focus{
   width:8em;
   opacity:1;
+  font-size: 11px;
+
+
 }
 label{
   padding-left: 1px;
@@ -50,6 +53,7 @@ label{
   position: relative;
   left:0.1em;
 }
+
 
 
 /*+++++inicio estilo catalogo index++++++*/
@@ -92,7 +96,7 @@ label{
 .producto{
   background: #fff;
   max-height: 150px;
-  max-width: 210px;
+  max-width: 280px;
   height: auto;
   display: inline-block;
   float: left;
@@ -102,8 +106,8 @@ label{
   color: #000;
   font-weight: bolder;
   font-size: 1rem;
-  padding: 1%;
-  padding-bottom: 42%;
+  padding: 3%;
+  padding-bottom: 44%;
   -webkit-box-shadow: 0px 0px 10px rgba(240, 240, 240, 0.75);
   -moz-box-shadow:    0px 0px 10px rgba(240, 240, 240, 0.75);
   box-shadow:         0px 0px 10px rgba(240, 240, 240, 0.75);
@@ -152,14 +156,17 @@ label{
 /*+++++fin estilo modal login++++++*/
 
 .btn-comprar{
-  width: 85%;
-  padding: 1%;
-  background: #0D47A1;
+  width: 90%;
+  
+  background: #7BBD41;
   border-color: #e5e5e5;
   text-transform: uppercase;
   font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #fff;
-  background-color: #0D47A1;
+  background-color: #7BBD41;
+  margin-left: -4em;
+
+  font-size: 70%;
 }
 
 
@@ -237,7 +244,7 @@ form button {
   outline: 0;
   background-color: #0D47A1;;
   border: 0;
-  padding: 10px 10px;
+  padding: 8px 20px;
   color: #53e3a6;
   border-radius: 3px;
   width: 120px;
@@ -248,7 +255,7 @@ form button {
           transition-duration: 0.25s;
 }
 form button:hover {
-  background-color: #0D47A1;
+  background-color: #88B820;
   color: #fff;
 }
 
@@ -623,7 +630,7 @@ sub {
 img {
   width: auto\9;
   height: auto;
-  max-width: 100%;
+  max-width: 143%;
   vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
@@ -1549,7 +1556,7 @@ pre code {
 }
 
 form {
-  margin: 0 0 20px;
+    margin: -30px 0 20px;
 }
 
 fieldset {
@@ -5108,7 +5115,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar .nav {
-  background: #000;
+  background: color: rgb(32, 95, 167);;
   position: relative;
   left: 0;
   display: block;
