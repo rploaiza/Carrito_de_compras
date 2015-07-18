@@ -29,6 +29,7 @@ html {
 html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 body {
@@ -36,14 +37,22 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #331d35;
   background-color: #e7e7e7;
+  margin-right: 5%;
 }
 
 a {
-  color: #0D47A1;
+  color: #FCFCFC;
   text-decoration: none;
+    color: #FCFCFC;
+  text-decoration: none;
+  font-family: "lato",Geneva,sans-serif;
+  text-transform: uppercase;
+  display: inline-block;
+  font-size: 15px
+
 }
 p{
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .nombre{
@@ -767,10 +776,19 @@ xcustom form elements
   display: inline-block;
   padding: 6px 12px;
   margin-bottom:;
-  font-size: 12px;
+  font-size: 17px;
   font-weight: 400;
   line-height: 1.42857143;
   text-align: center;
   white-space: nowrap;
   color: white;
+  background: #88B820;
   }
+footer section.adornos
+{
+  text-align: right;
+  border-radius: none;
+  background-color: #400040;
+  margin-left: 1%;
+
+}
