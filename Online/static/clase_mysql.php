@@ -538,7 +538,7 @@ function procategoria(){
 			echo "</div>";
 		                                                    //------- extraccion de los estados ------
 			include ("static/estado.php");
-            $_POST['idcatest'];
+            //$_POST['idcatest'];
 			echo "Estado del producto: ";
 			echo "<select class='form-control' name='estado'>";
 			echo '<option value=""> - Select - </option>';
