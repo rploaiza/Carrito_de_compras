@@ -230,7 +230,7 @@ a:hover,
 a:focus,
 a:active,
 a.active {
-    color: #FFFFFF;
+    color: #E7E7E7;
 }
 
 h1,
@@ -341,11 +341,11 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-xl1:hover{
-  border-color:#adcce2; /* Modificamos el color del borde */
+  border-color:#90C322; /* Modificamos el color del borde */
   color: #fff;
 
   /* Cambiamos los colores del fondo degradado */
-  background:-webkit-linear-gradient(top, #0044cc, #2E9AFE); /* Chrome 10+ */
+  background:-webkit-linear-gradient(top, rgb(32, 95, 167), rgb(32, 95, 167)); /* Chrome 10+ */
   background:   -moz-linear-gradient(top, #0044cc, #2E9AFE); /* Firefox 3.6+ */
   background:    -ms-linear-gradient(top, #0044cc, #2E9AFE); /* IE10 */
   background:        linear-gradient(top, #0044cc, #2E9AFE);
@@ -445,7 +445,7 @@ fieldset[disabled] .btn-xl.active {
     font:5%;
     padding-left: 2%;
     letter-spacing: 1px;
-    color: #fff;
+    color: #F7F7F7;
     padding-left: 0%
 }
 
@@ -471,7 +471,7 @@ fieldset[disabled] .btn-xl.active {
     .navbar-default {
         padding: 3px;
         border: 0;
-        background-color: #000;
+        background-color: rgb(32, 95, 167);;
         -webkit-transition: padding .3s;
         -moz-transition: padding .3s;
         transition: padding .3s;
@@ -1104,8 +1104,10 @@ body {
 aside#modulos {
   display: inline-block;
   background-color: #C7C8BF;
-  width: 100%;
-  margin-right: -7em;
+  width: 98%;
+  margin-right: 0em;
+  margin-left: 13%;
+  border-radius: 1%;
 }
 
 .cd-gallery {
