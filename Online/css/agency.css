@@ -953,6 +953,9 @@ section#contact .text-danger {
 footer {
     padding: 25px 0;
     text-align: center;
+      padding: 28px 23px;
+  width: 111%;
+  background: #1D3F0C;
 }
 
 footer span.copyright {

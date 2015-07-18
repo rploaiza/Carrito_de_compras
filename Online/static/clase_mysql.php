@@ -123,10 +123,13 @@ class clase_mysql{
 						<?php
 							
 							if ($row['estados']=='normal') {
+								echo "1";
 								echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
 							}elseif ($row['estados']=='oferta') {
+								echo "2";
 								echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
 							}else{
+								echo "3";
 								echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
 							}
 						?>
@@ -538,7 +541,7 @@ function procategoria(){
 			echo "</div>";
 		                                                    //------- extraccion de los estados ------
 			include ("static/estado.php");
-            //$_POST['idcatest'];
+            $_POST['idcatest'];
 			echo "Estado del producto: ";
 			echo "<select class='form-control' name='estado'>";
 			echo '<option value=""> - Select - </option>';

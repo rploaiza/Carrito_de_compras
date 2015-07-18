@@ -15,6 +15,7 @@ if (isset($_SESSION['usuario'])){
 
     <head>
 
+
         <!-- DataTables CSS -->
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
 
@@ -41,8 +42,40 @@ if (isset($_SESSION['usuario'])){
         <title>Line Buy - Registro</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/agency.css" rel="stylesheet">
+  
+  
 
+         <style>
+            @media screen and (max-width: 745px) {
+    header img{
+       width: 71%;
+        margin-left: 20%;
+    }
+    section#col-md-2{
+        width: 71%;
+        margin-right: 7em;
+        
+    }
+    section#contenido{
+        background: #ccc;
+        width: 86%;
+    }
+    aside#modulos{
+        background: #ccc;       
+          width: 106%;
+          margin-right: 7em;
+
+    }
+    
+  }
+   h4   {
+        margin-top: 2em;
+        font-size: 2em;
+
+   }
+   </style>
     </head>
+
     <body>
        <nav class="navbar navbar-default navbar-fixed-top">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -64,7 +97,7 @@ if (isset($_SESSION['usuario'])){
                 <img style="width: 10%; float: left;" src="img/logo.png">
 
                 <li style="float: right;  width: 13%;">
-                    <a style="font-size: 85%;" class="page-scroll" href="principal.php"><img style="width: 140%;" id="home" src="ico/home.png">Inicio</a>
+                <a style="font-size: 100%;" class="page-scroll" href="principal.php"><img style="width: 140%;" id="home" src="ico/home.png">Inicio</a>
                 </li>
             </ul>
 
@@ -106,6 +139,9 @@ if (isset($_SESSION['usuario'])){
                
                 ?>
             </div>
+      
+
+            </style>
 
             <div class="col-md-10" >
                 <h4>Datos de las Tablas</h4><br><br>
@@ -273,41 +309,32 @@ if (isset($_SESSION['usuario'])){
                                                 echo "<button type='submit' class='btn btn-xl' name='guardar' value='guardar'>Guardar</button>";
                                                 echo "</form>"; 
                                             }
+                                            if (isset($_REQUEST['guardar'])) {
 
-                                            if (isset($_REQUEST['guardar'])) {  
-                                           // echo "UPDATE ".$tabla." SET cedula='".$cedula."', nombre='".$nombre."', apellido='".$apellido."', direccion='".$direccion."', telefono='".$telefono."', email='".$email."', user='".$user."', pass='".$pass."'WHERE id=".$id;
-                                                switch ($tabla) {
-                                                            /*case 'carrito':
-                                                                $miconexion->consulta("SELECT cedula AS 'Cedula del Cliente', codigo AS 'Codigo del Producto', cantidad AS '# Productos' FROM ".$tabla);
-                                                                break;*/
-                                                                case 'categoria_estado':
-                                                                $miconexion->consulta("INSERT INTO categoria_estado values ('', '$estado')");
-                                                                echo "<script>location.href='administrador.php?tabla=categoria_estado'</script>";
-                                                                break;
-                                                                case 'categoria_producto':
-                                                                $miconexion->consulta("INSERT INTO categoria_producto values ('','$categoria')");
-                                                                echo "<script>location.href='administrador.php?tabla=categoria_producto'</script>";                                                                
-                                                                break;
-                                                                case 'estado':
-                                                                $miconexion->consulta("INSERT INTO estado values('','$nombre', '$descrpcion', '$descuento', '$idcatestado')");
-                                                                echo "<script>location.href='administrador.php?tabla=estado'</script>"; 
-                                                                break;
-                                                                // case 'usuario':
-                                                                // $miconexion->consulta("UPDATE ".$tabla." SET cedula='".$cedula."', nombre='".$nombre."', apellido='".$apellido."', direccion='".$direccion."', telefono='".$telefono."', email='".$email."', user='".$user."', pass='".$pass."'WHERE id=".$id);
-                                                                // break;
-                                                                case 'producto':
-                                                                $destino='img/producto';
-                                                                $origen=$_FILES['imagen']['tmp_name'];
-                                                                $nombreImagen=$_FILES['imagen']['name'];
-                                                                $rutaDestino=$destino.'/'.$nombreImagen;
-                                                                $moveResult = move_uploaded_file($origen, $destino.'/'.$nombreImagen);
-                                                                $miconexion->consulta("INSERT INTO producto(id, id_categoria, id_estado, id_estado_pro, codigo, nombre, marca, nota, valor, estado, cantidad, imagen) values ('','$idcat','$idest','$idcatest', '$codigo', '$nombre', '$marca', '$nota', '$valor', '$estado', '$cantidad', '$rutaDestino')");
-                                                                echo "<script>location.href='administrador.php?tabla=producto'</script>";    
+                                                if($tabla=='categoria_estado'){
+                                                    mysql_query("insert into categoria_estado values('','$estado')");
+                                                    echo "<script>location.href='administrador.php?tabla=categoria_estado'</script>";}else{
+                                                        if($tabla=='categoria_producto'){
+                                                            mysql_query("insert into categoria_producto values('','$categoria')");
+                                                        echo "<script>location.href='administrador.php?tabla=categoria_producto'</script>";}else{
+                                                                if($tabla=='estado'){
+                                                                 mysql_query("insert into estado values('','$nombre', '$descrpcion', '$descuento', '$idcatestado')");
+                                                                 echo "<script>location.href='administrador.php?tabla=estado'</script>";}else{
+                                                                    if($tabla=='producto'){
+                                                                        $destino='img/producto';
+                                                                        $origen=$_FILES['imagen']['tmp_name'];
+                                                                        $nombreImagen=$_FILES['imagen']['name'];
+                                                                        $rutaDestino=$destino.'/'.$nombreImagen;
+                                                                        $moveResult = move_uploaded_file($origen, $destino.'/'.$nombreImagen);
+                                                                        $query = "INSERT INTO producto(id, id_categoria, id_estado, id_estado_pro, codigo, nombre, marca, nota, valor, estado, cantidad, imagen) values ('','$idcat','$idest','$idcatest', '$codigo', '$nombre', '$marca', '$nota', '$valor', '$estado', '$cantidad', '$rutaDestino')";
+                                                                        $res = mysql_query($query) or die("error". mysql_error());
+                                                                        echo "<script>location.href='administrador.php?tabla=producto'</script>";    
 
-                                                                
-                                                                break;
-                                                            } 
-                                                        }    
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                                 ?>
                                             </section>
@@ -316,9 +343,11 @@ if (isset($_SESSION['usuario'])){
                                 </div>
                             </div>
                         </section>
-                        <footer>
-                        </footer>
+
+
                     </body>
+
+
                     </html>
                     <?php
                 }
@@ -326,3 +355,5 @@ if (isset($_SESSION['usuario'])){
                     echo '<script>location.href = "login.php";</script>'; 
                 }
                 ?>
+
+

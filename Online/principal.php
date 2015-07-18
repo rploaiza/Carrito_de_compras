@@ -187,7 +187,6 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
     <?php
     $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
     $miconexion->consultacatalogo2();
-    
     ?>
 
     

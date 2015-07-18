@@ -158,13 +158,13 @@ if (isset($_SESSION['usuario'])){
                         <input type="text" class="form-control" placeholder="Email" name="email" required="" autofocus="">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="User" name="user" required="" autofocus="">
+                        <input type="text" class="form-control" placeholder="Usuario" name="user" required="" autofocus="">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Pass" name="pass" required="" autofocus="">
+                        <input type="text" class="form-control" placeholder="Contraseña" name="pass" required="" autofocus="">
                     </div>            
         <button type='submit' name="guardar" value="guardar">Registrarse</button>
-        <button type='submit' name="guardar" value="guardar">Salir</button>
+        
         </form>
     </div>
 </div>
