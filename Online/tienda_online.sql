@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-07-2015 a las 00:55:09
+-- Tiempo de generación: 20-07-2015 a las 00:53:14
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -31,15 +31,18 @@ CREATE TABLE IF NOT EXISTS `carrito` (
   `cedula` int(11) NOT NULL,
   `codigo` int(6) NOT NULL,
   `cantidad` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `carrito`
 --
 
 INSERT INTO `carrito` (`id`, `cedula`, `codigo`, `cantidad`) VALUES
-(36, 0, 101, '3'),
-(39, 0, 103, '1');
+(36, 0, 101, '6'),
+(41, 0, 102, '2'),
+(42, 0, 103, '2'),
+(43, 0, 104, '4'),
+(44, 0, 100, '2');
 
 -- --------------------------------------------------------
 
@@ -129,6 +132,17 @@ INSERT INTO `estado` (`id`, `nombre`, `descrpcion`, `descuento`, `id_categoria_e
 (2, 'Oferta Portatil', 'Portátil + mouse + ventilador + mochila', '0.05', 3),
 (3, 'Oferta PC', 'Equipo de mesa + teclado + mouse + parlantes + escritorio', '0.10', 3),
 (4, 'Promoción del mes', 'aplica a un solo producto portatil', '0.08', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historial`
+--
+
+CREATE TABLE IF NOT EXISTS `historial` (
+  `codigo` int(6) NOT NULL,
+  `url` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -229,6 +243,12 @@ ALTER TABLE `estado`
   ADD KEY `id_categoria_estado` (`id_categoria_estado`);
 
 --
+-- Indices de la tabla `historial`
+--
+ALTER TABLE `historial`
+  ADD PRIMARY KEY (`codigo`);
+
+--
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
@@ -253,7 +273,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `categoria_estado`
 --
