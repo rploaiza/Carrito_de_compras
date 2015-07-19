@@ -4,7 +4,7 @@
     include("static/site_config.php"); 
     include ("static/clase_mysql.php");
     $miconexion = new clase_mysql;
-$miconexion->conectar($db_name,$db_host, $db_user,$db_password);
+    $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -53,7 +53,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
       }
       if(!empty($_GET['del'])){
         $id=$_GET['del'];
-        mysql_query("DELETE FROM carrito WHERE codigo='$id'");
+        mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
         header('location:index.php');
       }
       ?>
@@ -136,7 +136,6 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                 <div class="footer center"></div>
                             </div>
                             <!-- Inicio catalogo -->                     
-                            <section id="catalogo">
                                 <?php
                                 extract($_POST);
                                 extract($_GET);
@@ -157,7 +156,6 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                 }
                                 
                                 ?>
-
                                 <div id="modal1" class="modalmask">
 
                                 <div class="modalbox movedown">
@@ -171,10 +169,12 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                 </div>
                             
                               <!-- Fin catalogo -->
-    
-                            </section>
-                        </aside>
+                       
                     </div>
+                    <br>
+                                <br>
+                                <br>
+                     </aside>
                 </div>
             </div>   
         </div> 

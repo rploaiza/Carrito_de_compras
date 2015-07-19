@@ -33,7 +33,7 @@
                 <td>$ <?php echo number_format($neto,2,",","."); ?></td>
                 <td>
                   <a href="principal.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
-                     <span class="glyphicon glyphicon-trash"></span>
+                     <span style="color:#0D47A1" class="glyphicon glyphicon-trash"></span>
                   </a>
                 </td>
               </tr> 

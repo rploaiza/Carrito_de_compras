@@ -82,17 +82,8 @@ class clase_mysql{
 			<div class="producto2">       
 				<a href="principal.php?id=<?php echo $row['id'];?>&#modal1"><img src="<?php echo $row['imagen']; ?>" width="100%"></a>
 				<div class="caption" >
-					<p><br>
-						<form name="form<?php $row['codigo']; ?>" method="post" action="">
-							<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
-							<button type="submit" name="boton" class="btn-comprar">
-								<strong style="font-size:55%;">COMPRAR</strong>
-							</button>
-						</form> 
-					</p>
-					<h5><?php echo $row['nombre'];?></h5>
+					<h5 style="height: 17px"><?php echo $row['nombre'];?></h5>
 					<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
-					<p style="font-size: 1em;"><?php echo $row['nota'];?></p>
 					<?php	
 					if ($row['estados']=='normal') {
 						echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
@@ -102,6 +93,14 @@ class clase_mysql{
 						echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
 					}
 					?>	
+					<p>
+						<form name="form<?php $row['codigo']; ?>" method="post" action="">
+							<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
+							<button type="submit" name="boton" class="btn-comprar">
+								<strong style="font-size:55%;">COMPRAR</strong>
+							</button>
+						</form> 
+					</p>
 				</div>
 			</div>
 			<?php
@@ -114,16 +113,19 @@ class clase_mysql{
 			
 
 			<div class="row">
-				<div class="col-md-9">
-				<span style="text-align:center;"><?php echo $row['nombre'];?></span><br>
+				<div class="col-md-12">
+				<span style="text-align:center; color:#0D47A1"><strong><?php echo $row['nombre'];?></strong></span><br><br>
 					<div class="row">
-						<div class="col-md-3 col-md-push-10">
-							<img src="<?php echo $row['imagen'];?>"><br>
+						<div class="col-md-3 col-md-push-7">
+							<img src="<?php echo $row['imagen'];?>"><br><br>
 						</div>
-						<div class="col-md-6 col-md-pull-1" style="margin-left:5%;">
-							<span>Precio: <?php echo $row['marca'];?></span><br>
-							<span>Caracteristicas: <?php echo $row['nota'];?></span><br>
-							<span>Precio: <?php echo $row['valor'];?></span><br>
+						<div class="col-md-5 col-md-pull-1" style="text-align:left;">
+							<span><strong>Marca:</strong></span>
+							<span><?php echo $row['marca'];?></span><br><br>
+							<span><strong>Precio:</strong></span>
+							<span>Precio: <?php echo $row['valor'];?></span><br><br>
+							<span><strong>Caracteristicas:</strong></span>
+							<strong><span><?php echo $row['nota'];?></span></strong><br><br>
 						</div>
 					</div>
 				</div>
