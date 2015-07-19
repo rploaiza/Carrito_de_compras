@@ -124,12 +124,18 @@ class clase_mysql{
 							<span>Precio: <?php echo $row['marca'];?></span><br>
 							<span>Caracteristicas: <?php echo $row['nota'];?></span><br>
 							<span>Precio: <?php echo $row['valor'];?></span><br>
+							<?php
+								$res='"'.dameURL().'"';			
+								mysql_query("INSERT INTO historial (codigo, url) VALUES ('$row[4]','<a href=$res>link</a>')");
+							?>
 						</div>
 					</div>
 				</div>
 			</div>
 			<?php
+			
 		}
+
 	}
 
 	function consultacatalogo2(){

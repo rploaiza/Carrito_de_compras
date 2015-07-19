@@ -1,15 +1,5 @@
 
-<?php
-  if(!empty($_POST['codigo'])){
-    $codigo=$_POST['codigo'];
-    $pa=mysql_query("SELECT * FROM historial WHERE codigo='$codigo'");        
-    if($row=mysql_fetch_array($pa)){
-      
-    }else{
-      mysql_query("INSERT INTO historial (codigo, url) VALUES ('$codigo','1')");
-    }
-  }
-?>
+
 <div id="sidebar"><br>
   <h2 align="center">
     <a style="color:#0D47A1;"  href=""><img style="width: 15%;" src="ico/pedidos.png">Mi Historial</a>
@@ -18,30 +8,41 @@
     <tr>
       <td>
         <table class="table table-bordered table table-hover">
-          <?php 
-            //$neto=0;$tneto=0;
+          <?php
             $pa=mysql_query("SELECT * FROM historial");       
             while($row=mysql_fetch_array($pa)){
-              $oProducto=new Consultar_Producto($row['codigo']);
-              //$neto=$oProducto->consultar('valor')*$row['cantidad'];
-              //$tneto=$tneto+$neto;    
+              $oProducto=new Consultar_Producto($row['codigo']); 
           ?>
               <tr style="font-size:9px">
                 <td><?php echo $oProducto->consultar('nombre'); ?></td>
-                <td><?php echo $row['url']; ?></td>
-              <!--  <td>$ <?php echo number_format($neto,2,",","."); ?></td>-->
+                <td><?php echo $row[1]; ?></td>
               </tr> 
-          <?php
-            }
-          ?>
-          <td colspan="4" style="font-size:9px">
-          </td>
-          <?php 
-            $pa=mysql_query("SELECT * FROM carrito");       
+           <?php }
+            ?>
+            <?php
+            extract($_POST);
+            extract($_GET);
+           echo '<form method="post">
+            <td colspan="4" style="font-size:9px">
+            <br>
+            <button align="right" type="submit" name="delete" value="delete">Limpiar</button>
+            <br>
+            </form> ';
+               if (isset($_REQUEST['delete'])) {
+                echo"<script> alert('Historial Borrado');</script>"; 
+                $miconexion->consulta("TRUNCATE TABLE `historial`");
+                echo "<script>location.href='principal.php'</script>";
+                
+               }
+            ?>      
+
+            </td>
+            <?php 
+            $pa=mysql_query("SELECT * FROM historial");       
             if(!$row=mysql_fetch_array($pa)){
               ?>
               <tr>
-                <div class="alert alert-success" align="center"><strong>No hay Productos Registrados</strong></div>
+                <div class="alert alert-success" align="center"><strong>Historial Limpio</strong></div>
               </tr>
           <?php } ?>
         </table>
@@ -49,3 +50,19 @@
     </tr>
   </table>
 </div>
+
+<!--                 //        <script>
+                //  $(document).ready(function() {
+                //     $("#delete").click(function(){
+                //         alert('clicked!');
+                //         <?php
+                //         //mysql_query("TRUNCATE TABLE `historial`");
+
+                //         $miconexion->consulta("TRUNCATE TABLE `historial`");
+                //        // echo "<script>location.href='principal.php'</script>";
+                //         ?>
+                //     });
+                // });
+                //  </script> -->
+
+               

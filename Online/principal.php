@@ -116,6 +116,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                         <?php 
                             include("static/pedido2.php");
                             include("static/historial.php");
+                            
                         ?>  
                         <br>
                         <img src="img/celular1.jpg" style="width:100%;">
@@ -169,6 +170,13 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                     <?php
                                         $miconexion->consulta("select * from producto where id=".$_GET['id']);
                                         $miconexion->descatalogo();
+
+                                  function dameURL(){
+                                  $url="http://".$_SERVER['HTTP_HOST'].":".$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']."#modal1";
+                                  return $url;
+                                  }
+                                  
+                     
                                         ?>
                                     </div>
                                 </div>
@@ -213,6 +221,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
             $('.gallery a').lightbox(); 
         });
     </script>
+
     <script language="JavaScript">
         function muestra_oculta(id){
             if (document.getElementById){ //se obtiene el id
