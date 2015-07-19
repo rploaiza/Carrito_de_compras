@@ -59,12 +59,12 @@ label{
 /*+++++inicio estilo catalogo index++++++*/
 .producto2{
   background: #fff;
-  width: 200px;
-  height: 200px;
+  width: 18.2em;
+  height: 42em;
   display: inline-block;
   float: left;
   vertical-align: top;
-  margin-left: 2%;
+  margin-left: 1%;
   margin-top: 1%;
   color: #000;
   font-weight: bolder;
@@ -446,8 +446,16 @@ ul.social-network li {
  /* inicio estilo catalogo*/
 
 #catalogo{
-  width: 90%;
-  background: #F0F0F0;
+    width: 86%;
+  background: #AFB42B;
+  float: left;
+  margin-left: 4%;
+  padding: 2em;
+  border-radius: 1em;
+}
+#catalogo3{
+  width: 96%;
+  background: #AFB42B;
   float: left;
   margin-left: 2%; 
 }

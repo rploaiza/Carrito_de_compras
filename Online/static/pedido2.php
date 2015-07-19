@@ -32,9 +32,10 @@
                 <td><?php echo $row['cantidad']; ?></td>
                 <td>$ <?php echo number_format($neto,2,",","."); ?></td>
                 <td>
-                  <a href="principal.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
-                     <span class="glyphicon glyphicon-trash"></span>
-                  </a>
+                  <a href="index.php?del=<?php echo $row['codigo']; ?>" style="color:red;" title="Eliminar de la Lista">
+               
+                  X
+                </a>
                 </td>
               </tr> 
           <?php

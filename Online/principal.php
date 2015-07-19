@@ -9,27 +9,34 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <title>Buy Online</title>
+
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="css/agency.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-    <script src="js/modernizr.js"></script>
-    <!-- Modernizr -->
+    <script src="js/modernizr.js"></script> <!-- Modernizr -->
     <link rel="stylesheet" type="text/css" href="css/jquery.lightbox.css">
+
+
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
     <link rel="shortcut icon" href="http://www.azulweb.net/wp-content/uploads/2014/02/icono-2.png" />
@@ -37,6 +44,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
     <link rel="stylesheet" href="css/estilos.css">
+
     <?php
         class Consultar_Producto{
         private $consulta;
@@ -54,7 +62,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
       if(!empty($_GET['del'])){
         $id=$_GET['del'];
         mysql_query("DELETE FROM carrito WHERE codigo='$id'");
-        header('location:index.php');
+        header('location:principal.php');
       }
       ?>
     <style>
@@ -136,7 +144,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                 <div class="footer center"></div>
                             </div>
                             <!-- Inicio catalogo -->                     
-                            <section id="catalogo">
+                            <section id="catalogo3">
                                 <?php
                                 extract($_POST);
                                 extract($_GET);

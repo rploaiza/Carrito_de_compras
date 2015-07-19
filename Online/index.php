@@ -214,6 +214,23 @@ if (isset($_SESSION['usuario'])){
           });
         });
       </script>
+      <script>
+        $(function() {
+          var offset = $("#sidebar2").offset();
+          var topPadding = 15;
+          $(window).scroll(function() {
+            if ($("#sidebar2").height() < $(window).height() && $(window).scrollTop() > offset.top) { /* LINEA MODIFICADA POR ALEX PARA NO ANIMAR SI EL SIDEBAR ES MAYOR AL TAMAÑO DE PANTALLA */
+              $("#sidebar2").stop().animate({
+                marginTop: $(window).scrollTop() - offset.top + topPadding
+              });
+            } else {
+              $("#sidebar2").stop().animate({
+                marginTop: 0
+              });
+            };
+          });
+        });
+      </script>
     </body>
     </html>
     <?php

@@ -11,7 +11,7 @@
     }
   }
 ?>
-<div id="sidebar2"><br><br><br>
+<div id="sidebar2"><br><br><br><br>
   <h2 align="center"><a style="color:#0D47A1;"  href="mis_pedidos.php"><img style="width: 15%;" src="ico/pedidos.png">Mis Pedidos</a></h2>
   <table class="table table-bordered">
     <tr>
