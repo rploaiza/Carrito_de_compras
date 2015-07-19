@@ -338,7 +338,7 @@ class clase_mysql{
 	function consulta_lista2(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 
-			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".utf8_encode($row[1])."</a></button>";			
+			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".utf8_decode(utf8_encode($row[1]))."</a></button>";			
 		}
 		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=todos' class='nava' data-type='".$row[1]."'>Todos</a></button>";
 		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=oferta' class='nava' data-type='".$row[1]."'>".utf8_decode("Ofertas y más...")."</a></button>";			

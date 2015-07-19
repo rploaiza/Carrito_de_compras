@@ -109,10 +109,13 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                     <?php
                         $miconexion->consulta("select * from categoria_producto");
                         $miconexion->consulta_lista2();
+
+
                     ?>
                     <div style="width: 180%">  
                         <?php 
                             include("static/pedido2.php");
+                            include("static/historial.php");
                         ?>  
                         <br>
                         <img src="img/celular1.jpg" style="width:100%;">
