@@ -9,6 +9,10 @@
  */
 
 
+#link{
+  color: #000;
+}
+
 /*+++++INICIO ESTILO MODAL ADMIN+++++++*/
 .modalmask {
   position: fixed;

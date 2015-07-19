@@ -51,18 +51,4 @@
   </table>
 </div>
 
-<!--                 //        <script>
-                //  $(document).ready(function() {
-                //     $("#delete").click(function(){
-                //         alert('clicked!');
-                //         <?php
-                //         //mysql_query("TRUNCATE TABLE `historial`");
-
-                //         $miconexion->consulta("TRUNCATE TABLE `historial`");
-                //        // echo "<script>location.href='principal.php'</script>";
-                //         ?>
-                //     });
-                // });
-                //  </script> -->
-
                
