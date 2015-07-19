@@ -89,7 +89,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
         }
         .row {
             margin-right: -1px;
-            margin-left: -67px;
+            margin-left: -63px;
         }
 
 </style>
@@ -237,7 +237,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
             obj.style.display = (obj.style.display == 'none') ? 'block' : 'none';
         }
     </script>
-    <footer  style="background: #000;" >
+    <footer  style="background:#423E3E;" >
         <?php include("static/footer.php") ?>
     </footer>
 </body>
