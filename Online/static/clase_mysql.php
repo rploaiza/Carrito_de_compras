@@ -80,32 +80,31 @@ class clase_mysql{
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			?>  
 			<div class="producto2">       
-					<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-					document.getElementById('fade').style.display='block'"><img src="<?php echo $row['imagen']; ?>" width="100%"></a>
-					<div class="caption" >
-						<h5><?php echo $row['nombre'];?></h5>
-						<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
-						<p style="font-size: 1em;"><?php echo $row['nota'];?></p>
-						<?php
-							
-							if ($row['estados']=='normal') {
-								echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
-							}elseif ($row['estados']=='oferta') {
-								echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
-							}else{
-								echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
-							}
-						?>
-						<p>
-							<form name="form<?php $row['codigo']; ?>" method="post" action="">
-								<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
-								<button type="submit" name="boton" class="btn-comprar">
-									<!-- <i class="icon-shopping-cart"></i>--> <strong style="font-size:55%;" >Agregar al Carrito</strong>
-								</button>
-							</form> 
-						</p>
-					</div>
-		</div>
+				<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
+				document.getElementById('fade').style.display='block'"><img src="<?php echo $row['imagen']; ?>" width="100%"></a>
+				<div class="caption" >
+					<p><br>
+						<form name="form<?php $row['codigo']; ?>" method="post" action="">
+							<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
+							<button type="submit" name="boton" class="btn-comprar">
+								<strong style="font-size:55%;">COMPRAR</strong>
+							</button>
+						</form> 
+					</p>
+					<h5><?php echo $row['nombre'];?></h5>
+					<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
+					<p style="font-size: 1em;"><?php echo $row['nota'];?></p>
+					<?php	
+						if ($row['estados']=='normal') {
+							echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
+						}elseif ($row['estados']=='oferta') {
+							echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
+						}else{
+							echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
+						}
+					?>	
+				</div>
+			</div>
 			<?php
 		}
 	}
@@ -123,13 +122,10 @@ class clase_mysql{
 						<?php
 							
 							if ($row['estados']=='normal') {
-								echo "1";
 								echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
 							}elseif ($row['estados']=='oferta') {
-								echo "2";
 								echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
 							}else{
-								echo "3";
 								echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
 							}
 						?>
@@ -337,13 +333,21 @@ class clase_mysql{
 			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".utf8_encode($row[1])."</a></button>";			
 		}
 		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=todos' class='nava' data-type='".$row[1]."'>Todos</a></button>";
-		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=oferta' class='nava' data-type='".$row[1]."'>Oferta y más...</a></button>";			
+		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='index.php?id=oferta' class='nava' data-type='".$row[1]."'>".utf8_decode(utf8_encode("Ofertas y más..."))."</a></button>";			
+	}
+	function consulta_lista2(){
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+
+			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".utf8_encode($row[1])."</a></button>";			
+		}
+		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=todos' class='nava' data-type='".$row[1]."'>Todos</a></button>";
+		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=oferta' class='nava' data-type='".$row[1]."'>".utf8_decode("Ofertas y más...")."</a></button>";			
 	}
 
 	function consulta_menu(){
 		echo "<ul>";
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
-			echo "<li class='active'><a href='admin.php?bd=".$row[0]."'>" . utf8_encode($row[0]) . "</a></li>";
+			echo "<li class='active'><a href='admin.php?bd=".$row[0]."'>" .utf8_encode($row[0]) . "</a></li>";
 		}
 		echo "</ul>";
 	}

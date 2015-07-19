@@ -42,7 +42,6 @@ if (isset($_SESSION['usuario'])){
       body {
         padding-top: 60px;
         padding-bottom: 40px;
-        
       }
     </style>
 
@@ -117,7 +116,7 @@ if (isset($_SESSION['usuario'])){
   </nav><br>
   <div class="row-fluid">
     <div class="span2">
-      <div id="sidebar2"><br><br><br>
+      <div id="sidebar"><br><br><br>
         <div class="col-md-10">
           <br>
           <br>
@@ -147,7 +146,11 @@ if (isset($_SESSION['usuario'])){
             $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.id_categoria=".$id);
             $miconexion->consultacatalogo();
           }
+        }else{
+            $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
+            $miconexion->consultacatalogo();
         }
+
         ?>
         <div id="light" class="white_content">
           <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
@@ -163,7 +166,7 @@ if (isset($_SESSION['usuario'])){
 
     <div class="span4">  
       <?php 
-      include("static/pedido.php");
+        include("static/pedido.php");
       ?>  
     </div>
 
@@ -211,24 +214,6 @@ if (isset($_SESSION['usuario'])){
           });
         });
       </script>
-      <script>
-        $(function() {
-          var offset = $("#sidebar2").offset();
-          var topPadding = 15;
-          $(window).scroll(function() {
-            if ($("#sidebar2").height() < $(window).height() && $(window).scrollTop() > offset.top) { /* LINEA MODIFICADA POR ALEX PARA NO ANIMAR SI EL SIDEBAR ES MAYOR AL TAMAÑO DE PANTALLA */
-              $("#sidebar2").stop().animate({
-                marginTop: $(window).scrollTop() - offset.top + topPadding
-              });
-            } else {
-              $("#sidebar2").stop().animate({
-                marginTop: 0
-              });
-            };
-          });
-        });
-      </script>
-
     </body>
     </html>
     <?php
