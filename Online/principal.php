@@ -89,7 +89,7 @@
         }
         .row {
             margin-right: -1px;
-            margin-left: -67px;
+            margin-left: -63px;
         }
 
 </style>
@@ -109,10 +109,14 @@
                     <?php
                         $miconexion->consulta("select * from categoria_producto");
                         $miconexion->consulta_lista2();
+
+
                     ?>
                     <div style="width: 180%">  
                         <?php 
                             include("static/pedido2.php");
+                            include("static/historial.php");
+                            
                         ?>  
                         <br>
                         <img src="img/celular1.jpg" style="width:100%;">
@@ -164,6 +168,13 @@
                                     <?php
                                         $miconexion->consulta("select * from producto where id=".$_GET['id']);
                                         $miconexion->descatalogo();
+
+                                  function dameURL(){
+                                  $url="http://".$_SERVER['HTTP_HOST'].":".$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']."#modal1";
+                                  return $url;
+                                  }
+                                  
+                     
                                         ?>
                                     </div>
                                 </div>
@@ -210,6 +221,7 @@
             $('.gallery a').lightbox(); 
         });
     </script>
+
     <script language="JavaScript">
         function muestra_oculta(id){
             if (document.getElementById){ //se obtiene el id
@@ -225,7 +237,7 @@
             obj.style.display = (obj.style.display == 'none') ? 'block' : 'none';
         }
     </script>
-    <footer  style="background: #000;" >
+    <footer  style="background:#423E3E;" >
         <?php include("static/footer.php") ?>
     </footer>
 </body>

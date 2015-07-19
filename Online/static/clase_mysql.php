@@ -119,6 +119,7 @@ class clase_mysql{
 						<div class="col-md-3 col-md-push-7">
 							<img src="<?php echo $row['imagen'];?>"><br><br>
 						</div>
+<<<<<<< HEAD
 						<div class="col-md-5 col-md-pull-1" style="text-align:left;">
 							<span><strong>Marca:</strong></span>
 							<span><?php echo $row['marca'];?></span><br><br>
@@ -126,12 +127,24 @@ class clase_mysql{
 							<span>Precio: <?php echo $row['valor'];?></span><br><br>
 							<span><strong>Caracteristicas:</strong></span>
 							<strong><span><?php echo $row['nota'];?></span></strong><br><br>
+=======
+						<div class="col-md-6 col-md-pull-1" style="margin-left:5%;">
+							<span>Precio: <?php echo $row['marca'];?></span><br>
+							<span>Caracteristicas: <?php echo $row['nota'];?></span><br>
+							<span>Precio: <?php echo $row['valor'];?></span><br>
+							<?php
+								$res='"'.dameURL().'"';			
+								mysql_query("INSERT INTO historial (codigo, url) VALUES ('$row[4]','<a href=$res>link</a>')");
+							?>
+>>>>>>> 220f51e7473d9af477cd6036c90034c27d823a3a
 						</div>
 					</div>
 				</div>
 			</div>
 			<?php
+			
 		}
+
 	}
 
 	function consultacatalogo2(){
@@ -363,7 +376,7 @@ class clase_mysql{
 	function consulta_lista2(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 
-			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".utf8_encode($row[1])."</a></button>";			
+			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".utf8_decode(utf8_encode($row[1]))."</a></button>";			
 		}
 		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=todos' class='nava' data-type='".$row[1]."'>Todos</a></button>";
 		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=oferta' class='nava' data-type='".$row[1]."'>".utf8_decode("Ofertas y más...")."</a></button>";			

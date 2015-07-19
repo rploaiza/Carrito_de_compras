@@ -3,8 +3,8 @@
 #DATOS DE LA WEBAPP
 $site_name="Universidad Técnica Particular de Loja";
 $project_name="Tienda Virtual";
-$site_autor="sss";
-$url_site="http://127.0.0.1/ing_web_2015/masterPc/";
+$site_autor="ing_web_2015";
+$url_site="http://127.0.0.1/Carrito_de_compras/";
 
 
 #Datos de configuracion de mysql

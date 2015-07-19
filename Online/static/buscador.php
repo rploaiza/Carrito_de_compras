@@ -23,30 +23,56 @@
 	<h2>Resultados de la búsqueda</h2>
 	<?php do { error_reporting(0);?>
 
-		<div class="art">
-			
-			<span class="titulo"><?php echo str_replace($search, '<strong>'.$search.'</strong>', utf8_encode($fila['nombre'])) ?></span><br>
 
-			
-			
-			<span class="contenido"><?php echo  "
-                    <div id ='consul'class='titulo'>
+	<style>
 
-                        <img class='p-imag' width='200' height='150' src='".$fila['imagen']."' alt='".$lista['nombre']."'>
-                       
-                    <p style='text-align:center;'><strong>Marca: ".$fila['marca']."</strong><p>
-                        <p>
+	.borde 
+	{
+	  background-color: #E7E7E7;
+	  height: 13em;
+	  margin-left: 18%;
+	  margin-right: -20%;
+	  border-radius: 0.5em;
+	}
+		
+	</style>
 
-                            <strong>Descripcion: </strong>".$fila['nota']."<br>  
-                            <strong>Valor: </strong>$".$fila['valor']."<br>  
-                            <strong>Estado: </strong>".$fila['estado']."
-                        </p>
 
-                    ";?></span><br>
-			
-			
+	<div class="container">
+        <div class="row">
+				<div class='col-md-10'>
+					<div class="borde">
+						<span class="titulo"><?php echo str_replace($search, '<strong>'.$search.'</strong>', utf8_encode($fila['nombre'])) ?>
+						</span>
+						<br><br><br>
+					<?php echo "
+						<div class='col-md-6'> 
+			                <div id ='consul'class='titulo'>
+				                <center>
+				                   	<img class='p-imag' width='100' height='150' src='".$fila['imagen']."' alt='".$lista['nombre']."'>
+									<br>
+				                    <strong>Marca: ".$fila['marca']."</strong>
+				                 </center>   
+			                </div>
+			            </div>
 
-		</div>
+						<div class='col-md-4'>                      
+		                    <p>
+		                        <strong>Descripcion: </strong>".$fila['nota']."<br>  
+		                        <strong>Valor: </strong>$".$fila['valor']." <br> 
+		                        <strong>Estado: </strong>".$fila['estado']."<br> 
+		                    </p>
+		                </div>";
+		                ?>
+	                <br>
+	            </div>              
+	    	</div>
+    	</div>
+    </div>
+
+     <hr>
+
+
 	<?php } while ($fila=mysqli_fetch_assoc($resultado)); ?>
 <?php } 
 elseif($total>0 && $search=='') echo '<h2>Ingresa un parámetro de búsqueda</h2><p>Ingresa palabras clave relacionadas con el tema de esta web</p>';
