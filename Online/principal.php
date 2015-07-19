@@ -89,7 +89,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
         }
         .row {
             margin-right: -1px;
-            margin-left: -67px;
+            margin-left: -63px;
         }
 
 </style>
