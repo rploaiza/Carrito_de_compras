@@ -167,9 +167,7 @@ if (isset($_SESSION['usuario'])){
   <hr>
 
   <!-- Services Footer -->
-  <footer>
-    <?php include("static/footer.php") ?>
-  </footer>
+  
 
 
   <!-- /container -->
