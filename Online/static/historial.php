@@ -2,7 +2,7 @@
 
 <div id="sidebar"><br>
   <h2 align="center">
-    <a style="color:#0D47A1;"  href=""><img style="width: 15%;" src="ico/pedidos.png">Mi Historial</a>
+    <a style="color:#0D47A1;"  href=""><img style="width: 15%;" src="ico/history.png">Mi Historial</a>
   </h2>
   <table class="table table-bordered">
     <tr>

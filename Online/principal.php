@@ -119,12 +119,7 @@
                             include("static/pedido2.php");
                             include("static/historial.php");
                             
-                        ?>  
-                        <br>
-                        <img src="img/celular1.jpg" style="width:100%;">
-                        <br><br>
-                        <img src="img/bank.png" style="width:100%;">
- 
+                        ?>   
                     </div>
                         
                       

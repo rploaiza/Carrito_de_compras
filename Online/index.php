@@ -34,9 +34,11 @@ if (isset($_SESSION['usuario'])){
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/agency.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    +<link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/agency.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <style type="text/css">
       body {
@@ -157,7 +159,7 @@ if (isset($_SESSION['usuario'])){
       <!-- Fin catalogo -->
     </div>
 
-    <div class="span4">  
+    <div class="span3">  
       <?php 
         include("static/pedido.php");
       ?>  

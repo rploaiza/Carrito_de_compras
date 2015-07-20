@@ -82,7 +82,7 @@ class clase_mysql{
 			<div class="producto2">       
 				<a href="principal.php?id=<?php echo $row['id'];?>&#modal1"><img src="<?php echo $row['imagen']; ?>" width="100%"></a>
 				<div class="caption" >
-					<h5 style="height: 17px"><?php echo $row['nombre'];?></h5>
+					<h5 style="height: 18px"><?php echo $row['nombre'];?></h5>
 					<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
 					<?php	
 					if ($row['estados']=='normal') {
@@ -110,8 +110,6 @@ class clase_mysql{
 	function descatalogo(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			?>  
-			
-
 			<div class="row">
 				<div class="col-md-12">
 				<span style="text-align:center; color:#0D47A1"><strong><?php echo $row['nombre'];?></strong></span><br><br>
