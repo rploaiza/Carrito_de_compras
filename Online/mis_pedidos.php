@@ -226,7 +226,7 @@
 
     </body>
 
-    <footer style="background: #000;">
+    <footer style="background: #423E3E;">
         <?php include("static/footer.php") ?>
     </footer>
 
