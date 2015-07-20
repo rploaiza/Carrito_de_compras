@@ -68,7 +68,7 @@ if (isset($_SESSION['usuario'])){
                 <style>
 
                     .panel-heading{
-                        background-color: #F9F9F9; 
+                        background-color: #80ACDF; 
                         border-bottom: 1px solid rgb(221, 221, 221);                  
                     }
 
@@ -78,17 +78,25 @@ if (isset($_SESSION['usuario'])){
                     }
 
                     .panel-footer{
-                        background-color: #F9F9F9;                   
+                        background-color: #80ACDF;                   
                     }
                     
                 </style>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
                 <div class="panel-heading">
+
                     <span class="glyphicon glyphicon-lock"></span> Login</div>
                 <div class="panel-body">
 
                 <form clase="form" method="POST" action="return false" onsubmit="return false">
                 <div id="resultado"></div>
-                <input type="text" name="user" id="user" value="" placeholder="USUARIO"><br><br>
+                <br>
+                <br>
+                <input type="text" name="user" id="user" value="" placeholder="USUARIO"><br>
                 <input type="password" name="pass" id="pass" value="" placeholder="*******"><br><br><br>
                 <button id="login-button" onclick="Validar(document.getElementById('user').value, document.getElementById('pass').value);"><img style=" width: 23%;" src="img/key.png">ENTRAR</button>
                 </form>
@@ -107,9 +115,10 @@ if (isset($_SESSION['usuario'])){
             </script>    
                 </div>
                 <div class="panel-footer">
-                    No esta registrado? 
+                    ¿No está registrado? 
                     <a data-toggle="modal" href="#betaModal">
                         Registrese aquí
+
                     </a>
                 </div>
         </div>
@@ -162,11 +171,14 @@ if (isset($_SESSION['usuario'])){
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Contraseña" name="pass" required="" autofocus="">
-                    </div>            
+                    </div>   
+                       
         <button type='submit' name="guardar" value="guardar">Registrarse</button>
         
+           <a data-toggle="modal" href="#betaModal">
+         <button type='submit' name="guardar" value="guardar">Salir</button>
         </form>
-    </div>
+   
 </div>
 </div>
                      <?php
