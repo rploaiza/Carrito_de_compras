@@ -206,6 +206,9 @@ if (isset($_SESSION['usuario'])){
         });
       </script>
     </body>
+     <footer style="background: #423E3E;">
+        <?php include("static/footer.php") ?>
+    </footer>
     </html>
     <?php
   }else{
