@@ -46,28 +46,22 @@ a{
   font-family: "lato",Geneva,sans-serif;
   text-transform: uppercase;
   display: inline-block;
-  font-size: 15px
+  font-size: 10px
 }
 
-
-a:hover {
-  color: #000;
+a:hover{
+  color: #fff;
 }
 
 .nava{
   text-decoration: none;
-    color: #0D47A1;
+  color: #fff;
   text-decoration: none;
   font-family: "lato",Geneva,sans-serif;
   text-transform: uppercase;
   display: inline-block;
   font-size: 15px
 }
-
-.nava:hover{
-  color: #fff;
-}
-
 
 p{
   font-size: 11px;
