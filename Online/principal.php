@@ -83,7 +83,7 @@
             background-color: #205FA7;
             color: #FFFFFF;
             cursor: pointer;
-            margin-left: -62%;
+            margin-left: -57%;
             padding: 1%;
             border-radius: 1.5em;
 
