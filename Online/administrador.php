@@ -73,6 +73,15 @@ if (isset($_SESSION['usuario'])){
         font-size: 2em;
 
    }
+    aside#modulos {
+          display: inline-block;
+          background-color: #C7C8BF;
+          width: 96%;
+          margin-right: 2em;
+          margin-left: 8%;
+          border-radius: 1%;
+          padding-bottom: 6%;
+        }
    </style>
     </head>
 

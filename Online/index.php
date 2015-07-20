@@ -169,9 +169,7 @@ if (isset($_SESSION['usuario'])){
   <hr>
 
   <!-- Services Footer -->
-  <footer>
-    <?php include("static/footer.php") ?>
-  </footer>
+  
 
 
   <!-- /container -->
@@ -210,6 +208,9 @@ if (isset($_SESSION['usuario'])){
         });
       </script>
     </body>
+     <footer style="background: #423E3E;">
+        <?php include("static/footer.php") ?>
+    </footer>
     </html>
     <?php
   }else{

@@ -84,8 +84,10 @@
             background-color: #205FA7;
             color: #FFFFFF;
             cursor: pointer;
-            margin-left: -65%;
+            margin-left: -62%;
             padding: 1%;
+            border-radius: 1.5em;
+
         }
         .row {
             margin-right: -1px;
