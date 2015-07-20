@@ -86,6 +86,8 @@
             cursor: pointer;
             margin-left: -62%;
             padding: 1%;
+            border-radius: 1.5em;
+
         }
         .row {
             margin-right: -1px;
