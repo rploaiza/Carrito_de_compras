@@ -1,4 +1,3 @@
-
 <?php 
     header('Content-Type: text/html; charset=ISO-8859-1');
     include("static/site_config.php"); 
@@ -84,7 +83,7 @@
             background-color: #205FA7;
             color: #FFFFFF;
             cursor: pointer;
-            margin-left: -62%;
+            margin-left: -57%;
             padding: 1%;
             border-radius: 1.5em;
 
@@ -97,6 +96,9 @@
 </style>
 </head>
 <body>
+
+
+    
     <!-- Services Nav-->
     <?php include("static/nav.php") ?>
     <!-- Services Headder -->
@@ -112,25 +114,32 @@
                         $miconexion->consulta("select * from categoria_producto");
                         $miconexion->consulta_lista2();
 
-
                     ?>
-                    <div style="width: 180%">  
-                        <?php 
-                            include("static/pedido2.php");
+
+
+
+                    <div style="width: 180%"> 
+
+                    <!-- Carrito Pedido -->
+
+                        
+
+                        <?php                             
+                           
                             include("static/historial.php");
                             
-                        ?>  
-                        <br>
-                        <img src="img/celular1.jpg" style="width:100%;">
-                        <br><br>
-                        <img src="img/bank.png" style="width:100%;">
- 
+                        ?>   
                     </div>
+
+
                         
                       
                 </div>
+
+
+
                 <div class="container1">
-                    <div class="col-md-10"> 
+                    <div class="col-md-8"> 
                         <aside id="modulos">         
                             <div class="cd-filter-conten"> 
                                <div class="row">
@@ -182,14 +191,98 @@
                                 </div>
                             
                               <!-- Fin catalogo -->
-                       
+
+                        </aside>    
+                
                     </div>
-                    <br>
                                 <br>
                                 <br>
-                     </aside>
-                </div>
+                                <br>
+                </div> 
+
+                <div class="col-md-2">  
+                     
+                        <?php
+                          if(!empty($_POST['codigo'])){
+                            $codigo=$_POST['codigo'];
+                            $pa=mysql_query("SELECT * FROM carrito WHERE codigo='$codigo'");        
+                            if($row=mysql_fetch_array($pa)){
+                              $new_cant=$row['cantidad']+1;
+                              mysql_query("UPDATE carrito SET cantidad='$new_cant' WHERE codigo='$codigo'");
+                            }else{
+                              mysql_query("INSERT INTO carrito (codigo, cantidad) VALUES ('$codigo','1')");
+                            }
+                          }
+                        ?>
+
+
+                        <style>
+                        #sidebar3{
+                            margin-left: 4em;
+                            
+                        }
+                            
+                        </style>
+
+
+                        <div id="sidebar3">
+                          <h2 align="center"><a style="color:#0D47A1;"  href="mis_pedidos.php"><img style="width: 18%;" src="ico/pedidos.png">Mis Pedidos</a></h2>
+                          <table class="table table-bordered">
+                            <tr>
+                              <td>
+                                <table class="table table-bordered table table-hover">
+                                  <?php 
+                                  $neto=0;$tneto=0;
+                                  $pa=mysql_query("SELECT * FROM carrito");       
+                                  while($row=mysql_fetch_array($pa)){
+                                    $oProducto=new Consultar_Producto($row['codigo']);
+                                    $neto=$oProducto->consultar('valor')*$row['cantidad'];
+                                    $tneto=$tneto+$neto;
+                                    
+                                    ?>
+                                    <tr style="font-size:9px">
+                                      <td><?php echo $oProducto->consultar('nombre'); ?></td>
+                                      <td><?php echo $row['cantidad']; ?></td>
+                                      <td>$ <?php echo number_format($neto,2,",","."); ?></td>
+                                      <td>
+                                        <a href="index.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
+                                       
+                                          <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                      </td>
+                                    </tr>
+                                    <?php }
+                                    ?>
+                                    <td colspan="4" style="font-size:9px"><div align="right">$<?php echo number_format($tneto,2,",","."); ?></div></td>
+                                    <?php 
+                                    $pa=mysql_query("SELECT * FROM carrito");       
+                                    if(!$row=mysql_fetch_array($pa)){
+                                      ?>
+                                      <tr><div class="alert alert-success" align="center"><strong>No hay Productos Registrados</strong></div></tr>
+                                      <?php } ?>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </table>
+
+                              <style>
+                                 button.btn btn-xl1{
+                                    text-align: center;
+                                 }
+                              </style>
+
+                              <button class='btn btn-xl1' >
+
+                    <li class="menu" style="float: left;">
+                        <a style="font-size: 80%; " class="page-scroll" href="index.php"><img id="carrito" src="ico/carrito.png">Comprar</a>
+
+                    </li>
+                    </button>
+                            </div>
+
+                </div> 
             </div>   
+    
         </div> 
     </section>
     <script language="javascript" type="text/javascript">
@@ -242,5 +335,8 @@
     <footer  style="background:#423E3E;" >
         <?php include("static/footer.php") ?>
     </footer>
+
 </body>
+
+
 </html>

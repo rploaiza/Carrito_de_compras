@@ -82,7 +82,7 @@ class clase_mysql{
 			<div class="producto2">       
 				<a href="principal.php?id=<?php echo $row['id'];?>&#modal1"><img src="<?php echo $row['imagen']; ?>" width="100%"></a>
 				<div class="caption" >
-					<h5 style="height: 17px"><?php echo $row['nombre'];?></h5>
+					<h5 style="height: 18px"><?php echo $row['nombre'];?></h5>
 					<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
 					<?php	
 					if ($row['estados']=='normal') {
@@ -110,8 +110,6 @@ class clase_mysql{
 	function descatalogo(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			?>  
-			
-
 			<div class="row">
 				<div class="col-md-12">
 				<span style="text-align:center; color:#0D47A1"><strong><?php echo $row['nombre'];?></strong></span><br><br>
@@ -241,7 +239,7 @@ class clase_mysql{
 	}
 	function nombreuser(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
-			echo utf8_encode($row[3]." ".$row[4]);
+			echo utf8_decode(utf8_encode($row[3]." ".$row[4]));
 		}		
 	}
 
@@ -545,7 +543,7 @@ class clase_mysql{
 		echo "</select><br>";
 
   	                                                    //-------- exit -------
-		$query = "SELECT codigo, nombre, marca, nota, valor, cantidad FROM producto";
+		$query = "SELECT codigo, nombre, marca, nota FROM producto";
 		$result = mysql_query($query) or die("error". mysql_error());
 		$a = mysql_num_fields($result);
 		while ($row = mysql_fetch_array($result)) {
@@ -556,7 +554,21 @@ class clase_mysql{
 				echo "</div>";
 			}
 			$a=0;                             
-		} 
+		}
+
+		$query = "SELECT valor, cantidad FROM producto";
+		$result = mysql_query($query) or die("error". mysql_error());
+		$a = mysql_num_fields($result);
+		while ($row = mysql_fetch_array($result)) {
+			for ($i=0; $i < $a ; $i++) { 
+				echo "<div class='form-group'>";
+				echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text' onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder='".mysql_field_name($result, $i)."'>";
+				echo "<p class='help-block text-danger'></p>";
+				echo "</div>";
+			}
+			$a=0;                             
+		}
+		
 	}
 	function procategoria2(){
 		echo "Categoria: ";
@@ -576,7 +588,7 @@ class clase_mysql{
 		                                                    //------- extraccion de los estados ------
 		include ("static/estado.php");
 		$_POST['idcatest'];
-		echo "Estado del producto: ";
+		//echo "Estado del producto: ";
 		echo "<select class='form-control' name='estado'>";
 		echo '<option value=""> - Select - </option>';
 		echo '<option value="s">Disnonible</option>';
@@ -613,6 +625,7 @@ class clase_mysql{
 		}
 	}
 	function estadoproducto(){
+
 		$query = "SELECT nombre, descripcion, descuento, id_categoria_estado FROM estado";
 		echo "Categoria del Estado: ";
 		$query = "SELECT * FROM categoria_estado WHERE id";

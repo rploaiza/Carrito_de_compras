@@ -1,5 +1,5 @@
 <?php
-echo "Estado del Producto: ";
+echo "Promociones: ";
 $res=mysql_query("select * from categoria_estado");
 ?>
 <div class='form-group'>   
@@ -14,3 +14,4 @@ $res=mysql_query("select * from categoria_estado");
 		</select>
 		<div id="myDiv"></div>
 	</div><br>
+Estado del producto:
