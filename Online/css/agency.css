@@ -1107,10 +1107,11 @@ body {
 aside#modulos {
   display: inline-block;
   background-color: #C7C8BF;
-  width: 98%;
-  margin-right: 0em;
-  margin-left: 13%;
+  width: 96%;
+  margin-right: 2em;
+  margin-left: 15%;
   border-radius: 1%;
+  padding-bottom: 5%
 }
 
 .cd-gallery {

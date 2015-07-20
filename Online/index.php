@@ -152,13 +152,6 @@ if (isset($_SESSION['usuario'])){
         }
 
         ?>
-        <div id="light" class="white_content">
-          <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
-            <button type="button" class="close" aria-label="Close">
-              <span  style="color:#0044cc;" aria-hidden="true">&times;</span>
-            </button>
-          </a>
-        </div>
         <div id="fade" class="black_overlay"></div>
       </section>
       <!-- Fin catalogo -->
@@ -174,9 +167,7 @@ if (isset($_SESSION['usuario'])){
   <hr>
 
   <!-- Services Footer -->
-  <footer>
-    <?php include("static/footer.php") ?>
-  </footer>
+  
 
 
   <!-- /container -->
@@ -214,24 +205,10 @@ if (isset($_SESSION['usuario'])){
           });
         });
       </script>
-      <script>
-        $(function() {
-          var offset = $("#sidebar2").offset();
-          var topPadding = 15;
-          $(window).scroll(function() {
-            if ($("#sidebar2").height() < $(window).height() && $(window).scrollTop() > offset.top) { /* LINEA MODIFICADA POR ALEX PARA NO ANIMAR SI EL SIDEBAR ES MAYOR AL TAMAÑO DE PANTALLA */
-              $("#sidebar2").stop().animate({
-                marginTop: $(window).scrollTop() - offset.top + topPadding
-              });
-            } else {
-              $("#sidebar2").stop().animate({
-                marginTop: 0
-              });
-            };
-          });
-        });
-      </script>
     </body>
+     <footer style="background: #423E3E;">
+        <?php include("static/footer.php") ?>
+    </footer>
     </html>
     <?php
   }else{

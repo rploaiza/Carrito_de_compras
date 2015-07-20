@@ -9,6 +9,98 @@
  */
 
 
+#link{
+  color: #000;
+}
+
+/*+++++INICIO ESTILO MODAL ADMIN+++++++*/
+.modalmask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 99999;
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+.modalmask:target {
+  opacity:1;
+  pointer-events: auto;
+}
+.modalbox{
+  width: 800px;
+  position: relative;
+  padding: 5px 20px 13px 20px;
+  background: #fff;
+  border-radius:3px;
+  -webkit-transition: all 500ms ease-in;
+  -moz-transition: all 500ms ease-in;
+  transition: all 500ms ease-in;
+  
+}
+
+.movedown {
+  margin: 0 auto;
+}
+
+.rotate {
+  margin: 10% auto;
+  -webkit-transform: scale(-5,-5); 
+  transform: scale(-5,-5);
+}
+.resize {
+  margin: 10% auto;
+  width:0;
+  height:0;
+
+}
+.modalmask:target .movedown{    
+  margin:10% auto;
+}
+.modalmask:target .rotate{    
+  transform: rotate(360deg) scale(1,1);
+    -webkit-transform: rotate(360deg) scale(1,1);
+}
+
+.modalmask:target .resize{
+  width:800px;
+  height:800px;
+}
+
+.close {
+  background: #606061;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: 1px;
+  text-align: center;
+  top: 1px;
+  width: 24px;
+  text-decoration: none;
+  border-radius:3px;
+  font-size:16px;
+}
+
+.close:hover { 
+  background: #0D47A1; 
+  color:#0D47A1;
+}
+
+}
+.nsc{
+  position:absolute;
+  bottom:40%;
+  right:0;
+}
+/*+++++FIN ESTILO MODAL ADMIN+++++++*/
+
+
+
  .col-md-11{
   width: 87%;
   margin-left: 13%;
@@ -59,19 +151,18 @@ label{
 /*+++++inicio estilo catalogo index++++++*/
 .producto2{
   background: #fff;
-  width: 18.2em;
-  height: 42em;
+  width: 190px;
+  height: 200px;
   display: inline-block;
   float: left;
   vertical-align: top;
-  margin-left: 1%;
+  margin-left: 2%;
   margin-top: 1%;
   color: #000;
   font-weight: bolder;
   font-size: 1rem;
   padding: 1%;
-  border-color: #000;
-  padding-bottom: 60%;
+  padding-bottom: 35%;
   -webkit-box-shadow: 0px 0px 10px rgba(240, 240, 240, 0.75);
   -moz-box-shadow:    0px 0px 10px rgba(240, 240, 240, 0.75);
   box-shadow:         0px 0px 10px rgba(240, 240, 240, 0.75);
@@ -89,6 +180,11 @@ label{
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
 }
+
+.producto2:hover{
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
+}
+
 /*+++++fin estilo catalogo index++++++*/
 
 
@@ -156,7 +252,7 @@ label{
 /*+++++fin estilo modal login++++++*/
 
 .btn-comprar{
- 
+  padding: 0%;
   background: #7BBD41;
   border-color: #e5e5e5;
   text-transform: uppercase;
@@ -164,6 +260,9 @@ label{
   color: #fff;
   background-color: #7BBD41;
   font-size: 2em;
+  -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
 }
 
 
@@ -446,16 +545,8 @@ ul.social-network li {
  /* inicio estilo catalogo*/
 
 #catalogo{
-    width: 86%;
-  background: #AFB42B;
-  float: left;
-  margin-left: 4%;
-  padding: 2em;
-  border-radius: 1em;
-}
-#catalogo3{
-  width: 96%;
-  background: #AFB42B;
+  width: 90%;
+  background: #F0F0F0;
   float: left;
   margin-left: 2%; 
 }
@@ -2581,7 +2672,6 @@ table {
 }
 
 .table-bordered {
-  margin-top: 3em;
   border: 1px solid #dddddd;
   border-collapse: separate;
   *border-collapse: collapse;
@@ -4087,6 +4177,9 @@ input[type="submit"].btn {
   *padding-top: 10px;
   *padding-bottom: 3px;
   width: 12em;
+  -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
 }
 
 button.btn::-moz-focus-inner,

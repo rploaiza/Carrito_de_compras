@@ -80,10 +80,20 @@ class clase_mysql{
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			?>  
 			<div class="producto2">       
-				<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-				document.getElementById('fade').style.display='block'"><img src="<?php echo $row['imagen']; ?>" width="100%"></a>
+				<a href="principal.php?id=<?php echo $row['id'];?>&#modal1"><img src="<?php echo $row['imagen']; ?>" width="100%"></a>
 				<div class="caption" >
-					<p><br>
+					<h5 style="height: 17px"><?php echo $row['nombre'];?></h5>
+					<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
+					<?php	
+					if ($row['estados']=='normal') {
+						echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
+					}elseif ($row['estados']=='oferta') {
+						echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
+					}else{
+						echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
+					}
+					?>	
+					<p>
 						<form name="form<?php $row['codigo']; ?>" method="post" action="">
 							<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
 							<button type="submit" name="boton" class="btn-comprar">
@@ -91,54 +101,74 @@ class clase_mysql{
 							</button>
 						</form> 
 					</p>
-					<h5><?php echo $row['nombre'];?></h5>
-					<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
-					<p style="font-size: 1em;"><?php echo $row['nota'];?></p>
-					<?php	
-						if ($row['estados']=='normal') {
-							echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
-						}elseif ($row['estados']=='oferta') {
-							echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
-						}else{
-							echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
-						}
-					?>	
 				</div>
 			</div>
 			<?php
 		}
 	}
 
+	function descatalogo(){
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+			?>  
+			
+
+			<div class="row">
+				<div class="col-md-12">
+				<span style="text-align:center; color:#0D47A1"><strong><?php echo $row['nombre'];?></strong></span><br><br>
+					<div class="row">
+						<div class="col-md-3 col-md-push-7">
+							<img src="<?php echo $row['imagen'];?>"><br><br>
+						</div>
+						<div class="col-md-5 col-md-pull-1" style="text-align:left;">
+							<span><strong>Marca:</strong></span>
+							<span><?php echo $row['marca'];?></span><br><br>
+							<span><strong>Precio:</strong></span>
+							<span>Precio: <?php echo $row['valor'];?></span><br><br>
+							<span><strong>Caracteristicas:</strong></span>
+							<strong><span><?php echo $row['nota'];?></span></strong><br><br>
+							<?php
+								$res='"'.dameURL().'"';			
+								mysql_query("INSERT INTO historial (codigo, url) VALUES ('$row[4]','<a href=$res>link</a>')");
+							?>
+					</div>
+				</div>
+			</div>
+			<?php
+			
+		}
+
+	}
+
 	function consultacatalogo2(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			?>  
-				<div class="producto">        
-					<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
-					document.getElementById('fade').style.display='block'"><img src="<?php echo $row['imagen']; ?>" width="100%"></a>
-					<div class="caption" >
-						<h5><?php echo $row['nombre'];?></h5>
-						<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
-						<p><?php echo $row['nota'];?></p>
-						<?php
-							
-							if ($row['estados']=='normal') {
-								echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
-							}elseif ($row['estados']=='oferta') {
-								echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
-							}else{
-								echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
-							}
-						?>
-						
-						<p>
-							<form name="form<?php $row['codigo']; ?>" method="post" action="">
-								<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
-								<button type="submit" name="boton" class="btn-comprar">
-									<strong style="font-size:55%;"><a style="color:#fff;" href="login.php">Agregar al Carrito</a></strong>
-								</button>
-							</form> 
-						</p>
-					</div>
+			<div class="producto">        
+				<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';
+				document.getElementById('fade').style.display='block'"><img src="<?php echo $row['imagen']; ?>" width="100%"></a>
+				<div class="caption" >
+					<h5><?php echo $row['nombre'];?></h5>
+					<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
+					<p><?php echo $row['nota'];?></p>
+					<?php
+
+					if ($row['estados']=='normal') {
+						echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
+					}elseif ($row['estados']=='oferta') {
+						echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
+					}else{
+						echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
+					}
+					?>
+
+					<p>
+						<form name="form<?php $row['codigo']; ?>" method="post" action="">
+							<input type="hidden" name="codigo" value="<?php echo $row['codigo']; ?>">
+							<button type="submit" name="boton" class="btn-comprar">
+								<strong style="font-size:55%;"><a style="color:#fff;" href="login.php">Agregar al Carrito</a></strong>
+							</button>
+						</form> 
+					</p>
+				</div>
 			</div>
 			<?php
 		}
@@ -338,7 +368,7 @@ class clase_mysql{
 	function consulta_lista2(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 
-			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".utf8_encode($row[1])."</a></button>";			
+			echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=".$row[0]."' class='nava' data-type='".$row[1]."'>".utf8_decode(utf8_encode($row[1]))."</a></button>";			
 		}
 		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=todos' class='nava' data-type='".$row[1]."'>Todos</a></button>";
 		echo "<button name= btn_cat class='btn btn-xl1' data-filter='.".$row[1]."'><a href='principal.php?id=oferta' class='nava' data-type='".$row[1]."'>".utf8_decode("Ofertas y más...")."</a></button>";			
@@ -354,143 +384,143 @@ class clase_mysql{
 
 
 
-function consulta_tabla($bd){
-	echo '<div class="row">';
-	echo '<div class="col-md-6 col-md-offset-3">';
-	echo '<form class="form-horizontal" action="include/insertar.php" method="post">';
-	echo '<div class="form-group">';
-	echo '<label for="bd" class="col-sm-4 control-label"></label>';
-	echo '<div class="col-sm-8">';
-	echo '<input type="hidden" class="form-control" name="bd" value="'.$bd.'">';
-	echo '</div>';
-	echo '</div>';
-	while ($row = mysql_fetch_array($this->Consulta_ID)) {
+	function consulta_tabla($bd){
+		echo '<div class="row">';
+		echo '<div class="col-md-6 col-md-offset-3">';
+		echo '<form class="form-horizontal" action="include/insertar.php" method="post">';
 		echo '<div class="form-group">';
-		echo '<label for="'.$row[0].'" class="col-sm-4 control-label">'.$row[0].'</label>';
+		echo '<label for="bd" class="col-sm-4 control-label"></label>';
 		echo '<div class="col-sm-8">';
-		if ($row[2]=="NO") {
-			if ($row[1]=="text") {
-				echo '<textarea class="form-control" rows="10" cols ="30" id="'.$row[0].'" name="'.$row[0].'" placeholder="Ingrese su '.$row[0].'..." required></textarea>';
-				echo "<script type='text/javascript'>";
-				echo "CKEDITOR.replace ('".$row[0]."');";
-				echo "</script>";
-			}else if($row[1]=="date"){
-				echo '<input type="date" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="'.$row[0].'" required>';
-			}else if($row[3]=="PRI"){
-				echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="" disabled=true required>';
+		echo '<input type="hidden" class="form-control" name="bd" value="'.$bd.'">';
+		echo '</div>';
+		echo '</div>';
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+			echo '<div class="form-group">';
+			echo '<label for="'.$row[0].'" class="col-sm-4 control-label">'.$row[0].'</label>';
+			echo '<div class="col-sm-8">';
+			if ($row[2]=="NO") {
+				if ($row[1]=="text") {
+					echo '<textarea class="form-control" rows="10" cols ="30" id="'.$row[0].'" name="'.$row[0].'" placeholder="Ingrese su '.$row[0].'..." required></textarea>';
+					echo "<script type='text/javascript'>";
+					echo "CKEDITOR.replace ('".$row[0]."');";
+					echo "</script>";
+				}else if($row[1]=="date"){
+					echo '<input type="date" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="'.$row[0].'" required>';
+				}else if($row[3]=="PRI"){
+					echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="" disabled=true required>';
+				}else{
+					echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="'.$row[0].'" required>';
+				}
 			}else{
-				echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="'.$row[0].'" required>';
+				if ($row[1]=="text") {
+					echo '<textarea class="form-control" rows="10" cols ="25" id="'.$row[0].'" name="'.$row[0].'" placeholder="Ingrese su '.$row[0].'..."></textarea>';
+					echo "<script type='text/javascript'>";
+					echo "CKEDITOR.replace ('".$row[0]."');";
+					echo "</script>";
+				}else if($row[1]=="date"){
+					echo '<input type="date" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="'.$row[0].'">';
+				}else if($row[3]=="PRI"){
+					echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="" disabled=true >';
+				}else{
+					echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="'.$row[0].'">';
+				}
 			}
-		}else{
-			if ($row[1]=="text") {
-				echo '<textarea class="form-control" rows="10" cols ="25" id="'.$row[0].'" name="'.$row[0].'" placeholder="Ingrese su '.$row[0].'..."></textarea>';
-				echo "<script type='text/javascript'>";
-				echo "CKEDITOR.replace ('".$row[0]."');";
-				echo "</script>";
-			}else if($row[1]=="date"){
-				echo '<input type="date" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="'.$row[0].'">';
-			}else if($row[3]=="PRI"){
-				echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="" disabled=true >';
-			}else{
-				echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" placeholder="'.$row[0].'">';
-			}
+			echo '</div>';
+			echo '</div>';
 		}
-		echo '</div>';
-		echo '</div>';
-	}
-	echo '<div class="form-group">';
-	echo '<div class="col-sm-offset-2 col-sm-10">';
-	echo '<button type="submit" class="btn btn-default">Enviar</button>';
-	echo '</div>';
-	echo '</div> ';      
-	echo '</form>';        
-	echo '</div>';
-	echo '</div>';
-}
-
-function consulta_tabla2($bd, $list){
-	echo '<div class="row">';
-	echo '<div class="col-md-6 col-md-offset-3">';
-	echo '<form class="form-horizontal" action="include/actualizar.php?" method="post">';
-	echo '<div class="form-group">';
-	echo '<label for="bd" class="col-sm-4 control-label"></label>';
-	echo '<div class="col-sm-8">';
-	echo '<input type="hidden" class="form-control" name="bd" value="'.$bd.'">';
-	echo '</div>';
-	echo '</div>';
-	$cont = 0;
-	while ($row = mysql_fetch_array($this->Consulta_ID)) {
 		echo '<div class="form-group">';
-		echo '<label for="'.$row[0].'" class="col-sm-4 control-label">'.$row[0].'</label>';
+		echo '<div class="col-sm-offset-2 col-sm-10">';
+		echo '<button type="submit" class="btn btn-default">Enviar</button>';
+		echo '</div>';
+		echo '</div> ';      
+		echo '</form>';        
+		echo '</div>';
+		echo '</div>';
+	}
+
+	function consulta_tabla2($bd, $list){
+		echo '<div class="row">';
+		echo '<div class="col-md-6 col-md-offset-3">';
+		echo '<form class="form-horizontal" action="include/actualizar.php?" method="post">';
+		echo '<div class="form-group">';
+		echo '<label for="bd" class="col-sm-4 control-label"></label>';
 		echo '<div class="col-sm-8">';
-		if ($row[2]=="NO") {
-			if ($row[1]=="text") {
-				echo '<textarea class="form-control" rows="4" cols ="20" id="'.$row[0].'" name="'.$row[0].'" required>'.$list[$cont].'</textarea>';
-				echo "<script type='text/javascript'>";
-				echo "CKEDITOR.replace ('".$row[0]."');";
-				echo "</script>";
-			}else if($row[1]=="date"){
-				echo '<input type="date" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'" required>';
-			}else if($row[3]=="PRI"){
-				echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'" readonly required>';
-			}else{
-				echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'" required>';
-			}
-		}else{
-			if ($row[1]=="text") {
-				echo '<textarea class="form-control" rows="4" cols ="20" id="'.$row[0].'" name="'.$row[0].'">'.$list[$cont].'</textarea>';
-				echo "<script type='text/javascript'>";
-				echo "CKEDITOR.replace ('".$row[0]."');";
-				echo "</script>";
-			}else if($row[1]=="date"){
-				echo '<input type="date" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'">';
-			}else if($row[3]=="PRI"){
-				echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'" readonly >';
-			}else{
-				echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'">';
-			}
-		}
+		echo '<input type="hidden" class="form-control" name="bd" value="'.$bd.'">';
 		echo '</div>';
 		echo '</div>';
-		$cont = $cont + 1;
-	}
-	echo '<div class="form-group">';
-	echo '<div class="col-sm-offset-2 col-sm-10">';
-	echo '<button type="submit" class="btn btn-default">Editar</button>';
-	echo '</div>';
-	echo '</div> ';      
-	echo '</form>';        
-	echo '</div>';
-	echo '</div>';
-
-}
-
-function opciones($num){
-	if($num==1){
+		$cont = 0;
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
-			echo "<option value='".$row[0]."'>".utf8_encode($row[1])."</option>";
+			echo '<div class="form-group">';
+			echo '<label for="'.$row[0].'" class="col-sm-4 control-label">'.$row[0].'</label>';
+			echo '<div class="col-sm-8">';
+			if ($row[2]=="NO") {
+				if ($row[1]=="text") {
+					echo '<textarea class="form-control" rows="4" cols ="20" id="'.$row[0].'" name="'.$row[0].'" required>'.$list[$cont].'</textarea>';
+					echo "<script type='text/javascript'>";
+					echo "CKEDITOR.replace ('".$row[0]."');";
+					echo "</script>";
+				}else if($row[1]=="date"){
+					echo '<input type="date" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'" required>';
+				}else if($row[3]=="PRI"){
+					echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'" readonly required>';
+				}else{
+					echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'" required>';
+				}
+			}else{
+				if ($row[1]=="text") {
+					echo '<textarea class="form-control" rows="4" cols ="20" id="'.$row[0].'" name="'.$row[0].'">'.$list[$cont].'</textarea>';
+					echo "<script type='text/javascript'>";
+					echo "CKEDITOR.replace ('".$row[0]."');";
+					echo "</script>";
+				}else if($row[1]=="date"){
+					echo '<input type="date" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'">';
+				}else if($row[3]=="PRI"){
+					echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'" readonly >';
+				}else{
+					echo '<input type="text" class="form-control" id="focusedInput" name="'.$row[0].'" value="'.$list[$cont].'">';
+				}
+			}
+			echo '</div>';
+			echo '</div>';
+			$cont = $cont + 1;
 		}
-	}else if ($num==2){
-		while ($row = mysql_fetch_array($this->Consulta_ID)) {
-			echo "<option value='".$row[0]."'>".utf8_encode($row[2]." ".$row[3])."</option>";
-		}
-	}else if ($num==3){
-		while ($row = mysql_fetch_array($this->Consulta_ID)) {
-			echo "<option value='".$row[0]."'>".utf8_encode($row[0])."</option>";
+		echo '<div class="form-group">';
+		echo '<div class="col-sm-offset-2 col-sm-10">';
+		echo '<button type="submit" class="btn btn-default">Editar</button>';
+		echo '</div>';
+		echo '</div> ';      
+		echo '</form>';        
+		echo '</div>';
+		echo '</div>';
+
+	}
+
+	function opciones($num){
+		if($num==1){
+			while ($row = mysql_fetch_array($this->Consulta_ID)) {
+				echo "<option value='".$row[0]."'>".utf8_encode($row[1])."</option>";
+			}
+		}else if ($num==2){
+			while ($row = mysql_fetch_array($this->Consulta_ID)) {
+				echo "<option value='".$row[0]."'>".utf8_encode($row[2]." ".$row[3])."</option>";
+			}
+		}else if ($num==3){
+			while ($row = mysql_fetch_array($this->Consulta_ID)) {
+				echo "<option value='".$row[0]."'>".utf8_encode($row[0])."</option>";
+			}
 		}
 	}
-}
-function hora(){
-	while ($row = mysql_fetch_array($this->Consulta_ID)) {
-		$array[0]=$row[0];
-		$array[1]=$row[1];
+	function hora(){
+		while ($row = mysql_fetch_array($this->Consulta_ID)) {
+			$array[0]=$row[0];
+			$array[1]=$row[1];
+		}
+
+		return $array;
 	}
 
-	return $array;
-}
 
-
-function procategoria(){
+	function procategoria(){
 		echo "Categoria: ";
 		$query = "SELECT * FROM categoria_producto WHERE id";
 		$result = mysql_query($query) or die("error". mysql_error());                                   
@@ -528,31 +558,31 @@ function procategoria(){
 			$a=0;                             
 		} 
 	}
-		function procategoria2(){
-			echo "Categoria: ";
-			$query = "SELECT * FROM categoria_producto WHERE id";
-			$result = mysql_query($query) or die("error". mysql_error());                                   
-			echo "<div class='form-group'>";                                                                
-			echo "<select class='form-control' name='idcat'>";
-			echo '<option value="" default selected>- Select -</option>';
-			while ($row = mysql_fetch_array($result)) {
-				echo "<h3 class='section-subheading text-muted'> string   ".$row[0]."</h3>";   
-				echo "string  ".$row[0];
-				echo "<option value='".$row[0]."'>".$row[1]."</option>"; 
-			}
-			echo "</select><br>";
-			echo "<p class='help-block text-danger'></p>";
-			echo "</div>";
-		                                                    //------- extraccion de los estados ------
-			include ("static/estado.php");
-            $_POST['idcatest'];
-			echo "Estado del producto: ";
-			echo "<select class='form-control' name='estado'>";
-			echo '<option value=""> - Select - </option>';
-			echo '<option value="s">Disnonible</option>';
-			echo '<option value="n">Fuera de stock</option>';
-			echo "</select><br>";
+	function procategoria2(){
+		echo "Categoria: ";
+		$query = "SELECT * FROM categoria_producto WHERE id";
+		$result = mysql_query($query) or die("error". mysql_error());                                   
+		echo "<div class='form-group'>";                                                                
+		echo "<select class='form-control' name='idcat'>";
+		echo '<option value="" default selected>- Select -</option>';
+		while ($row = mysql_fetch_array($result)) {
+			echo "<h3 class='section-subheading text-muted'> string   ".$row[0]."</h3>";   
+			echo "string  ".$row[0];
+			echo "<option value='".$row[0]."'>".$row[1]."</option>"; 
 		}
+		echo "</select><br>";
+		echo "<p class='help-block text-danger'></p>";
+		echo "</div>";
+		                                                    //------- extraccion de los estados ------
+		include ("static/estado.php");
+		$_POST['idcatest'];
+		echo "Estado del producto: ";
+		echo "<select class='form-control' name='estado'>";
+		echo '<option value=""> - Select - </option>';
+		echo '<option value="s">Disnonible</option>';
+		echo '<option value="n">Fuera de stock</option>';
+		echo "</select><br>";
+	}
 	function catprod(){
 		$query = "SELECT categoria FROM categoria_producto";
 		$result = mysql_query($query) or die("error". mysql_error());
@@ -567,46 +597,46 @@ function procategoria(){
 			$a=0;                             
 		}
 	}
-function categoria_estado(){
-	$query = "SELECT estado FROM categoria_estado";
-	$result = mysql_query($query) or die("error". mysql_error());
-	$a = mysql_num_fields($result);
-	while ($row = mysql_fetch_array($result)) {
-		for ($i=0; $i < $a ; $i++) { 
-			echo "<div class='form-group'>";
-			echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text'>";
-			echo "<p class='help-block text-danger'></p>";
-			echo "</div>";
+	function categoria_estado(){
+		$query = "SELECT estado FROM categoria_estado";
+		$result = mysql_query($query) or die("error". mysql_error());
+		$a = mysql_num_fields($result);
+		while ($row = mysql_fetch_array($result)) {
+			for ($i=0; $i < $a ; $i++) { 
+				echo "<div class='form-group'>";
+				echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text'>";
+				echo "<p class='help-block text-danger'></p>";
+				echo "</div>";
 
+			}
+			$a=0;                             
 		}
-		$a=0;                             
 	}
-}
-function estadoproducto(){
-	$query = "SELECT nombre, descripcion, descuento, id_categoria_estado FROM estado";
-	echo "Categoria del Estado: ";
-	$query = "SELECT * FROM categoria_estado WHERE id";
-	$result = mysql_query($query) or die("error". mysql_error());
-	echo "<select class='form-control' name='idcatestado'>";
-	while ($row = mysql_fetch_array($result)) {
-		echo "string  ".$row[0];
-		echo "<option value='".$row[0]."'>".$row[1]."</option>"; 
-	}
-	echo "</select><br>";
-	$query = "SELECT nombre, descrpcion, descuento FROM estado WHERE id";
-	$result = mysql_query($query) or die("error". mysql_error());
-	$cont = mysql_num_fields($result);
-	while ($row = mysql_fetch_array($result)) {
-		for ($i=0; $i < $cont ; $i++) { 
-			echo "<div class='form-group'>";
-			echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text' placeholder='".mysql_field_name($result, $i)."'>";
-			echo "<p class='help-block text-danger'></p>";
-			echo "</div>";
+	function estadoproducto(){
+		$query = "SELECT nombre, descripcion, descuento, id_categoria_estado FROM estado";
+		echo "Categoria del Estado: ";
+		$query = "SELECT * FROM categoria_estado WHERE id";
+		$result = mysql_query($query) or die("error". mysql_error());
+		echo "<select class='form-control' name='idcatestado'>";
+		while ($row = mysql_fetch_array($result)) {
+			echo "string  ".$row[0];
+			echo "<option value='".$row[0]."'>".$row[1]."</option>"; 
 		}
-		echo "<br>";
-		$cont=0;                             
-	}   
+		echo "</select><br>";
+		$query = "SELECT nombre, descrpcion, descuento FROM estado WHERE id";
+		$result = mysql_query($query) or die("error". mysql_error());
+		$cont = mysql_num_fields($result);
+		while ($row = mysql_fetch_array($result)) {
+			for ($i=0; $i < $cont ; $i++) { 
+				echo "<div class='form-group'>";
+				echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text' placeholder='".mysql_field_name($result, $i)."'>";
+				echo "<p class='help-block text-danger'></p>";
+				echo "</div>";
+			}
+			echo "<br>";
+			$cont=0;                             
+		}   
 
-}
+	}
 }
 ?>

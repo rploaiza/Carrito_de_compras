@@ -140,9 +140,9 @@
             <td><br><br>
                             <center>
                                 <a href="mis_pedidos.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
-                                    <span class="glyphicon glyphicon-trash"></span>
-
-                                    
+                                    <button type="button" class="close" aria-label="Close">
+                                        <span  style="color:#000;" aria-hidden="true">&times;</span>
+                                    </button>X
                                 </a>
                             </center>
                         </td>
@@ -226,7 +226,7 @@
 
     </body>
 
-    <footer style="background: #000;">
+    <footer style="background: #423E3E;">
         <?php include("static/footer.php") ?>
     </footer>
 

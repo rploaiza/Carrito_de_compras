@@ -4,39 +4,32 @@
     include("static/site_config.php"); 
     include ("static/clase_mysql.php");
     $miconexion = new clase_mysql;
-$miconexion->conectar($db_name,$db_host, $db_user,$db_password);
+    $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Buy Online</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="css/agency.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-    <script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <script src="js/modernizr.js"></script>
+    <!-- Modernizr -->
     <link rel="stylesheet" type="text/css" href="css/jquery.lightbox.css">
-
-
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
     <link rel="shortcut icon" href="http://www.azulweb.net/wp-content/uploads/2014/02/icono-2.png" />
@@ -44,41 +37,26 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
     <link rel="stylesheet" href="css/estilos.css">
-
     <?php
-    session_start();
-    if (isset($_SESSION['usuario'])){ 
         class Consultar_Producto{
-            private $consulta;
-            private $fetch;           
-            function __construct($codigo){
-                $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
-                $this->fetch = mysql_fetch_array($this->consulta);
-            }
-            function consultar($campo){
-                return $this->fetch[$campo];
-            }
+        private $consulta;
+        private $fetch;
+        
+        function __construct($codigo){
+          $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
+          $this->fetch = mysql_fetch_array($this->consulta);
         }
-          if(!empty($_GET['del'])){
-            $id=$_GET['del'];
-            mysql_query("DELETE FROM carrito WHERE codigo='$id'");
-            header('location:principal.php');
+        
+        function consultar($campo){
+          return $this->fetch[$campo];
         }
-    }else{
-        mysql_query("TRUNCATE carrito");
-        class Consultar_Producto{
-            private $consulta;
-            private $fetch;           
-            function __construct($codigo){
-                $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
-                $this->fetch = mysql_fetch_array($this->consulta);
-            }
-            function consultar($campo){
-                return $this->fetch[$campo];
-            }
-        }     
-    }
-    ?>
+      }
+      if(!empty($_GET['del'])){
+        $id=$_GET['del'];
+        mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
+        header('location:index.php');
+      }
+      ?>
     <style>
         @media (min-width: 768px) {
             .container {
@@ -106,12 +84,14 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
             background-color: #205FA7;
             color: #FFFFFF;
             cursor: pointer;
-            margin-left: -65%;
+            margin-left: -62%;
             padding: 1%;
+            border-radius: 1.5em;
+
         }
         .row {
             margin-right: -1px;
-            margin-left: -67px;
+            margin-left: -63px;
         }
 
 </style>
@@ -131,19 +111,17 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                     <?php
                         $miconexion->consulta("select * from categoria_producto");
                         $miconexion->consulta_lista2();
+
+
                     ?>
                     <div style="width: 180%">  
                         <?php 
                             include("static/pedido2.php");
-                        
-                        echo "<br>";
-                        /*private $consulta;
-                        private $fetch;           
-                        function __construct($codigo){
-                            $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
-                            $this->fetch = mysql_fetch_array($this->consulta);
-                        }*/
+                            include("static/historial.php");
+                            
                         ?>  
+                        <br>
+                        <img src="img/celular1.jpg" style="width:100%;">
                         <br><br>
                         <img src="img/bank.png" style="width:100%;">
  
@@ -164,7 +142,6 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                 <div class="footer center"></div>
                             </div>
                             <!-- Inicio catalogo -->                     
-                            <section id="catalogo3">
                                 <?php
                                 extract($_POST);
                                 extract($_GET);
@@ -185,29 +162,32 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                 }
                                 
                                 ?>
-                                <div id="light" class="white_content">
-                                  <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
-                                    <button type="button" class="close" aria-label="Close">
-                                      <span  style="color:#0044cc;" aria-hidden="true">&times;</span>
-                                    </button>
-                                  </a>
+                                <div id="modal1" class="modalmask">
+
+                                <div class="modalbox movedown">
+
+                                    <a href="principal.php" title="Close" class="close">X</a>
+                                    <?php
+                                        $miconexion->consulta("select * from producto where id=".$_GET['id']);
+                                        $miconexion->descatalogo();
+
+                                  function dameURL(){
+                                  $url="http://".$_SERVER['HTTP_HOST'].":".$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']."#modal1";
+                                  return $url;
+                                  }
+                                  
+                     
+                                        ?>
+                                    </div>
                                 </div>
-                                <div id="fade" class="black_overlay"></div>
                             
                               <!-- Fin catalogo -->
-            
-                            <div id="light" class="white_content">
-                                <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
-                                    <button type="button" class="close" aria-label="Close">
-                                        <span  style="color:#0044cc;" aria-hidden="true">&times;</span>
-                                    </button>
-                                </a>
-                            </div>
-                            <div id="fade" class="black_overlay"></div>
-                            <!-- Fin catalogo -->
-                            </section>
-                        </aside>
+                       
                     </div>
+                    <br>
+                                <br>
+                                <br>
+                     </aside>
                 </div>
             </div>   
         </div> 
@@ -243,6 +223,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
             $('.gallery a').lightbox(); 
         });
     </script>
+
     <script language="JavaScript">
         function muestra_oculta(id){
             if (document.getElementById){ //se obtiene el id
@@ -258,7 +239,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
             obj.style.display = (obj.style.display == 'none') ? 'block' : 'none';
         }
     </script>
-    <footer  style="background: #000;" >
+    <footer  style="background:#423E3E;" >
         <?php include("static/footer.php") ?>
     </footer>
 </body>

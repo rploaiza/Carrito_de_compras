@@ -40,17 +40,35 @@ body {
   margin-right: 5%;
 }
 
-a {
-  color: #FCFCFC;
-  text-decoration: none;
-    color: #FCFCFC;
+a{
+  color: #0D47A1;
   text-decoration: none;
   font-family: "lato",Geneva,sans-serif;
   text-transform: uppercase;
   display: inline-block;
   font-size: 15px
-
 }
+
+
+a:hover {
+  color: #000;
+}
+
+.nava{
+  text-decoration: none;
+    color: #0D47A1;
+  text-decoration: none;
+  font-family: "lato",Geneva,sans-serif;
+  text-transform: uppercase;
+  display: inline-block;
+  font-size: 15px
+}
+
+.nava:hover{
+  color: #fff;
+}
+
+
 p{
   font-size: 11px;
 }
@@ -74,6 +92,7 @@ p{
   position: relative;
   width: 50%;
   margin-left: 25%;
+  margin-right: 35%;
   vertical-align: top;
   }
 /* -------------------------------- 

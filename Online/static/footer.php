@@ -1,5 +1,5 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<div style="background: #000;" class="row">
+<div style="background:#423E3E;" class="row">
 
 <div class="col-md-4">
   <section>
