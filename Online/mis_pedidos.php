@@ -140,9 +140,9 @@
             <td><br><br>
                             <center>
                                 <a href="mis_pedidos.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
-                                    <button type="button" class="close" aria-label="Close">
-                                        <span  style="color:#000;" aria-hidden="true">&times;</span>
-                                    </button>X
+                                    <span class="glyphicon glyphicon-trash"></span>
+
+                                    
                                 </a>
                             </center>
                         </td>

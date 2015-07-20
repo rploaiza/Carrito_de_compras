@@ -46,25 +46,39 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
     <link rel="stylesheet" href="css/estilos.css">
 
     <?php
+    session_start();
+    if (isset($_SESSION['usuario'])){ 
         class Consultar_Producto{
-        private $consulta;
-        private $fetch;
-        
-        function __construct($codigo){
-          $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
-          $this->fetch = mysql_fetch_array($this->consulta);
+            private $consulta;
+            private $fetch;           
+            function __construct($codigo){
+                $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
+                $this->fetch = mysql_fetch_array($this->consulta);
+            }
+            function consultar($campo){
+                return $this->fetch[$campo];
+            }
         }
-        
-        function consultar($campo){
-          return $this->fetch[$campo];
+          if(!empty($_GET['del'])){
+            $id=$_GET['del'];
+            mysql_query("DELETE FROM carrito WHERE codigo='$id'");
+            header('location:principal.php');
         }
-      }
-      if(!empty($_GET['del'])){
-        $id=$_GET['del'];
-        mysql_query("DELETE FROM carrito WHERE codigo='$id'");
-        header('location:principal.php');
-      }
-      ?>
+    }else{
+        mysql_query("TRUNCATE carrito");
+        class Consultar_Producto{
+            private $consulta;
+            private $fetch;           
+            function __construct($codigo){
+                $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
+                $this->fetch = mysql_fetch_array($this->consulta);
+            }
+            function consultar($campo){
+                return $this->fetch[$campo];
+            }
+        }     
+    }
+    ?>
     <style>
         @media (min-width: 768px) {
             .container {
@@ -121,9 +135,15 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                     <div style="width: 180%">  
                         <?php 
                             include("static/pedido2.php");
+                        
+                        echo "<br>";
+                        /*private $consulta;
+                        private $fetch;           
+                        function __construct($codigo){
+                            $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
+                            $this->fetch = mysql_fetch_array($this->consulta);
+                        }*/
                         ?>  
-                        <br>
-                        <img src="img/celular1.jpg" style="width:100%;">
                         <br><br>
                         <img src="img/bank.png" style="width:100%;">
  
