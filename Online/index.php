@@ -40,10 +40,36 @@ if (isset($_SESSION['usuario'])){
     <!-- Custom CSS -->
     <link href="css/agency.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
     <style type="text/css">
       body {
         padding-top: 60px;
         padding-bottom: 40px;
+      }
+    </style>
+
+    <style type="text/css">
+      h2{
+        margin: 0;     
+        color: #666;
+        padding-top: 90px;
+        font-size: 52px;
+        font-family: "trebuchet ms", sans-serif;    
+      }
+      .item{
+        text-align: center;
+        height: 200px;
+      }
+      .carousel{
+        margin-top: 20px;
+      }
+      .bs-example{
+        margin: 20px;
+      }
+      .imga{
+        height: 150px;
+
+
       }
     </style>
 
@@ -62,9 +88,11 @@ if (isset($_SESSION['usuario'])){
     <link rel="stylesheet" type="text/css" href="css/jquery.lightbox.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
+
     <link rel="shortcut icon" href="http://www.azulweb.net/wp-content/uploads/2014/02/icono-2.png" />
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="css/agency.css" rel="stylesheet">
   </head>
@@ -116,6 +144,7 @@ if (isset($_SESSION['usuario'])){
     </div>
     <!-- /.navbar-collapse -->
   </nav><br>
+
   <div class="row-fluid">
     <div class="span2">
       <div id="sidebar"><br><br><br>
@@ -133,12 +162,13 @@ if (isset($_SESSION['usuario'])){
         </div>       
       </div>       
     </div><br><br>
-    <!-- Inicio de catalogo -->
+    <!-- Inicio de catalogo --> 
     <div class="span7">          
       <section id="catalogo">
         <?php
         if (isset($id)) {
           if ($id=='todos') {
+<<<<<<< HEAD
             $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s'");
             $miconexion->consultacatalogo();
           }elseif ($id=='oferta') {
@@ -184,9 +214,58 @@ if (isset($_SESSION['usuario'])){
 
     <!-- Services Footer -->
     
+=======
+         $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s'");
+         $miconexion->consultacatalogo2();
+       }elseif ($id=='oferta') {
+        $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s' and e.estado <>'Normal'");
+        $miconexion->consultacatalogo2();
+      }else{
+        $miconexion->carpromocion();
+        $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.id_categoria=".$id);
+        $miconexion->consultacatalogo2();
+      }
+    }else{
+      $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
+      $miconexion->consultacatalogo2();
+    }
 
+    ?>
+    <div id="fade" class="black_overlay"></div>
+  </section>
+  <!-- Fin catalogo -->
+  <div id="modal1" class="modalmask">
 
+    <div class="modalbox movedown">
+
+      <a href="#" title="Close" class="close">X</a>
+      <?php
+      $miconexion->consulta("select * from producto where id=".$_GET['id']);
+      $miconexion->descatalogo2();
+                                      
+      ?>
+    </div>
+  </div>
+</div>
+
+<div class="span3">  
+  <?php 
+  include("static/pedido.php");     
+  ?>  
+</div>
+</div>
+<hr>
+>>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
+
+<!-- Services Footer -->
+
+<<<<<<< HEAD
     <!-- /container -->
+=======
+
+
+<!-- /container -->
+>>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
 
       <!-- Le javascript
       ================================================== -->
@@ -222,6 +301,10 @@ if (isset($_SESSION['usuario'])){
         });
       </script>
     </body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
     <footer style="background: #423E3E;">
       <?php include("static/footer.php") ?>
     </footer>

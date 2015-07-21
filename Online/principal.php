@@ -110,6 +110,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
             margin-right: -1px;
             margin-left: -63px;
         }
+<<<<<<< HEAD
         aside#modulos {
             display: inline-block;
             background-color: #C7C8BF;
@@ -118,6 +119,8 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
             border-radius: 1%;
             padding-bottom: 5%
         }
+=======
+>>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
 
     </style>
 </head>
@@ -132,12 +135,12 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
     <section id="services">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <?php
                     $miconexion->consulta("select * from categoria_producto");
                     $miconexion->consulta_lista2();
                     ?>
-                    <div>  
+                    <div style="width: 180%">  
                         <?php 
                             include("static/pedido2.php");
                             include("static/historial.php");    
@@ -145,7 +148,11 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                     </div>
                 </div>
                 <div class="container1">
+<<<<<<< HEAD
                     <div class="col-md-9"> 
+=======
+                    <div class="col-md-10"> 
+>>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
                         <aside id="modulos">         
                             <div class="cd-filter-conten"> 
                                 <div class="row">
@@ -154,7 +161,11 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                     </div>
                                 </div>
                                 <div id="re"></div>
+<<<<<<< HEAD
                                 <div class="footer center   "></div>
+=======
+                                <div class="footer center"></div>
+>>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
                             </div>
                             <!-- Inicio catalogo -->                     
                             <?php
@@ -180,7 +191,8 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                 <div class="modalbox movedown">
                                     <a href="principal.php" title="Close" class="close">X</a>
                                     <?php
-                                        $miconexion->consulta("select * from producto where id=".$_GET['id']);
+                                        $miconexion->consulta("select p.*, e.nombre AS estado , e.descrpcion FROM producto p, estado e where p.id_estado=e.id and p.id=".$_GET['id']);
+                                        
                                         $miconexion->descatalogo();
 
                                         function dameURL(){
