@@ -90,7 +90,7 @@ if (isset($_SESSION['usuario'])){
         aside#modulos2 {
           display: inline-block;
   background-color: #C7C8BF;
-  width: 118%;
+  width: 111%;
   margin-right: 2em;
   margin-left: -4%;
   border-radius: 1%;
