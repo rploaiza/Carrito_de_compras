@@ -97,14 +97,14 @@ if (isset($_SESSION['usuario'])){
           </li>   
         </ul>
       </div>
-    <div>
-      <ul class="nav navbar-nav navbar-left">
-        <li>
+      <div>
+        <ul class="nav navbar-nav navbar-left">
+          <li>
            <a class="page-scroll" href="#">BIENVENIDO:
-              <?php
-                  $miconexion->consulta("SELECT * FROM usuario WHERE user='".strtolower ($_SESSION['usuario'])."'");
-                  $miconexion->nombreuser();
-              ?>
+            <?php
+            $miconexion->consulta("SELECT * FROM usuario WHERE user='".strtolower ($_SESSION['usuario'])."'");
+            $miconexion->nombreuser();
+            ?>
           </a>
         </li>                 
       </ul>
@@ -140,17 +140,17 @@ if (isset($_SESSION['usuario'])){
         if (isset($id)) {
           if ($id=='todos') {
             $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s'");
-            $miconexion->consultacatalogo2();
+            $miconexion->consultacatalogo();
           }elseif ($id=='oferta') {
             $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s' and e.estado <>'Normal'");
-            $miconexion->consultacatalogo2();
+            $miconexion->consultacatalogo();
           }else{
             $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.id_categoria=".$id);
-            $miconexion->consultacatalogo2();
+            $miconexion->consultacatalogo();
           }
         }else{
-            $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
-            $miconexion->consultacatalogo2();
+          $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
+          $miconexion->consultacatalogo();
         }
 
         ?>
@@ -158,33 +158,35 @@ if (isset($_SESSION['usuario'])){
       </section>
       <!-- Fin catalogo -->
 
-      <div id="modal1" class="modalmask">
+      <div class="span3">  
 
-                                <div class="modalbox movedown">
+        <div id="modal1" class="modalmask">
 
-                                    <a href="index.php" title="Close" class="close">X</a>
-                                    <?php
-                                        $miconexion->consulta("select * from producto where id=".$_GET['id']);
-                                        $miconexion->descatalogo2();
-                                        ?>
-                                    </div>
-                                </div>
-    </div>
+          <div class="modalbox movedown">
 
-    <div class="span4">  
-      <?php 
+            <a href="index.php" title="Close" class="close">X</a>
+            <?php
+            $miconexion->consulta("select * from producto where id=".$_GET['id']);
+            $miconexion->descatalogo2();
+            ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="span4">  
+        <?php 
         include("static/pedido.php");
-      ?>  
+        ?>  
+      </div>
+
     </div>
+    
 
-  </div>
-  <hr>
-
-  <!-- Services Footer -->
-  
+    <!-- Services Footer -->
+    
 
 
-  <!-- /container -->
+    <!-- /container -->
 
       <!-- Le javascript
       ================================================== -->
@@ -220,8 +222,8 @@ if (isset($_SESSION['usuario'])){
         });
       </script>
     </body>
-     <footer style="background: #423E3E;">
-        <?php include("static/footer.php") ?>
+    <footer style="background: #423E3E;">
+      <?php include("static/footer.php") ?>
     </footer>
     </html>
     <?php
