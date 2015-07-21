@@ -343,7 +343,6 @@ fieldset[disabled] .btn-primary.active {
 .btn-xl1:hover{
   border-color:#90C322; /* Modificamos el color del borde */
   color: #fff;
-  margin-left: 7%;
 
   /* Cambiamos los colores del fondo degradado */
   background:-webkit-linear-gradient(top, rgb(32, 95, 167), rgb(32, 95, 167)); /* Chrome 10+ */

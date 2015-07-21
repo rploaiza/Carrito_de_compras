@@ -94,17 +94,12 @@
                     }
                 ?>
                 <table class="table table-bordered">
-                  <br>
-                  <br>
-                  <br>
                     <tr class="info">
                         <td><strong class="text-info">Articulo</strong></td>
                         <td><div align="right"><strong class="text-info">Valor Unitario</strong></div></td>
                         <td><center><strong class="text-info">Seleccione la Cantidad</strong></center></td>
-                        <td><center><strong class="text-info">Descuento</strong></center></td>
                         <td><div align="right"><strong class="text-info">Total</strong></div></td>
-                        <td><center><strong class="text-info">Eliminar</strong></center></td>
-                        
+                        <td></td>
                     </tr>
                     <?php 
                         $total=0;$neto=0;
@@ -145,7 +140,9 @@
             <td><br><br>
                             <center>
                                 <a href="mis_pedidos.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
-                                    <img src="ico/cerrar.png" width="20" height="20" >
+                                    <button type="button" class="close" aria-label="Close">
+                                        <span  style="color:#000;" aria-hidden="true">&times;</span>
+                                    </button>X
                                 </a>
                             </center>
                         </td>
