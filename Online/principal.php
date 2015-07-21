@@ -96,7 +96,7 @@
         aside#modulos2 {
   display: inline-block;
   background-color: #C7C8BF;
-  width: 99%;
+  width: 104%;
   margin-right: -12em;
   border-radius: 1%;
   padding-bottom: 5%;
