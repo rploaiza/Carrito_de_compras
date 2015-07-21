@@ -13,7 +13,7 @@
 ?>
 <div id="sidebar"><br>
   <h2 align="center">
-    <a style="color:#0D47A1;"  href="principal.php"><img style="width: 15%;" src="ico/pedidos.png">Comprar</a>
+    <a style="color:#0D47A1;"  href="login.php"><img style="width: 15%;" src="ico/pedidos.png">Comprar</a>
   </h2>
   <table class="table table-bordered">
     <tr>

@@ -75,7 +75,6 @@ class clase_mysql{
 	}
 
 	function carpromocion(){     
-
 		?>
 		<div id="myCarousel"  class="carousel slide" data-interval="3000" data-ride="carousel">
 			<!-- Wrapper for carousel items -->
@@ -86,15 +85,14 @@ class clase_mysql{
 					</div>
 				</div>
 				<?php 
-switch (rand(1,2)){
-    case 1: 
-       $query =("SELECT DISTINCT p.id, p.id_categoria, p.imagen, e.id AS estados FROM producto p, categoria_producto e where p.id_categoria=e.id and e.id=".$_GET['id']);
-        break; 
-    case 2: 
-         $query =("SELECT DISTINCT p.id, p.id_categoria, p.imagen, e.id AS estados FROM producto p, categoria_producto e where p.id_categoria=e.id or e.id=".$_GET['id']);
-        break;  
-}
-           
+				switch (rand(1,2)){
+					case 1: 
+						$query =("SELECT DISTINCT p.id, p.id_categoria, p.imagen, e.id AS estados FROM producto p, categoria_producto e where p.id_categoria=e.id and e.id=".$_GET['id']);
+					break; 
+					case 2: 
+						$query =("SELECT DISTINCT p.id, p.id_categoria, p.imagen, e.id AS estados FROM producto p, categoria_producto e where p.id_categoria=e.id or e.id=".$_GET['id']);
+					break;  
+				}
 				$result = mysql_query($query) or die("error". mysql_error());              
 				while ($row = mysql_fetch_array($result)) {
 					?>
@@ -108,14 +106,10 @@ switch (rand(1,2)){
 				}
 				?>
 			</div>
-			<a class="carousel-control left" href="#myCarousel" data-slide="prev">
-			</a>
-			<a class="carousel-control right" href="#myCarousel" data-slide="next">  
-			</a>
+			<a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
+			<a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
 		</div>
 		<?php
-
-
 	}
 
 	function consultacatalogo(){
@@ -174,9 +168,10 @@ switch (rand(1,2)){
 						</div>
 					</div>
 				</div>
-				<?php
-			}
+			</div>
+			<?php
 		}
+	}
 
 		function consultacatalogo2(){
 			while ($row = mysql_fetch_array($this->Consulta_ID)) {
@@ -187,13 +182,13 @@ switch (rand(1,2)){
 						<h5 style="height: 18px"><?php echo $row['nombre'];?></h5>
 						<p style="color:#0044cc;">$<?php echo number_format($row['valor'],2,",","."); ?></p>
 						<?php	
-						if ($row['estados']=='normal') {
-							echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
-						}elseif ($row['estados']=='oferta') {
-							echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
-						}else{
-							echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
-						}
+							if ($row['estados']=='normal') {
+								echo "<p id='normal' style='color:blue;'>".$row['estados']."</p>";
+							}elseif ($row['estados']=='oferta') {
+								echo "<p id='oferta' style='color:red;'>".$row['estados']."</p>";
+							}else{
+								echo "<p id='promocion' style='color:green;'>".$row['estados']."</p>";					
+							}
 						?>	
 						<br>
 						<p>
@@ -206,7 +201,7 @@ switch (rand(1,2)){
 						</p>
 					</div>
 				</div>
-				<?php
+			<?php
 			}
 		}
 
@@ -231,7 +226,6 @@ switch (rand(1,2)){
 						</div>
 					</div>
 					<?php
-
 				}
 
 			}
@@ -612,15 +606,20 @@ switch (rand(1,2)){
   	                                                    //-------- exit -------
 				$query = "SELECT codigo, nombre, marca, nota FROM producto";
 				$result = mysql_query($query) or die("error". mysql_error());
-				$a = mysql_num_fields($result);
+				$a = 0;
 				while ($row = mysql_fetch_array($result)) {
-					for ($i=0; $i < $a ; $i++) { 
+					if ($a<=0){
 						echo "<div class='form-group'>";
-						echo mysql_field_name($result, $i).":<input class='form-control' name='".mysql_field_name($result, $i)."' type='text' placeholder='".mysql_field_name($result, $i)."'>";
-						echo "<p class='help-block text-danger'></p>";
+							echo "Codigo del Producto:<input class='form-control' name='codigo' type='text' placeholder='codigo del producto'>";
+							echo "Nombre del Producto:<input class='form-control' name='nombre' type='text' placeholder='nombre del producto'>";
+							echo "Marca del Producto:<input class='form-control' name='marca' type='text' placeholder='marca del producto'>";
+							echo "Caracteristicas del Producto:<input class='form-control' name='nota' type='text' placeholder='caracteristicas del producto'>";
+							echo "<p class='help-block text-danger'></p>";
 						echo "</div>";
 					}
-					$a=0;                             
+					$a++;
+						
+					                            
 				}
 
 				$query = "SELECT valor, cantidad FROM producto";
@@ -654,7 +653,7 @@ switch (rand(1,2)){
 				echo "</div>";
 		                                                    //------- extraccion de los estados ------
 				include ("static/estado.php");
-				$_POST['idcatest'];
+				//$_POST['idcatest'];
 		//echo "Estado del producto: ";
 				echo "<select class='form-control' name='estado'>";
 				echo '<option value=""> - Select - </option>';

@@ -38,39 +38,24 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
     <script type="text/javascript" src="js/ajax.js"></script>
     <link rel="stylesheet" href="css/estilos.css">
     <?php
-    session_start();
-    if (isset($_SESSION['usuario'])){ 
-        class Consultar_Producto{
-            private $consulta;  
-            private $fetch;    
-            function __construct($codigo){
-                $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
-                $this->fetch = mysql_fetch_array($this->consulta);
-            }
-          
-            function consultar($campo){
-                return $this->fetch[$campo];
-            }
+    session_start();       
+    
+    class Consultar_Producto{
+        private $consulta;  
+        private $fetch;    
+        function __construct($codigo){
+            $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
+            $this->fetch = mysql_fetch_array($this->consulta);
         }
-        if(!empty($_GET['del'])){
-            $id=$_GET['del'];
-            mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
-            header('location:principal.php');
+      
+        function consultar($campo){
+            return $this->fetch[$campo];
         }
-    }else{
-         $miconexion->consulta("TRUNCATE carrito");
-         class Consultar_Producto{
-            private $consulta;  
-            private $fetch;    
-            function __construct($codigo){
-                $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
-                $this->fetch = mysql_fetch_array($this->consulta);
-            }
-          
-            function consultar($campo){
-                return $this->fetch[$campo];
-            }
-        }
+    }
+    if(!empty($_GET['del'])){
+        $id=$_GET['del'];
+        mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
+        header('location:principal.php');
     }  
     ?>
        
