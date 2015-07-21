@@ -142,7 +142,7 @@
                                     </div>
                                 </div>
                                 <div id="re"></div>
-        cd                       <div class="footer center"></div>
+                          <div class="footer center"></div>
                             </div>
                             <!-- Inicio catalogo -->                     
                                 <?php
