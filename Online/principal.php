@@ -117,7 +117,7 @@
             <div class="row text-center">
                 <div class="col-md-3">
                     <?php
-                        $miconexion->consulta("select * from categoria_producto");
+                        $miconexion->consulta("select p.*, e.nombre AS estado , e.descrpcion FROM producto p, estado e where p.id_estado=e.id and p.id=".$_GET['id']);
                         $miconexion->consulta_lista2();
 
 
