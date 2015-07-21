@@ -1102,13 +1102,24 @@ body {
 }
 
 
-aside#modulos {
+aside#modulos{
+  display: inline-block;
+  background-color: #C7C8BF;
+  width: 96%;
+  margin-right: 2em;
+  margin-left: 3%;
+  border-radius: 1%;
+  padding-bottom: 5%
+  }
+
+  aside#modulos2 {
   display: inline-block;
   background-color: #C7C8BF;
   width: 120%;
   margin-right: 2em;
   border-radius: 1%;
   padding-bottom: 5%
+
 }
 
 .cd-gallery {
