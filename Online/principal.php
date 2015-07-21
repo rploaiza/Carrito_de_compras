@@ -39,22 +39,24 @@
     <link rel="stylesheet" href="css/estilos.css">
     <?php
         class Consultar_Producto{
-            private $consulta;
-            private $fetch;
-            function __construct($codigo){
-                $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
-                $this->fetch = mysql_fetch_array($this->consulta);
-            }
-            function consultar($campo){
-                return $this->fetch[$campo];
-            }
+        private $consulta;
+        private $fetch;
+        
+        function __construct($codigo){
+          $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
+          $this->fetch = mysql_fetch_array($this->consulta);
         }
-        if(!empty($_GET['del'])){
-            $id=$_GET['del'];
-            mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
-            header('location:principal.php');
+        
+        function consultar($campo){
+          return $this->fetch[$campo];
         }
-    ?>
+      }
+      if(!empty($_GET['del'])){
+        $id=$_GET['del'];
+        mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
+        header('location:index.php');
+      }
+      ?>
     <style>
         @media (min-width: 768px) {
             .container {
@@ -71,7 +73,8 @@
             }
             .btn{
                 display: block;
-                width: 80%;
+                width: 123%;
+                margin-left: 2.1em;
             }
         }
         input.buscador{
@@ -90,7 +93,7 @@
             margin-right: -1px;
             margin-left: -63px;
         }
-           aside#modulos2 {
+        aside#modulos2 {
   display: inline-block;
   background-color: #C7C8BF;
   width: 99%;
@@ -112,21 +115,26 @@
     <section id="services">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <?php
                         $miconexion->consulta("select * from categoria_producto");
                         $miconexion->consulta_lista2();
+
+
                     ?>
-                    <div>  
+                    <div style="width: 180%">  
                         <?php 
                             include("static/pedido2.php");
-                            include("static/historial.php");                        
+                            include("static/historial.php");
+                            
                         ?>   
                     </div>
+                        
+                      
                 </div>
                 <div class="container1">
-                    <div class="col-md-9"> 
-                        <aside id="modulos">         
+                    <div class="col-md-10"> 
+                        <aside id="modulos2">         
                             <div class="cd-filter-conten"> 
                                <div class="row">
                                     <div class="form center">
@@ -134,7 +142,7 @@
                                     </div>
                                 </div>
                                 <div id="re"></div>
-                                <div class="footer center"></div>
+        cd                       <div class="footer center"></div>
                             </div>
                             <!-- Inicio catalogo -->                     
                                 <?php
@@ -170,6 +178,8 @@
                                   $url="http://".$_SERVER['HTTP_HOST'].":".$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']."#modal1";
                                   return $url;
                                   }
+                                  
+                     
                                         ?>
                                     </div>
                                 </div>
