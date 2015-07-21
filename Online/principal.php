@@ -93,14 +93,6 @@
             margin-right: -1px;
             margin-left: -63px;
         }
-        aside#modulos {
-  display: inline-block;
-  background-color: #C7C8BF;
-  width: 120%;
-  margin-right: 2em;
-  border-radius: 1%;
-  padding-bottom: 5%
-}
 
 </style>
 </head>
@@ -115,14 +107,14 @@
     <section id="services">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <?php
-                        $miconexion->consulta("select p.*, e.nombre AS estado , e.descrpcion FROM producto p, estado e where p.id_estado=e.id and p.id=".$_GET['id']);
+                        $miconexion->consulta("select * from categoria_producto");
                         $miconexion->consulta_lista2();
 
 
                     ?>
-                    <div>  
+                    <div style="width: 180%">  
                         <?php 
                             include("static/pedido2.php");
                             include("static/historial.php");
@@ -133,11 +125,8 @@
                       
                 </div>
                 <div class="container1">
-                    <div class="col-md-9"> 
-                        <aside id="modulos2">         
-
+                    <div class="col-md-10"> 
                         <aside id="modulos">         
-
                             <div class="cd-filter-conten"> 
                                <div class="row">
                                     <div class="form center">
@@ -145,7 +134,7 @@
                                     </div>
                                 </div>
                                 <div id="re"></div>
-                          <div class="footer center"></div>
+                                <div class="footer center"></div>
                             </div>
                             <!-- Inicio catalogo -->                     
                                 <?php
@@ -174,7 +163,8 @@
 
                                     <a href="principal.php" title="Close" class="close">X</a>
                                     <?php
-                                        $miconexion->consulta("select * from producto where id=".$_GET['id']);
+                                        $miconexion->consulta("select p.*, e.nombre AS estado , e.descrpcion FROM producto p, estado e where p.id_estado=e.id and p.id=".$_GET['id']);
+                                        
                                         $miconexion->descatalogo();
 
                                   function dameURL(){
