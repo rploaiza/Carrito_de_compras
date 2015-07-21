@@ -15,27 +15,22 @@
           ?>
               <tr style="font-size:9px">
                 <td><?php echo $oProducto->consultar('nombre'); ?></td>
-                <td><?php echo $row[1]; ?></td>
+                <td><?php echo $row[2]; ?></td>
               </tr> 
            <?php }
-            ?>
-            <?php
-            extract($_POST);
-            extract($_GET);
-           echo '<form method="post">
-            <td colspan="4" style="font-size:9px">
-            <br>
-            <button align="right" type="submit" name="delete" value="delete">Limpiar</button>
-            <br>
-            </form> ';
-               if (isset($_REQUEST['delete'])) {
-                echo"<script> alert('Historial Borrado');</script>"; 
-                $miconexion->consulta("TRUNCATE TABLE `historial`");
-                echo "<script>location.href='principal.php'</script>";
-                
-               }
-            ?>      
-
+            ?> 
+              <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.js"></script>
+              <script type="text/javascript">
+                $(document).ready(function() {
+                  <?php 
+                  $miconexion->consulta("SELECT COUNT(id) FROM historial WHERE id");
+                  $var=$miconexion->consulta_lista();
+                  if ($var[0] == 15) {
+                     $miconexion->consulta("DELETE FROM historial WHERE id LIMIT 1");  
+                  }
+                  ?>
+                }); 
+              </script>
             </td>
             <?php 
             $pa=mysql_query("SELECT * FROM historial");       
