@@ -84,13 +84,13 @@ if (isset($_SESSION['usuario'])){
         h4   {
             margin-top: 2em;
             font-size: 2em;
-            margin-left: 5em;
+            margin-left: -1em;
 
         }
         aside#modulos2 {
           display: inline-block;
   background-color: #C7C8BF;
-  width: 111%;
+  width: 118%;
   margin-right: 2em;
   margin-left: -4%;
   border-radius: 1%;
@@ -128,6 +128,7 @@ a {
 
   </style>
 </head>
+<body style="background-color:rgb(231, 231, 231);">
 <body>
    <nav class="navbar navbar-default navbar-fixed-top">
     <!-- Brand and toggle get grouped for better mobile display -->
