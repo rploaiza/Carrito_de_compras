@@ -1,10 +1,10 @@
 
 <?php 
-    header('Content-Type: text/html; charset=ISO-8859-1');
-    include("static/site_config.php"); 
-    include ("static/clase_mysql.php");
-    $miconexion = new clase_mysql;
-    $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
+header('Content-Type: text/html; charset=ISO-8859-1');
+include("static/site_config.php"); 
+include ("static/clase_mysql.php");
+$miconexion = new clase_mysql;
+$miconexion->conectar($db_name,$db_host, $db_user,$db_password);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,62 +38,62 @@
     <script type="text/javascript" src="js/ajax.js"></script>
     <link rel="stylesheet" href="css/estilos.css">
     <?php
-        class Consultar_Producto{
+    class Consultar_Producto{
         private $consulta;
         private $fetch;
         
         function __construct($codigo){
           $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
           $this->fetch = mysql_fetch_array($this->consulta);
-        }
-        
-        function consultar($campo){
+      }
+      
+      function consultar($campo){
           return $this->fetch[$campo];
-        }
       }
-      if(!empty($_GET['del'])){
-        $id=$_GET['del'];
-        mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
-        header('location:index.php');
+  }
+  if(!empty($_GET['del'])){
+    $id=$_GET['del'];
+    mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
+    header('location:index.php');
+}
+?>
+<style>
+    @media (min-width: 768px) {
+        .container {
+          width: 80%;
       }
-      ?>
-    <style>
-        @media (min-width: 768px) {
-            .container {
-              width: 80%;
-            }
-            .btn{
-                display: block;
-                width: 17%;
-            }
-        }
-        @media (min-width: 400px){
-            .container{
-                width: 80%;
-            }
-            .btn{
-                display: block;
-                width: 123%;
-                margin-left: 2.1em;
-            }
-        }
-        input.buscador{
-            width: auto;
-            background: url("img/lupa.png") no-repeat scroll 0 0 transparent;
-            background-position: 11em 0.1em;
-            background-color: #205FA7;
-            color: #FFFFFF;
-            cursor: pointer;
-            margin-left: -62%;
-            padding: 1%;
-            border-radius: 1.5em;
+      .btn{
+        display: block;
+        width: 17%;
+    }
+}
+@media (min-width: 400px){
+    .container{
+        width: 80%;
+    }
+    .btn{
+        display: block;
+        width: 123%;
+        margin-left: 2.1em;
+    }
+}
+input.buscador{
+    width: auto;
+    background: url("img/lupa.png") no-repeat scroll 0 0 transparent;
+    background-position: 11em 0.1em;
+    background-color: #205FA7;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-left: -62%;
+    padding: 1%;
+    border-radius: 1.5em;
 
-        }
-        .row {
-            margin-right: -1px;
-            margin-left: -63px;
-        }
-        aside#modulos {
+}
+.row {
+    margin-right: -1px;
+    margin-left: -63px;
+}
+aside#modulos {
   display: inline-block;
   background-color: #C7C8BF;
   width: 120%;
@@ -117,113 +117,112 @@
             <div class="row text-center">
                 <div class="col-md-3">
                     <?php
-                        $miconexion->consulta("select * from categoria_producto");
-                        $miconexion->consulta_lista2();
+                    $miconexion->consulta("select * from categoria_producto");
+                    $miconexion->consulta_lista2();
 
 
                     ?>
                     <div>  
                         <?php 
-                            include("static/pedido2.php");
-                            include("static/historial.php");
-                            
+                        include("static/pedido2.php");
+                        include("static/historial.php");
+                        
                         ?>   
                     </div>
-                        
-                      
+                    
+                    
                 </div>
                 <div class="container1">
                     <div class="col-md-9"> 
-                        <aside id="modulos2">         
 
                         <aside id="modulos">         
 
                             <div class="cd-filter-conten"> 
-                               <div class="row">
-                                    <div class="form center">
-                                        <br><input type="text" class="buscador" name="search" id="search"  placeholder="Buscar producto">
-                                    </div>
+                             <div class="row">
+                                <div class="form center">
+                                    <br><input type="text" class="buscador" name="search" id="search"  placeholder="Buscar producto">
                                 </div>
-                                <div id="re"></div>
-                          <div class="footer center"></div>
                             </div>
-                            <!-- Inicio catalogo -->                     
+                            <div id="re"></div>
+                            <div class="footer center"></div>
+                        </div>
+                        <!-- Inicio catalogo -->                     
+                        <?php
+                        extract($_POST);
+                        extract($_GET);
+                        if (isset($id)) {
+                            if ($id=='todos') {
+                                $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s'");
+                                $miconexion->consultacatalogo();
+                            }elseif ($id=='oferta') {
+                                $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s' and e.estado <>'Normal'");
+                                $miconexion->consultacatalogo();
+                            }else{
+                                $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.id_categoria=".$id);
+                                $miconexion->consultacatalogo();
+                            }
+                        }else{
+                            $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
+                            $miconexion->consultacatalogo();
+                        }
+                        
+                        ?>
+                        <div id="modal1" class="modalmask">
+
+                            <div class="modalbox movedown">
+
+                                <a href="principal.php" title="Close" class="close">X</a>
                                 <?php
-                                extract($_POST);
-                                extract($_GET);
-                                if (isset($id)) {
-                                    if ($id=='todos') {
-                                        $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s'");
-                                        $miconexion->consultacatalogo();
-                                    }elseif ($id=='oferta') {
-                                        $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s' and e.estado <>'Normal'");
-                                        $miconexion->consultacatalogo();
-                                    }else{
-                                        $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.id_categoria=".$id);
-                                        $miconexion->consultacatalogo();
-                                    }
-                                }else{
-                                    $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
-                                    $miconexion->consultacatalogo();
-                                }
-                                
-                                ?>
-                                <div id="modal1" class="modalmask">
+                                $miconexion->consulta("select * from producto where id=".$_GET['id']);
+                                $miconexion->descatalogo();
 
-                                <div class="modalbox movedown">
-
-                                    <a href="principal.php" title="Close" class="close">X</a>
-                                    <?php
-                                        $miconexion->consulta("select * from producto where id=".$_GET['id']);
-                                        $miconexion->descatalogo();
-
-                                  function dameURL(){
+                                function dameURL(){
                                   $url="http://".$_SERVER['HTTP_HOST'].":".$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']."#modal1";
                                   return $url;
-                                  }
-                                  
-                     
-                                        ?>
-                                    </div>
-                                </div>
-                            
-                              <!-- Fin catalogo -->
-                       
-                    </div>
-                    <br>
-                                <br>
-                                <br>
-                     </aside>
-                </div>
-            </div>   
-        </div> 
-    </section>
-    <script language="javascript" type="text/javascript">
-        function enviar(pagina){
-            document.selec_con.action = pagina;
-            document.selec_con.submit();
+                              }
+                              
+                              
+                              ?>
+                          </div>
+                      </div>
+                      
+                      <!-- Fin catalogo -->
+                      
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+              </aside>
+          </div>
+      </div>   
+  </div> 
+</section>
+<script language="javascript" type="text/javascript">
+    function enviar(pagina){
+        document.selec_con.action = pagina;
+        document.selec_con.submit();
 
-        }
-    </script>
-    <!--jQuery -->
-    <script src="js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="js/agency.js"></script>
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/jquery.mixitup.min.js"></script>
-    <script src="js/main.js"></script>
-    <!-- Resource jQuery -->
-    <script src="js/jquery.lightbox.js"></script>
-    <script>
+    }
+</script>
+<!--jQuery -->
+<script src="js/jquery.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Plugin JavaScript -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="js/classie.js"></script>
+<script src="js/cbpAnimatedHeader.js"></script>
+<!-- Contact Form JavaScript -->
+<script src="js/jqBootstrapValidation.js"></script>
+<script src="js/contact_me.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="js/agency.js"></script>
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/jquery.mixitup.min.js"></script>
+<script src="js/main.js"></script>
+<!-- Resource jQuery -->
+<script src="js/jquery.lightbox.js"></script>
+<script>
         // Initiate Lightbox
         $(function() {
             $('.gallery a').lightbox(); 
