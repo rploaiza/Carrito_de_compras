@@ -97,7 +97,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
         }
         input.buscador{
             width: auto;
-            b0ackground: url("img/lupa.png") no-repeat scroll 0 0 transparent;
+            background: url("img/lupa.png") no-repeat scroll 0 0 transparent;
             background-position: 11em 0.1em;
             background-color: #205FA7;
             color: #FFFFFF;
