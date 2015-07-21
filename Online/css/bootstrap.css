@@ -28,7 +28,7 @@
   pointer-events: auto;
 }
 .modalbox{
-  width: 800px;
+  width: 50%;
   position: relative;
   padding: 5px 20px 13px 20px;
   background: #fff;
@@ -212,9 +212,7 @@ label{
 }
 
 .producto:hover{
-
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
 }
 /*+++++fin estilo catalogo principal++++++*/
 

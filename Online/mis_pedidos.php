@@ -34,7 +34,7 @@
 
     <body>
 
-           <nav style="background: #000;" class="navbar navbar-default navbar-fixed-top">
+           <nav style="background: #0D47A1;" class="navbar navbar-default navbar-fixed-top">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div  class="navbar-header page-scroll">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -74,6 +74,8 @@
     </div>
     <!-- /.navbar-collapse -->
 </nav>
+<br>
+<br>
 <br>
 <br>
 

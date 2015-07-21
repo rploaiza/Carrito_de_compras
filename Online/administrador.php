@@ -35,6 +35,14 @@ if (isset($_SESSION['usuario'])){
                 }); 
             });
         </script>
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+          
+        <!-- jQuery -->
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+          
+        <!-- DataTables -->
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
+
         <!-- DataTables -->
         <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
         <script src="js/ajax.js"></script>
@@ -66,29 +74,61 @@ if (isset($_SESSION['usuario'])){
                 background: #ccc;
                 width: 86%;
             }
-            aside#modulos{
+            aside#modulos2{
                 background: #ccc;       
-                width: 106%;
-                margin-right: 7em;
+                width: 110%;
+                margin-right: 9em;
             }
 
         }
         h4   {
             margin-top: 2em;
             font-size: 2em;
+            margin-left: -1em;
 
         }
-        aside#modulos {
+        aside#modulos2 {
           display: inline-block;
-          background-color: #C7C8BF;
-          width: 96%;
-          margin-right: 2em;
-          margin-left: 8%;
-          border-radius: 1%;
-          padding-bottom: 6%;
+  background-color: #C7C8BF;
+  width: 118%;
+  margin-right: 2em;
+  margin-left: -4%;
+  border-radius: 1%;
+  padding-bottom: 6%;
       }
+      
+
+  .btn {
+  background: #88B820;
+  margin-right: 6em;
+
+  display: inline-block;
+  padding: 9px 5px;
+  width: 20em;
+  margin-bottom: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 2em;
+  font-family: "lato",Geneva,sans-serif;
+  text-transform: uppercase;
+  padding-left: 14px;
+  color
+
+
+  /* text-decoration: none; */
+}
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
   </style>
 </head>
+<body style="background-color:rgb(231, 231, 231);">
 <body>
    <nav class="navbar navbar-default navbar-fixed-top">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -105,7 +145,7 @@ if (isset($_SESSION['usuario'])){
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul style="float: right;" class="nav navbar-nav navbar-right">
+        <ul style="float: right ;margin-top: -3%;" class="nav navbar-nav navbar-right">
 
             <img style="width: 10%; float: left;" src="img/logo.png">
 
@@ -143,7 +183,7 @@ if (isset($_SESSION['usuario'])){
 <section id="services">
     <div class="container">
         <div class="row1 text-center">
-            <div  class="col-md-2">
+            <div  class="col-md-3">
                 <h4>Tablas</h4>
                 <h3 class="section-subheading text-muted">Compre nuestros productos en linea...</h3>
                 <?php
@@ -153,14 +193,14 @@ if (isset($_SESSION['usuario'])){
                 ?>
             </div>
         </style>
-        <div class="col-md-10" >
+        <div class="col-md-9" >
             <h4>Datos de las Tablas</h4><br><br>
-            <aside id="modulos">       
+            <aside id="modulos2">       
                 <section class="cd-gallery" width="100%">                            
                     <?php
                     extract($_POST);
                     extract($_GET);
-                    echo "<div style='width:auto%; height:100%; overflow:auto;'>";
+                    echo "<div style='width:auto%; height:100%;overflow:auto;'>";
                     if (isset($tabla)) {
                         echo "<h1 class='section-subheading text-muted'>Detalle de las Tablas</h1>";
                         echo "<form method='post' enctype='multipart/form-data'>";

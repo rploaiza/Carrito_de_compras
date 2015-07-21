@@ -39,22 +39,24 @@
     <link rel="stylesheet" href="css/estilos.css">
     <?php
         class Consultar_Producto{
-            private $consulta;
-            private $fetch;
-            function __construct($codigo){
-                $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
-                $this->fetch = mysql_fetch_array($this->consulta);
-            }
-            function consultar($campo){
-                return $this->fetch[$campo];
-            }
+        private $consulta;
+        private $fetch;
+        
+        function __construct($codigo){
+          $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
+          $this->fetch = mysql_fetch_array($this->consulta);
         }
-        if(!empty($_GET['del'])){
-            $id=$_GET['del'];
-            mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
-            header('location:principal.php');
+        
+        function consultar($campo){
+          return $this->fetch[$campo];
         }
-    ?>
+      }
+      if(!empty($_GET['del'])){
+        $id=$_GET['del'];
+        mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
+        header('location:index.php');
+      }
+      ?>
     <style>
         @media (min-width: 768px) {
             .container {
@@ -71,7 +73,8 @@
             }
             .btn{
                 display: block;
-                width: 80%;
+                width: 123%;
+                margin-left: 2.1em;
             }
         }
         input.buscador{
@@ -104,20 +107,25 @@
     <section id="services">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <?php
                         $miconexion->consulta("select * from categoria_producto");
                         $miconexion->consulta_lista2();
+
+
                     ?>
-                    <div>  
+                    <div style="width: 180%">  
                         <?php 
                             include("static/pedido2.php");
-                            include("static/historial.php");                        
+                            include("static/historial.php");
+                            
                         ?>   
                     </div>
+                        
+                      
                 </div>
                 <div class="container1">
-                    <div class="col-md-9"> 
+                    <div class="col-md-10"> 
                         <aside id="modulos">         
                             <div class="cd-filter-conten"> 
                                <div class="row">
@@ -155,7 +163,8 @@
 
                                     <a href="principal.php" title="Close" class="close">X</a>
                                     <?php
-                                        $miconexion->consulta("select * from producto where id=".$_GET['id']);
+                                        $miconexion->consulta("select p.*, e.nombre AS estado , e.descrpcion FROM producto p, estado e where p.id_estado=e.id and p.id=".$_GET['id']);
+                                        
                                         $miconexion->descatalogo();
 
                                   function dameURL(){
