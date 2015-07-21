@@ -13,7 +13,7 @@
 ?>
 <div id="sidebar"><br>
   <h2 align="center">
-    <a style="color:#0D47A1;"  href="principal.php"><img style="width: 15%;" src="ico/pedidos.png">Mis Pedidos</a>
+    <a style="color:#0D47A1;"  href="principal.php"><img style="width: 15%;" src="ico/pedidos.png">Comprar</a>
   </h2>
   <table class="table table-bordered">
     <tr>
@@ -33,7 +33,7 @@
                 <td>$ <?php echo number_format($neto,2,",","."); ?></td>
                 <td>
                   <a href="principal.php?del=<?php echo $row['codigo']; ?>" title="Eliminar de la Lista">
-                     <span style="color:#0D47A1" class="glyphicon glyphicon-trash"></span>
+                    <span style="color:#0D47A1" class="glyphicon glyphicon-trash"></span>
                   </a>
                 </td>
               </tr> 

@@ -45,9 +45,9 @@
             if(!$row=mysql_fetch_array($pa)){
               ?>
               <tr><div class="alert alert-success" align="center"><strong>No hay Productos Registrados</strong></div></tr>
-              <?php } ?>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div>
+          <?php } ?>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

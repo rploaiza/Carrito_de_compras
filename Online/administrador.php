@@ -39,9 +39,6 @@ if (isset($_SESSION['usuario'])){
           
         <!-- jQuery -->
         <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-          
-        <!-- DataTables -->
-        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
 
         <!-- DataTables -->
         <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
@@ -84,13 +81,13 @@ if (isset($_SESSION['usuario'])){
         h4   {
             margin-top: 2em;
             font-size: 2em;
-            margin-left: -1em;
+            margin-left: 5em;
 
         }
         aside#modulos2 {
           display: inline-block;
   background-color: #C7C8BF;
-  width: 118%;
+  width: 111%;
   margin-right: 2em;
   margin-left: -4%;
   border-radius: 1%;
@@ -128,57 +125,30 @@ a {
 
   </style>
 </head>
-<body style="background-color:rgb(231, 231, 231);">
 <body>
-   <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div  class="navbar-header page-scroll">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Menu de Navegación</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand page-scroll" href="principal.php"></a>
-        <!--<a class="navbar-brand page-scroll" href="#page-top" style="margin-left:45%;";>LINE BUY</a> -->
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul style="float: right ;margin-top: -3%;" class="nav navbar-nav navbar-right">
-
-            <img style="width: 10%; float: left;" src="img/logo.png">
-
-            <li style="float: right;  width: 13%;">
-                <a style="font-size: 100%;" class="page-scroll" href="principal.php"><img style="width: 140%;" id="home" src="ico/home.png">Inicio</a>
-            </li>
-        </ul>
-
-    </div>
-
-    <ul class="nav navbar-nav navbar-left">
-
-        <li>
-            <a class="page-scroll" href="#">BIENVENIDO:
-                <?php
-                $miconexion->consulta("SELECT * FROM usuario WHERE user='".strtolower ($_SESSION['usuario'])."'");
-                $miconexion->nombreuser();
-                ?>
-            </a>
-        </li>                             
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-
-        <li>
-            <a class="page-scroll" href="logout.php">CERRAR SESION</a>
-
-        </li>  
-
-    </ul>
-
-</div>
+        <div class="row">
+            <div class="col-md-8">
+                <br>
+                <img style="width: 20%; margin-left: 10em;" src="img/logo.png">  
+                <br>
+                <a style="margin-left: 10em;" href="#">BIENVENIDO:
+                    <?php
+                    $miconexion->consulta("SELECT * FROM usuario WHERE user='".strtolower ($_SESSION['usuario'])."'");
+                    $miconexion->nombreuser();
+                    ?>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <br><br><br><br>
+                <a href="logout.php" style="margin-left: 10em;">CERRAR SESION</a> 
+                <br>
+                <a href="principal.php" style="float: right;" ><img style="width: 10%;" src="ico/home.png">Inicio</a>    
+            </div>
+        </div>
 <!-- /.navbar-collapse -->
-</nav>
+    </nav>
 <!-- Services Headder -->     
 <section id="services">
     <div class="container">
@@ -234,7 +204,6 @@ a {
                             }else{
                              echo "<script language='javascript'> alert('Ud. No tiene permisos para acceder a las otras tablas ')</script>";
                          }
-
                      }
                      echo "<br>";
                      echo '<div style="width: 650px; margin-left: 350px;">';
@@ -242,10 +211,9 @@ a {
                      echo "</div>";
                      echo "</div>";
                  }
-
-                                    //---   INICIO CRDUD ---
-                 if (isset($id)) {  
-                                        //--- BORRA FILA DE TABLAS ----
+                //---   INICIO CRDUD ---
+                if (isset($id)) {  
+                    //--- BORRA FILA DE TABLAS ----
                     if ($edi==2) { 
                         $miconexion->consulta("DELETE FROM ".$tabla." WHERE ".$act."=".$id);
                         echo "<script>location.href='administrador.php?tabla=categoria_producto'</script>";  
