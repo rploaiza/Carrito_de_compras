@@ -161,6 +161,10 @@ class clase_mysql{
 							<span><?php echo $row['valor'];?></span><br><br>
 							<span><strong>Caracteristicas:</strong></span>
 							<strong><span><?php echo $row['nota'];?></span></strong><br><br>
+							<span><strong>Estado producto:</strong></span>
+							<strong><span><?php echo $row['estado'];?></span></strong><br><br>
+							<span><strong>Descripcion de estado promocional:</strong></span>
+							<strong><span><?php echo $row['descrpcion'];?></span></strong><br><br>
 							<?php
 							$res='"'.dameURL().'"';			
 							mysql_query("INSERT INTO historial (codigo, url) VALUES ('$row[4]','<a href=$res>link</a>')");

@@ -102,28 +102,30 @@ if (isset($_SESSION['usuario'])){
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="row">
         <div class="col-md-8"><br>
-          <img style="width: 20%; margin-left: 10em;" src="img/logo.png">  
+          <img style="width:20%; margin-left: 10em;" src="img/logo.png">  
           <br>
-          <a style="margin-left: 10em; font-size: 1em;" href="#">BIENVENIDO:
+          <a style="margin-left: 10em; color:white; font-size:1em;" href="#">BIENVENIDO:
             <?php
             $miconexion->consulta("SELECT * FROM usuario WHERE user='".utf8_decode($_SESSION['usuario'])."'");
             $miconexion->nombreuser();
             ?>
           </a>
         </div>
-        <div class="col-md-4"><br><br><br>
-          <li>
-            <a href="logout.php" style="margin-left: 58%; font-size: 1em;">CERRAR SESION</a> 
-          </li>
+        <div class="col-md-4"><br>
           <li style="float: right;  width: 30%; ">
-            <a style="font-size: 1em;"class="page-scroll" href="principal.php"><img id="home" src="ico/home.png">Inicio</a>
+            <a style="font-size: 1em; color:white;"class="page-scroll" href="principal.php"><img id="home" src="ico/home.png">Inicio</a>
           </li>
           <li style="float: right;  width: 30%;">
-            <a style="font-size: 1em;" class="page-scroll" href="index.php"><img id="carrito" src="ico/carrito.png">Comprar</a>
+            <a style="font-size: 1em; color:white;" class="page-scroll" href="index.php"><img id="carrito" src="ico/carrito.png">Comprar</a>
           </li>     
           <li style="float: right;  width: 30%;">
-            <a style="font-size: 1em;" class="page-scroll" href="mis_pedidos.php"><img  id="carrito" src="ico/pedidos.png">Pedidos</a>
+            <a style="font-size: 1em; color:white;" class="page-scroll" href="mis_pedidos.php"><img  id="carrito" src="ico/pedidos.png">Pedidos</a>
           </li> 
+          <li><br>
+          <br>
+          <br>
+            <a href="logout.php" style="margin-left: 58%; font-size: 1em; color:white">CERRAR SESION</a> 
+          </li>
           <br>
         </div>
       </div>

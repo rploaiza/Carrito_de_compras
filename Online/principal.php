@@ -39,7 +39,12 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
     <link rel="stylesheet" href="css/estilos.css">
     <?php
     session_start();       
-    
+    if (isset($_SESSION['usuario'])) {
+        
+    }else{
+        mysql_query("TRUNCATE carrito");
+    }
+
     class Consultar_Producto{
         private $consulta;  
         private $fetch;    
