@@ -90,6 +90,14 @@
             margin-right: -1px;
             margin-left: -63px;
         }
+           aside#modulos2 {
+  display: inline-block;
+  background-color: #C7C8BF;
+  width: 99%;
+  margin-right: -12em;
+  border-radius: 1%;
+  padding-bottom: 5%;
+}
 
 </style>
 </head>
