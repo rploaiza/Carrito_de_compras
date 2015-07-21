@@ -20,8 +20,6 @@ Image placeholders: placemi.com
  .col-md-3,.col-md-4, .col-md-6{
   position: relative;
   min-height: 1px;
-  padding-right: 2px;
-  padding-left: 2px;
 }
 
 /* inicio marcas*/
@@ -1107,9 +1105,8 @@ body {
 aside#modulos {
   display: inline-block;
   background-color: #C7C8BF;
-  width: 96%;
+  width: 120%;
   margin-right: 2em;
-  margin-left: 15%;
   border-radius: 1%;
   padding-bottom: 5%
 }

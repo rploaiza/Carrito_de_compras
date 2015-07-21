@@ -73,8 +73,7 @@
             }
             .btn{
                 display: block;
-                width: 123%;
-                margin-left: 2.1em;
+                width: 80%;
             }
         }
         input.buscador{
@@ -107,14 +106,14 @@
     <section id="services">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <?php
                         $miconexion->consulta("select * from categoria_producto");
                         $miconexion->consulta_lista2();
 
 
                     ?>
-                    <div style="width: 180%">  
+                    <div>  
                         <?php 
                             include("static/pedido2.php");
                             include("static/historial.php");
@@ -125,7 +124,7 @@
                       
                 </div>
                 <div class="container1">
-                    <div class="col-md-10"> 
+                    <div class="col-md-9"> 
                         <aside id="modulos">         
                             <div class="cd-filter-conten"> 
                                <div class="row">
