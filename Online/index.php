@@ -140,17 +140,17 @@ if (isset($_SESSION['usuario'])){
         if (isset($id)) {
           if ($id=='todos') {
             $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s'");
-            $miconexion->consultacatalogo();
+            $miconexion->consultacatalogo2();
           }elseif ($id=='oferta') {
             $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s' and e.estado <>'Normal'");
-            $miconexion->consultacatalogo();
+            $miconexion->consultacatalogo2();
           }else{
             $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.id_categoria=".$id);
-            $miconexion->consultacatalogo();
+            $miconexion->consultacatalogo2();
           }
         }else{
             $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
-            $miconexion->consultacatalogo();
+            $miconexion->consultacatalogo2();
         }
 
         ?>
@@ -158,6 +158,19 @@ if (isset($_SESSION['usuario'])){
       </section>
       <!-- Fin catalogo -->
     </div>
+
+    <div id="modal1" class="modalmask">
+
+                                <div class="modalbox movedown">
+
+                                    <a href="index.php" title="Close" class="close">X</a>
+                                    <?php
+                                        $miconexion->consulta("select * from producto where id=".$_GET['id']);
+                                        $miconexion->descatalogo2();
+                                        ?>
+                                    </div>
+                                </div>
+
 
     <div class="span3">  
       <?php 
