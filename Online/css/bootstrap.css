@@ -6698,7 +6698,7 @@ a.badge:focus {
   height: 10px;
   margin-left: 5px;
   text-indent: -999px;
-  background-color: #ccc;
+  background-color: #fff;
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 5px;
 }
@@ -6713,7 +6713,7 @@ a.badge:focus {
   bottom: 0;
   left: 0;
   padding: 15px;
-  background: #333333;
+  background: #000000;
   background: rgba(0, 0, 0, 0.75);
 }
 
