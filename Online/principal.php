@@ -39,24 +39,22 @@
     <link rel="stylesheet" href="css/estilos.css">
     <?php
         class Consultar_Producto{
-        private $consulta;
-        private $fetch;
-        
-        function __construct($codigo){
-          $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
-          $this->fetch = mysql_fetch_array($this->consulta);
+            private $consulta;
+            private $fetch;
+            function __construct($codigo){
+                $this->consulta = mysql_query("SELECT * FROM producto WHERE codigo='$codigo'");
+                $this->fetch = mysql_fetch_array($this->consulta);
+            }
+            function consultar($campo){
+                return $this->fetch[$campo];
+            }
         }
-        
-        function consultar($campo){
-          return $this->fetch[$campo];
+        if(!empty($_GET['del'])){
+            $id=$_GET['del'];
+            mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
+            header('location:principal.php');
         }
-      }
-      if(!empty($_GET['del'])){
-        $id=$_GET['del'];
-        mysql_query("DELETE *FROM carrito WHERE codigo='$id'");
-        header('location:index.php');
-      }
-      ?>
+    ?>
     <style>
         @media (min-width: 768px) {
             .container {
@@ -73,8 +71,7 @@
             }
             .btn{
                 display: block;
-                width: 123%;
-                margin-left: 2.1em;
+                width: 80%;
             }
         }
         input.buscador{
@@ -107,25 +104,20 @@
     <section id="services">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <?php
                         $miconexion->consulta("select * from categoria_producto");
                         $miconexion->consulta_lista2();
-
-
                     ?>
-                    <div style="width: 180%">  
+                    <div>  
                         <?php 
                             include("static/pedido2.php");
-                            include("static/historial.php");
-                            
+                            include("static/historial.php");                        
                         ?>   
                     </div>
-                        
-                      
                 </div>
                 <div class="container1">
-                    <div class="col-md-10"> 
+                    <div class="col-md-9"> 
                         <aside id="modulos">         
                             <div class="cd-filter-conten"> 
                                <div class="row">
