@@ -105,14 +105,21 @@ if (isset($_SESSION['usuario'])){
                 <br>
                 <img style="width: 20%; margin-left: 10em;" src="img/logo.png">  
                 <br>
+<<<<<<< HEAD
                 <a style="margin-left: 10em; font-size: 1em;" href="#">BIENVENIDO:
                     <?php
                     $miconexion->consulta("SELECT * FROM usuario WHERE user='".utf8_decode($_SESSION['usuario'])."'");
+=======
+                <a style="margin-left: 10em;" href="#">BIENVENIDO:
+                    <?php
+                    $miconexion->consulta("SELECT * FROM usuario WHERE user='".strtolower ($_SESSION['usuario'])."'");
+>>>>>>> bbae398e861c663641ab17a44326d095ebbf662a
                     $miconexion->nombreuser();
                     ?>
                 </a>
             </div>
             <div class="col-md-4">
+<<<<<<< HEAD
                 <br><br><br>
                 <li>
                   <a href="logout.php" style="margin-left: 58%; font-size: 1em;">CERRAR SESION</a> 
@@ -127,6 +134,21 @@ if (isset($_SESSION['usuario'])){
                   <a style="font-size: 1em;" class="page-scroll" href="mis_pedidos.php"><img  id="carrito" src="ico/pedidos.png">Pedidos</a>
                 </li> 
                
+=======
+                <br><br><br><br>
+                <li style="float: right;  width: 10%;">
+                  <a style="font-size: 90%;" class="page-scroll" href="principal.php"><img style="width: 150%;" id="home" src="ico/home.png">Inicio</a>
+                </li>
+                <li style="float: right;  width: 10%;">
+                  <a style="font-size: 90%;" class="page-scroll" href="index.php"><img style="width: 150%;" id="carrito" src="ico/carrito.png">Comprar</a>
+                </li>     
+                <li style="float: right;  width: 10%;">
+                  <a style="font-size: 90%;" class="page-scroll" href="mis_pedidos.php"><img style="width: 500%;" id="carrito" src="ico/pedidos.png">Pedidos</a>
+                </li> 
+                <li>
+                  <a href="logout.php" style="margin-left: 10em;">CERRAR SESION</a> 
+                </li>
+>>>>>>> bbae398e861c663641ab17a44326d095ebbf662a
                 <br>
             </div>
         </div>

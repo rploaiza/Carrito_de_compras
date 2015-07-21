@@ -77,7 +77,7 @@ class clase_mysql{
 	function carpromocion(){     
 
 		?>
-		<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+		<div id="myCarousel"  class="carousel slide" data-interval="3000" data-ride="carousel">
 			<!-- Wrapper for carousel items -->
 			<div class="carousel-inner">
 				<div class="active item">
