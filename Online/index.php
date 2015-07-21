@@ -157,9 +157,8 @@ if (isset($_SESSION['usuario'])){
         <div id="fade" class="black_overlay"></div>
       </section>
       <!-- Fin catalogo -->
-    </div>
 
-    <div id="modal1" class="modalmask">
+      <div id="modal1" class="modalmask">
 
                                 <div class="modalbox movedown">
 
@@ -170,9 +169,9 @@ if (isset($_SESSION['usuario'])){
                                         ?>
                                     </div>
                                 </div>
+    </div>
 
-
-    <div class="span3">  
+    <div class="span4">  
       <?php 
         include("static/pedido.php");
       ?>  
