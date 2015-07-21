@@ -74,6 +74,50 @@ class clase_mysql{
 		echo "</form>";
 	}
 
+	function carpromocion(){     
+
+		?>
+		<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+			<!-- Wrapper for carousel items -->
+			<div class="carousel-inner">
+				<div class="active item">
+					<div class="carousel-caption">
+						<img src="img/acer.png" >
+					</div>
+				</div>
+				<?php 
+switch (rand(1,2)){
+    case 1: 
+       $query =("SELECT DISTINCT p.id, p.id_categoria, p.imagen, e.id AS estados FROM producto p, categoria_producto e where p.id_categoria=e.id and e.id=".$_GET['id']);
+        break; 
+    case 2: 
+         $query =("SELECT DISTINCT p.id, p.id_categoria, p.imagen, e.id AS estados FROM producto p, categoria_producto e where p.id_categoria=e.id or e.id=".$_GET['id']);
+        break;  
+}
+           
+				$result = mysql_query($query) or die("error". mysql_error());              
+				while ($row = mysql_fetch_array($result)) {
+					?>
+					<div class="item">
+						<div class="carousel-caption">
+							<a href="index.php?id=<?php echo $row['id'];?>&#modal1"><img class='imga' src="<?php echo $row['imagen']; ?>" ></a>
+							<!-- <img src="<?php //echo $row['imagen']; ?>" width="100%"></a> -->
+						</div>    
+					</div>
+					<?php
+				}
+				?>
+			</div>
+			<a class="carousel-control left" href="#myCarousel" data-slide="prev">
+			</a>
+			<a class="carousel-control right" href="#myCarousel" data-slide="next">  
+			</a>
+		</div>
+		<?php
+
+
+	}
+
 	function consultacatalogo(){
 		while ($row = mysql_fetch_array($this->Consulta_ID)) {
 			?>  
@@ -120,14 +164,9 @@ class clase_mysql{
 							<span><strong>Marca:</strong></span>
 							<span><?php echo $row['marca'];?></span><br><br>
 							<span><strong>Precio:</strong></span>
-							<span>Precio: <?php echo $row['valor'];?></span><br><br>
+							<span><?php echo $row['valor'];?></span><br><br>
 							<span><strong>Caracteristicas:</strong></span>
 							<strong><span><?php echo $row['nota'];?></span></strong><br><br>
-							<span><strong>Estado:</strong></span>
-							<strong><span><?php echo $row['estado'];?></span></strong><br><br>
-							<span><strong>Combo:</strong></span>
-							<strong><span><?php echo $row['descrpcion'];?></span></strong><br><br>
-
 							<?php
 							$res='"'.dameURL().'"';			
 							mysql_query("INSERT INTO historial (codigo, url) VALUES ('$row[4]','<a href=$res>link</a>')");
@@ -679,47 +718,5 @@ class clase_mysql{
 				}   
 
 			}
-		}
-		
-		function carpromocion(){     
-
-			?>
-			<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
-				<!-- Wrapper for carousel items -->
-				<div class="carousel-inner">
-					<div class="active item">
-						<div class="carousel-caption">
-							<img src="img/acer.png" >
-						</div>
-					</div>
-					<?php 
-					switch (rand(1,2)){
-						case 1: 
-						$query =("SELECT DISTINCT p.id, p.id_categoria, p.imagen, e.id AS estados FROM producto p, categoria_producto e where p.id_categoria=e.id and e.id=".$_GET['id']);
-						break; 
-						case 2: 
-						$query =("SELECT DISTINCT p.id, p.id_categoria, p.imagen, e.id AS estados FROM producto p, categoria_producto e where p.id_categoria=e.id or e.id=".$_GET['id']);
-						break;  
-					}
-					
-					$result = mysql_query($query) or die("error". mysql_error());              
-					while ($row = mysql_fetch_array($result)) {
-						?>
-						<div class="item">
-							<div class="carousel-caption">
-								<a href="index.php?id=<?php echo $row['id'];?>&#modal1"><img class='imga' src="<?php echo $row['imagen']; ?>" ></a>
-								<!-- <img src="<?php //echo $row['imagen']; ?>" width="100%"></a> -->
-							</div>    
-						</div>
-						<?php
-					}
-					?>
-				</div>
-				<a class="carousel-control left" href="#myCarousel" data-slide="prev">
-				</a>
-				<a class="carousel-control right" href="#myCarousel" data-slide="next">  
-				</a>
-			</div>
-			<?php
 		}
 		?>

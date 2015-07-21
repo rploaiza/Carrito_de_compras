@@ -174,7 +174,7 @@ if (isset($_SESSION['usuario'])){
         $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s' and e.estado <>'Normal'");
         $miconexion->consultacatalogo2();
       }else{
-                          $miconexion->carpromocion();
+        $miconexion->carpromocion();
         $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.id_categoria=".$id);
         $miconexion->consultacatalogo2();
       }
