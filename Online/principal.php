@@ -134,7 +134,11 @@
                 </div>
                 <div class="container1">
                     <div class="col-md-9"> 
+<<<<<<< HEAD
                         <aside id="modulos2">         
+=======
+                        <aside id="modulos">         
+>>>>>>> 469cb53dbb71642f22b641b036d70528d30f2707
                             <div class="cd-filter-conten"> 
                                <div class="row">
                                     <div class="form center">
