@@ -106,11 +106,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
             border-radius: 1.5em;
 
         }
-        .row {
-            margin-right: -1px;
-            margin-left: -63px;
-        }
-<<<<<<< HEAD
+     
         aside#modulos {
             display: inline-block;
             background-color: #C7C8BF;
@@ -119,8 +115,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
             border-radius: 1%;
             padding-bottom: 5%
         }
-=======
->>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
+
 
     </style>
 </head>
@@ -132,27 +127,25 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
         <?php include("static/header.php") ?>
     </header>
     <!-- Services Section -->
-    <section id="services">
+
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <?php
                     $miconexion->consulta("select * from categoria_producto");
                     $miconexion->consulta_lista2();
                     ?>
-                    <div style="width: 180%">  
+                    <div style="width: 100%">  
                         <?php 
                             include("static/pedido2.php");
                             include("static/historial.php");    
                         ?>   
                     </div>
                 </div>
-                <div class="container1">
-<<<<<<< HEAD
+                
+
                     <div class="col-md-9"> 
-=======
-                    <div class="col-md-10"> 
->>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
+
                         <aside id="modulos">         
                             <div class="cd-filter-conten"> 
                                 <div class="row">
@@ -161,11 +154,9 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                                     </div>
                                 </div>
                                 <div id="re"></div>
-<<<<<<< HEAD
+
                                 <div class="footer center   "></div>
-=======
-                                <div class="footer center"></div>
->>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
+
                             </div>
                             <!-- Inicio catalogo -->                     
                             <?php
@@ -206,10 +197,10 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                         </aside>
                     </div>
                     <br><br><br>
-                </div>
+                
             </div>   
         </div> 
-    </section>
+
     <script language="javascript" type="text/javascript">
         function enviar(pagina){
             document.selec_con.action = pagina;
