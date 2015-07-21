@@ -132,9 +132,7 @@ class clase_mysql{
 				</div>
 			</div>
 			<?php
-			
 		}
-
 	}
 
 	function consultacatalogo2(){
