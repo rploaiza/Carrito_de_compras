@@ -87,6 +87,7 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
         @media (min-width: 400px){
             .container{
                 width: 80%;
+                margin-left: 3.7em;
             }
             .btn{
                 display: block;
@@ -115,8 +116,6 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
             border-radius: 1%;
             padding-bottom: 5%
         }
-
-
     </style>
 </head>
 <body>
@@ -127,7 +126,6 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
         <?php include("static/header.php") ?>
     </header>
     <!-- Services Section -->
-
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-3">
@@ -142,62 +140,59 @@ $miconexion->conectar($db_name,$db_host, $db_user,$db_password);
                         ?>   
                     </div>
                 </div>
-                
+                <div class="col-md-9"> 
 
-                    <div class="col-md-9"> 
-
-                        <aside id="modulos">         
-                            <div class="cd-filter-conten"> 
-                                <div class="row">
-                                    <div class="form center">
-                                        <br><input type="text" class="buscador" name="search" id="search"  placeholder="Buscar producto">
-                                    </div>
+                    <aside id="modulos">         
+                        <div class="cd-filter-conten"> 
+                            <div class="row">
+                                <div class="form center">
+                                    <br><input type="text" class="buscador" name="search" id="search"  placeholder="Buscar producto">
                                 </div>
-                                <div id="re"></div>
-
-                                <div class="footer center   "></div>
-
                             </div>
-                            <!-- Inicio catalogo -->                     
-                            <?php
-                                extract($_POST);
-                                extract($_GET);
-                                if (isset($id)) {
-                                    if ($id=='todos') {
-                                        $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s'");
-                                        $miconexion->consultacatalogo();
-                                    }elseif ($id=='oferta') {
-                                        $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s' and e.estado <>'Normal'");
-                                        $miconexion->consultacatalogo();
-                                    }else{
-                                        $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.id_categoria=".$id);
-                                        $miconexion->consultacatalogo();
-                                    }
+                            <div id="re"></div>
+
+                            <div class="footer center   "></div>
+
+                        </div>
+                        <!-- Inicio catalogo -->                     
+                        <?php
+                            extract($_POST);
+                            extract($_GET);
+                            if (isset($id)) {
+                                if ($id=='todos') {
+                                    $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s'");
+                                    $miconexion->consultacatalogo();
+                                }elseif ($id=='oferta') {
+                                    $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s' and e.estado <>'Normal'");
+                                    $miconexion->consultacatalogo();
                                 }else{
-                                    $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
+                                    $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.id_categoria=".$id);
                                     $miconexion->consultacatalogo();
                                 }
-                            ?>
-                            <div id="modal1" class="modalmask">
-                                <div class="modalbox movedown">
-                                    <a href="principal.php" title="Close" class="close">X</a>
-                                    <?php
-                                        $miconexion->consulta("select p.*, e.nombre AS estado , e.descrpcion FROM producto p, estado e where p.id_estado=e.id and p.id=".$_GET['id']);
-                                        
-                                        $miconexion->descatalogo();
+                            }else{
+                                $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
+                                $miconexion->consultacatalogo();
+                            }
+                        ?>
+                        <div id="modal1" class="modalmask">
+                            <div class="modalbox movedown">
+                                <a href="principal.php" title="Close" class="close">X</a>
+                                <?php
+                                    $miconexion->consulta("select p.*, e.nombre AS estado , e.descrpcion FROM producto p, estado e where p.id_estado=e.id and p.id=".$_GET['id']);
+                                    
+                                    $miconexion->descatalogo();
 
-                                        function dameURL(){
-                                            $url="http://".$_SERVER['HTTP_HOST'].":".$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']."#modal1";
-                                            return $url;
-                                        }                                
-                                    ?>
-                                </div>
+                                    function dameURL(){
+                                        $url="http://".$_SERVER['HTTP_HOST'].":".$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']."#modal1";
+                                        return $url;
+                                    }                                
+                                ?>
                             </div>
-                            <!-- Fin catalogo -->
-                        </aside>
-                    </div>
-                    <br><br><br>
-                
+                        </div>
+                        <!-- Fin catalogo -->
+                    </aside>
+                </div>
+                <br><br><br> 
             </div>   
         </div> 
 

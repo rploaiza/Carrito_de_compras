@@ -100,48 +100,36 @@ if (isset($_SESSION['usuario'])){
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div  class="navbar-header page-scroll">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Menu de Navegación</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand page-scroll" href="principal.php"></a>
-        <!--<a class="navbar-brand page-scroll" href="#page-top" style="margin-left:45%;";>LINE BUY</a> -->
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul style="margin-top: -4%;" style="float: right;" class="nav navbar-nav navbar-right">
-          <img style="width: 10%; float: left;" src="img/logo.png"> 
-          <li style="float: right;  width: 10%;">
-            <a style="font-size: 90%;" class="page-scroll" href="principal.php"><img style="width: 150%;" id="home" src="ico/home.png">Inicio</a>
-          </li>
-          <li style="float: right;  width: 10%;">
-            <a style="font-size: 90%;" class="page-scroll" href="index.php"><img style="width: 150%;" id="carrito" src="ico/carrito.png">Comprar</a>
-          </li>     
-          <li style="float: right;  width: 10%;">
-            <a style="font-size: 90%;" class="page-scroll" href="mis_pedidos.php"><img style="width: 500%;" id="carrito" src="ico/pedidos.png">Pedidos</a>
-          </li>   
-        </ul>
-      </div>
-      <div>
-        <ul class="nav navbar-nav navbar-left">
-          <li>
-           <a class="page-scroll" href="#">BIENVENIDO:
-            <?php
-            $miconexion->consulta("SELECT * FROM usuario WHERE user='".strtolower ($_SESSION['usuario'])."'");
-            $miconexion->nombreuser();
-            ?>
-          </a>
-        </li>                 
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a class="page-scroll" href="logout.php">CERRAR SESION</a>
-        </li>                 
-      </ul>
-    </div>
+      <div class="row">
+            <div class="col-md-8">
+                <br>
+                <img style="width: 20%; margin-left: 10em;" src="img/logo.png">  
+                <br>
+                <a style="margin-left: 10em; font-size: 1em;" href="#">BIENVENIDO:
+                    <?php
+                    $miconexion->consulta("SELECT * FROM usuario WHERE user='".utf8_decode($_SESSION['usuario'])."'");
+                    $miconexion->nombreuser();
+                    ?>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <br><br><br>
+                <li>
+                  <a href="logout.php" style="margin-left: 58%; font-size: 1em;">CERRAR SESION</a> 
+                </li>
+                <li style="float: right;  width: 30%; ">
+                  <a style="font-size: 1em;"class="page-scroll" href="principal.php"><img id="home" src="ico/home.png">Inicio</a>
+                </li>
+                <li style="float: right;  width: 30%;">
+                  <a style="font-size: 1em;" class="page-scroll" href="index.php"><img id="carrito" src="ico/carrito.png">Comprar</a>
+                </li>     
+                <li style="float: right;  width: 30%;">
+                  <a style="font-size: 1em;" class="page-scroll" href="mis_pedidos.php"><img  id="carrito" src="ico/pedidos.png">Pedidos</a>
+                </li> 
+               
+                <br>
+            </div>
+        </div>
     <!-- /.navbar-collapse -->
   </nav><br>
 
@@ -168,53 +156,7 @@ if (isset($_SESSION['usuario'])){
         <?php
         if (isset($id)) {
           if ($id=='todos') {
-<<<<<<< HEAD
-            $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s'");
-            $miconexion->consultacatalogo();
-          }elseif ($id=='oferta') {
-            $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s' and e.estado <>'Normal'");
-            $miconexion->consultacatalogo();
-          }else{
-            $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.id_categoria=".$id);
-            $miconexion->consultacatalogo();
-          }
-        }else{
-          $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id");
-          $miconexion->consultacatalogo();
-        }
 
-        ?>
-        <div id="fade" class="black_overlay"></div>
-      </section>
-      <!-- Fin catalogo -->
-
-      <div class="span3">  
-
-        <div id="modal1" class="modalmask">
-
-          <div class="modalbox movedown">
-
-            <a href="index.php" title="Close" class="close">X</a>
-            <?php
-            $miconexion->consulta("select * from producto where id=".$_GET['id']);
-            $miconexion->descatalogo2();
-            ?>
-          </div>
-        </div>
-      </div>
-
-      <div class="span4">  
-        <?php 
-        include("static/pedido.php");
-        ?>  
-      </div>
-
-    </div>
-    
-
-    <!-- Services Footer -->
-    
-=======
          $miconexion->consulta("SELECT p.*, e.estado AS estados FROM producto p, categoria_estado e where p.id_estado=e.id and p.estado='s'");
          $miconexion->consultacatalogo2();
        }elseif ($id=='oferta') {
@@ -255,17 +197,7 @@ if (isset($_SESSION['usuario'])){
 </div>
 </div>
 <hr>
->>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
 
-<!-- Services Footer -->
-
-<<<<<<< HEAD
-    <!-- /container -->
-=======
-
-
-<!-- /container -->
->>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
 
       <!-- Le javascript
       ================================================== -->
@@ -300,11 +232,25 @@ if (isset($_SESSION['usuario'])){
           });
         });
       </script>
+       <script>
+        $(function() {
+          var offset = $("#sidebar2").offset();
+          var topPadding = 15;
+          $(window).scroll(function() {
+            if ($("#sidebar2").height() < $(window).height() && $(window).scrollTop() > offset.top) { /* LINEA MODIFICADA POR ALEX PARA NO ANIMAR SI EL SIDEBAR ES MAYOR AL TAMAÑO DE PANTALLA */
+              $("#sidebar2").stop().animate({
+                marginTop: $(window).scrollTop() - offset.top + topPadding
+              });
+            } else {
+              $("#sidebar2").stop().animate({
+                marginTop: 0
+              });
+            };
+          });
+        });
+      </script>
     </body>
-<<<<<<< HEAD
-=======
 
->>>>>>> f011f75d2808183eacc29e2f7c3062ea9563ba96
     <footer style="background: #423E3E;">
       <?php include("static/footer.php") ?>
     </footer>
