@@ -93,13 +93,13 @@
             margin-right: -1px;
             margin-left: -63px;
         }
-        aside#modulos2 {
+        aside#modulos {
   display: inline-block;
   background-color: #C7C8BF;
-  width: 99%;
-  margin-right: -12em;
+  width: 120%;
+  margin-right: 2em;
   border-radius: 1%;
-  padding-bottom: 5%;
+  padding-bottom: 5%
 }
 
 </style>
@@ -115,14 +115,14 @@
     <section id="services">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <?php
                         $miconexion->consulta("select * from categoria_producto");
                         $miconexion->consulta_lista2();
 
 
                     ?>
-                    <div style="width: 180%">  
+                    <div>  
                         <?php 
                             include("static/pedido2.php");
                             include("static/historial.php");
@@ -133,8 +133,8 @@
                       
                 </div>
                 <div class="container1">
-                    <div class="col-md-10"> 
-                        <aside id="modulos2">         
+                    <div class="col-md-9"> 
+                        <aside id="modulos">         
                             <div class="cd-filter-conten"> 
                                <div class="row">
                                     <div class="form center">
